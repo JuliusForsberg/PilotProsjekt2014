@@ -4,9 +4,9 @@ using System.Collections;
 public class TrapPlace : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
-	
+		hitObjects = new GameObject[3];
 	}
-	RaycastHit rayHit;
+	public GameObject[] hitObjects;
 	public float gridSizeX=1;
 	public float gridSizeZ=1;
 	GameObject highLightObject;
@@ -20,6 +20,7 @@ public class TrapPlace : MonoBehaviour {
 		{
 			if(rayHits[i].collider.gameObject.layer == LayerMask.NameToLayer("Environment"))
 			{
+				hitObjects[i] = rayHits[i].collider.gameObject;
 				if(highLightObject == null)
 				{
 					highLightObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
@@ -38,35 +39,18 @@ public class TrapPlace : MonoBehaviour {
 				float x = rayHits[i].point.x;
 				float z = rayHits[i].point.z;
 
-				if( (x - Mathf.Floor(x)) < 0.5f)
-				{
-					print ("From" + x + " To" + (Mathf.Floor(x)));
-					x = Mathf.Floor(x);
-				}
-				else
-				{
-					print ("From" + x + " To" + (Mathf.Floor(x)-0.5f));
-					x = Mathf.Ceil(x);
-				}
-
-				if( (z - Mathf.Floor(z)) < 0.5f)
-				{
-					z = Mathf.Floor(z);
-				}
-				else
-				{
-					z = Mathf.Ceil(z);
-				}
+				x = gridSizeX*(Mathf.Round(x/gridSizeX));
+				z = gridSizeZ*(Mathf.Round(z/gridSizeZ));
 
 				highLightObject.transform.position = new Vector3(x, rayHits[i].point.y, z);
 
 				break;
 
 			}
-			else
-			{
-				Destroy (highLightObject);
-			}
+		}
+		if(rayHits.Length == 0)
+		{
+			Destroy(highLightObject);
 		}
 		Debug.DrawRay(ray.origin, ray.direction * 10, Color.yellow);
 	}

@@ -6,6 +6,7 @@ public class TrapPlace : MonoBehaviour {
 	void Start () {
 		hitObjects = new GameObject[3];
 	}
+
 	public GameObject[] hitObjects;
 	public float gridSizeX=1;
 	public float gridSizeZ=1;

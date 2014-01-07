@@ -14,7 +14,7 @@ public class TimeSystem : MonoBehaviour {
 	public float dawnRotation = 45f;
 	public float dawnIntensity = 0.2f;
 	public Color dawnColor = new Color(0f, 0f, 0f);
-	public float dayRotation = 90f;
+	public float dayRotation = 70f;
 	public float dayIntensity = 0.4f;
 	public Color dayColor = new Color(0f, 0f, 0f);
 	public float duskRotation = 135f;
@@ -48,6 +48,10 @@ public class TimeSystem : MonoBehaviour {
 	}
 
 	void Update(){
+		//DEBUG
+		if(Input.GetKeyDown(KeyCode.H))
+			hour++;
+
 		timer += Time.deltaTime;
 
 		if(timer > secondsPerMinute){
@@ -57,9 +61,10 @@ public class TimeSystem : MonoBehaviour {
 			if(minute > 59){
 				hour++;
 				minute = 0;
-			}
-			if(hour > 23){
-				hour = 0;
+
+				if(hour > 23){
+					hour = 0;
+				}
 			}
 
 			if(lastMinuteChange != minute){
@@ -69,24 +74,25 @@ public class TimeSystem : MonoBehaviour {
 				clock.text = hour.ToString("00") + ":" + minute.ToString("00");
 
 				lastMinuteChange = minute;
-			}
-			if(lastHourChange != hour){
-				if(hour == triggerWaveTime){
-					Debug.Log("WAVE");
-				}
-				if(hour == 0){
-					ChangeState(timeOfDay.DAWN);
-				}else if(hour == 2){
-					ChangeState(timeOfDay.DAY);
-				}else if(hour == 17){
-					ChangeState(timeOfDay.DUSK);
-				}else if(hour == 19){
-					ChangeState(timeOfDay.NIGHT);
-				}
 
-				Debug.Log(sunState);
-
-				lastHourChange = hour;
+				if(lastHourChange != hour){
+					if(hour == triggerWaveTime){
+						Debug.Log("WAVE");
+					}
+					if(hour == 0){
+						ChangeState(timeOfDay.DAWN);
+					}else if(hour == 2){
+						ChangeState(timeOfDay.DAY);
+					}else if(hour == 17){
+						ChangeState(timeOfDay.DUSK);
+					}else if(hour == 19){
+						ChangeState(timeOfDay.NIGHT);
+					}
+					
+					Debug.Log(sunState);
+					
+					lastHourChange = hour;
+				}
 			}
 		}
 
@@ -113,37 +119,80 @@ public class TimeSystem : MonoBehaviour {
 	}
 
 	void FadeToDawn(){
-		sun.eulerAngles = new Vector3(dawnRotation, 0f, 0f);
-		sun.light.intensity = dawnIntensity;
-		sun.light.color = dawnColor;
+		if(!sun.gameObject.activeSelf){
+			sun.gameObject.SetActive(true);
+		}
+		Quaternion quatDawnRotation = Quaternion.Euler(new Vector3(dawnRotation,0f,0f));
 
-		fade = false;
+		sun.rotation = Quaternion.RotateTowards(sun.rotation, quatDawnRotation, Time.deltaTime*10f);
+
+		if(sun.light.intensity < dawnIntensity){
+			sun.light.intensity += 0.05f * Time.deltaTime;
+		}
+		sun.light.color = Color.Lerp(sun.light.color, dawnColor, Time.deltaTime*0.5f);
+
+		float temp = RenderSettings.skybox.GetFloat("_Blend");
+		temp = Mathf.Lerp(temp, 0f, Time.deltaTime*2f);
+		RenderSettings.skybox.SetFloat("_Blend", temp);
+
+		if(sun.rotation == quatDawnRotation && sun.light.intensity > dawnIntensity){
+			fade = false;
+		}
 	}
-
+	
 	void FadeToDay(){
-		sun.eulerAngles = new Vector3(dayRotation, 0f, 0f);
-		sun.light.intensity = dayIntensity;
-		sun.light.color = dayColor;
+		Quaternion quatDayRotation = Quaternion.Euler(new Vector3(dayRotation,0f,0f));
 
-		fade = false;
+		sun.rotation = Quaternion.RotateTowards(sun.rotation, quatDayRotation, Time.deltaTime*10f);
+
+		if(sun.light.intensity < dayIntensity){
+			sun.light.intensity += 0.05f * Time.deltaTime;
+		}
+		//sun.GetComponent<LensFlare>().brightness = sun.light.intensity * 2.5f;
+
+		sun.light.color = Color.Lerp(sun.light.color, dayColor, Time.deltaTime*0.5f);
+
+		if(sun.rotation == quatDayRotation && sun.light.intensity > dayIntensity){
+			fade = false;
+		}
 	}
 
 	void FadeToDusk(){
-		sun.eulerAngles = new Vector3(duskRotation, 0f, 0f);
-		sun.light.intensity = duskIntensity;
-		sun.light.color = duskColor;
+		Quaternion quatDuskRotation = Quaternion.Euler(new Vector3(duskRotation,0f,0f));
 
-		fade = false;
+		sun.rotation = Quaternion.RotateTowards(sun.rotation, quatDuskRotation, Time.deltaTime*10f);
+
+		if(sun.light.intensity > duskIntensity){
+			sun.light.intensity -= 0.05f * Time.deltaTime;
+		}
+		sun.light.color = Color.Lerp(sun.light.color, duskColor, Time.deltaTime*0.5f);
+
+		if(sun.rotation == quatDuskRotation && sun.light.intensity < duskIntensity){
+			fade = false;
+		}
 	}
 
 	void FadeToNight(){
-		sun.eulerAngles = new Vector3(nightRotation, 0f, 0f);
-		sun.light.intensity = nightIntensity;
-		sun.light.color = nightColor;
+		Quaternion quatNightRotation = Quaternion.Euler(new Vector3(nightRotation,0f,0f));
 
-		fade = false;
+		sun.rotation = Quaternion.RotateTowards(sun.rotation, quatNightRotation, Time.deltaTime*10f);
+
+		if(sun.light.intensity > nightIntensity){
+			sun.light.intensity -= 0.05f * Time.deltaTime;
+		}
+		sun.light.color = Color.Lerp(sun.light.color, nightColor, Time.deltaTime*0.5f);
+
+		float temp = RenderSettings.skybox.GetFloat("_Blend");
+		temp = Mathf.Lerp(temp, 1f, Time.deltaTime*0.5f);
+		RenderSettings.skybox.SetFloat("_Blend", temp);
+
+		if(sun.rotation == quatNightRotation && sun.light.intensity <= nightIntensity){
+			fade = false;
+			sun.rotation = Quaternion.identity;
+			sun.gameObject.SetActive(false);
+		}
 	}
-
+	
 	void ChangeState(timeOfDay tod){
 		sunState = tod;
 		fade = true;

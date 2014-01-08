@@ -11,24 +11,23 @@ public class TimeSystem : MonoBehaviour {
 
 	public Transform sun;
 
-	public float dawnRotation = 45f;
+	public float dawnRotation = 35f;
 	public float dawnIntensity = 0.2f;
 	public Color dawnColor = new Color(0f, 0f, 0f);
 	public float dayRotation = 70f;
 	public float dayIntensity = 0.4f;
 	public Color dayColor = new Color(0f, 0f, 0f);
-	public float duskRotation = 135f;
+	public float duskRotation = 145f;
 	public float duskIntensity = 0.2f;
 	public Color duskColor = new Color(0f, 0f, 0f);
-	public float nightRotation = 270f;
+	public float nightRotation = 185f;
 	public float nightIntensity = 0.05f;
 	public Color nightColor = new Color(0f, 0f, 0f);
 
 	private float timer;
 	private short hour;
 	private short minute;
-
-	private short lastMinuteChange;
+	
 	private short lastHourChange;
 
 	private bool fade;
@@ -40,8 +39,7 @@ public class TimeSystem : MonoBehaviour {
 		timer = 0;
 		hour = 0;
 		minute = 0;
-	
-		lastMinuteChange = -1;
+
 		lastHourChange = -1;
 
 		fade = false;
@@ -51,6 +49,7 @@ public class TimeSystem : MonoBehaviour {
 		//DEBUG
 		if(Input.GetKeyDown(KeyCode.H))
 			hour++;
+		//
 
 		timer += Time.deltaTime;
 
@@ -67,58 +66,54 @@ public class TimeSystem : MonoBehaviour {
 				}
 			}
 
-			if(lastMinuteChange != minute){
-				hand.localEulerAngles = new Vector3(0,0,(hour * 15.0f * -1.0f));
-				hand.Rotate(0.0f, 0.0f,(minute * 0.25f * -1.0f));
+			hand.localEulerAngles = new Vector3(0,0,(hour * 15.0f * -1.0f));
+			hand.Rotate(0.0f, 0.0f,(minute * 0.25f * -1.0f));
 
-				clock.text = hour.ToString("00") + ":" + minute.ToString("00");
+			clock.text = hour.ToString("00") + ":" + minute.ToString("00");
 
-				lastMinuteChange = minute;
-
-				if(lastHourChange != hour){
-					if(hour == triggerWaveTime){
-						Debug.Log("WAVE");
-					}
-					if(hour == 0){
-						ChangeState(timeOfDay.DAWN);
-					}else if(hour == 2){
-						ChangeState(timeOfDay.DAY);
-					}else if(hour == 17){
-						ChangeState(timeOfDay.DUSK);
-					}else if(hour == 19){
-						ChangeState(timeOfDay.NIGHT);
-					}
-					
-					Debug.Log(sunState);
-					
-					lastHourChange = hour;
+			if(lastHourChange != hour){
+				if(hour == triggerWaveTime){
+					Debug.Log("WAVE");
 				}
+				if(hour == 0){
+					ChangeState(timeOfDay.DAWN);
+				}else if(hour == 2){
+					ChangeState(timeOfDay.DAY);
+				}else if(hour == 17){
+					ChangeState(timeOfDay.DUSK);
+				}else if(hour == 19){
+					ChangeState(timeOfDay.NIGHT);
+				}
+				
+				Debug.Log(sunState);
+				
+				lastHourChange = hour;
 			}
 		}
 
 		if(fade){
 			switch(sunState){
 				case timeOfDay.DAWN:
-					print ("dawn");
+					//print ("dawn");
 					FadeToDawn();
 					break;
 				case timeOfDay.DAY:
-					print ("day");
+					//print ("day");
 					FadeToDay();
 					break;
 				case timeOfDay.DUSK:
-					print ("dusk");
+					//print ("dusk");
 					FadeToDusk();
 					break;
 				case timeOfDay.NIGHT:
-					print ("night");
+					//print ("night");
 					FadeToNight();
 					break;
 			}
 		}
 	}
 
-	void FadeToDawn(){
+	private void FadeToDawn(){
 		if(!sun.gameObject.activeSelf){
 			sun.gameObject.SetActive(true);
 		}
@@ -129,6 +124,7 @@ public class TimeSystem : MonoBehaviour {
 		if(sun.light.intensity < dawnIntensity){
 			sun.light.intensity += 0.05f * Time.deltaTime;
 		}
+		sun.GetComponent<LensFlare>().brightness = sun.light.intensity+0.6f;
 		sun.light.color = Color.Lerp(sun.light.color, dawnColor, Time.deltaTime*0.5f);
 
 		float temp = RenderSettings.skybox.GetFloat("_Blend");
@@ -140,7 +136,7 @@ public class TimeSystem : MonoBehaviour {
 		}
 	}
 	
-	void FadeToDay(){
+	private void FadeToDay(){
 		Quaternion quatDayRotation = Quaternion.Euler(new Vector3(dayRotation,0f,0f));
 
 		sun.rotation = Quaternion.RotateTowards(sun.rotation, quatDayRotation, Time.deltaTime*10f);
@@ -148,8 +144,7 @@ public class TimeSystem : MonoBehaviour {
 		if(sun.light.intensity < dayIntensity){
 			sun.light.intensity += 0.05f * Time.deltaTime;
 		}
-		//sun.GetComponent<LensFlare>().brightness = sun.light.intensity * 2.5f;
-
+		sun.GetComponent<LensFlare>().brightness = sun.light.intensity+0.6f;
 		sun.light.color = Color.Lerp(sun.light.color, dayColor, Time.deltaTime*0.5f);
 
 		if(sun.rotation == quatDayRotation && sun.light.intensity > dayIntensity){
@@ -157,7 +152,7 @@ public class TimeSystem : MonoBehaviour {
 		}
 	}
 
-	void FadeToDusk(){
+	private void FadeToDusk(){
 		Quaternion quatDuskRotation = Quaternion.Euler(new Vector3(duskRotation,0f,0f));
 
 		sun.rotation = Quaternion.RotateTowards(sun.rotation, quatDuskRotation, Time.deltaTime*10f);
@@ -165,6 +160,7 @@ public class TimeSystem : MonoBehaviour {
 		if(sun.light.intensity > duskIntensity){
 			sun.light.intensity -= 0.05f * Time.deltaTime;
 		}
+		sun.GetComponent<LensFlare>().brightness = sun.light.intensity+0.6f;
 		sun.light.color = Color.Lerp(sun.light.color, duskColor, Time.deltaTime*0.5f);
 
 		if(sun.rotation == quatDuskRotation && sun.light.intensity < duskIntensity){
@@ -172,7 +168,7 @@ public class TimeSystem : MonoBehaviour {
 		}
 	}
 
-	void FadeToNight(){
+	private void FadeToNight(){
 		Quaternion quatNightRotation = Quaternion.Euler(new Vector3(nightRotation,0f,0f));
 
 		sun.rotation = Quaternion.RotateTowards(sun.rotation, quatNightRotation, Time.deltaTime*10f);
@@ -180,10 +176,11 @@ public class TimeSystem : MonoBehaviour {
 		if(sun.light.intensity > nightIntensity){
 			sun.light.intensity -= 0.05f * Time.deltaTime;
 		}
+		sun.GetComponent<LensFlare>().brightness = sun.light.intensity+0.6f;
 		sun.light.color = Color.Lerp(sun.light.color, nightColor, Time.deltaTime*0.5f);
 
 		float temp = RenderSettings.skybox.GetFloat("_Blend");
-		temp = Mathf.Lerp(temp, 1f, Time.deltaTime*0.5f);
+		temp = Mathf.Lerp(temp, 1f, Time.deltaTime*1.2f);
 		RenderSettings.skybox.SetFloat("_Blend", temp);
 
 		if(sun.rotation == quatNightRotation && sun.light.intensity <= nightIntensity){
@@ -193,7 +190,7 @@ public class TimeSystem : MonoBehaviour {
 		}
 	}
 	
-	void ChangeState(timeOfDay tod){
+	private void ChangeState(timeOfDay tod){
 		sunState = tod;
 		fade = true;
 	}

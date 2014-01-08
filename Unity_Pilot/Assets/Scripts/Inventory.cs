@@ -11,17 +11,16 @@ public class Inventory : MonoBehaviour {
 		inventoryPosX = Screen.width * inventoryPosX;
 		inventoryPosY = Screen.height * inventoryPosY;
 
-		inventory = new InventorySlots[gridSizeX, gridSizeY];
-		float gridStepX = inventorySizeX/gridSizeX; //Distance between each point in the grid.
-		float gridStepY = inventorySizeY/gridSizeY;
-		print (inventory[1,1]._object);
-		inventory[1,1].icon = backTexture;
-		print (inventory[1,1].icon);
-		for(int i=0;i<gridSizeX;i++)
+		inventory = new InventorySlot[gridSizeX, gridSizeY];
+		slotSizeX = inventorySizeX/gridSizeX;
+		slotSizeY = inventorySizeY/gridSizeY;
+
+		for(int j=0;j<gridSizeY;j++)
 		{
-			for(int j=0;j<gridSizeY;j++)
+			for(int i=0;i<gridSizeX;i++)
 			{
-				inventory[i,j].position = new Vector2( (gridStepX/2)+(gridStepX*i), (gridStepY/2)+(gridStepY*j) );
+				inventory[i,j] = new InventorySlot();
+				inventory[i,j].position = new Vector2( (slotSizeX/2)+(slotSizeX*i), (slotSizeY/2)+(slotSizeY*j) );
 			}
 		}
 
@@ -35,17 +34,46 @@ public class Inventory : MonoBehaviour {
 			else
 				open = true;
 		}
+		if(Input.GetKey(KeyCode.LeftShift))
+		{
+			inventory[0,0]._object = new GameObject();
+		}
 
 	}
 
+	public GameObject getObject (int gridCoordX, int gridCoordY)
+	{
+		return inventory[gridCoordX, gridCoordY]._object;
+	}
+
+	public void putObject (GameObject _object)
+	{
+		for(int j=0;j<gridSizeY;j++)
+		{
+			for(int i=0;i<gridSizeX;i++)
+			{
+				if(inventory[i,j]._object == null)
+				{
+
+					inventory[i,j]._object = _object;
+					inventory[i,j].icon = _object.GetComponent<Pickup>().icon;
+					print( (inventory[i,j]._object) + " " + i + " " + j);
+					return;
+				}
+			}
+		}
+	}
+
 	bool open=false;
-	public InventorySlots[,] inventory;
+	public InventorySlot[,] inventory;
 	public float inventorySizeX;
 	public float inventorySizeY;
 	public float inventoryPosX;
 	public float inventoryPosY;
 	public int gridSizeX;
 	public int gridSizeY;
+	float slotSizeX;
+	float slotSizeY;
 	public Texture2D backTexture;
 
 	void OnGUI () {
@@ -60,7 +88,9 @@ public class Inventory : MonoBehaviour {
 			{
 				for(int j=0;j<gridSizeY;j++)
 				{
-					GUI.Box(new Rect(inventory[i,j].position.x-5, inventory[i,j].position.y-5, 10, 10), "X");
+					if(inventory[i,j].icon != null)
+						GUI.DrawTexture(new Rect(inventory[i,j].position.x-(slotSizeX/2), inventory[i,j].position.y-(slotSizeY/2), slotSizeX, slotSizeY), inventory[i,j].icon);
+						//GUI.Box(new Rect(inventory[i,j].position.x-(slotSizeX/2), inventory[i,j].position.y-(slotSizeY/2), slotSizeX, slotSizeY), "Empty");
 				}
 			}
 
@@ -70,8 +100,17 @@ public class Inventory : MonoBehaviour {
 
 }
 
-public class InventorySlots
+public class InventorySlot
 {
+//	public InventorySlot(Vector2 pos, Texture2D tex, GameObject obj) {
+//		this.position = pos;
+//		this.icon = tex;
+//		this._object = obj;
+//	}
+
+	public InventorySlot() {
+
+	}
 	public Vector2 position;
 	public Texture2D icon;
 	public GameObject _object;

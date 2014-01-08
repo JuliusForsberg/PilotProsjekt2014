@@ -6,6 +6,7 @@ public class Pickup : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 	
+		gameObject.tag = "Pickup";
 	}
 
 	public Texture2D icon;

@@ -7,11 +7,19 @@ public class Pickup : MonoBehaviour {
 	void Start () {
 	
 		gameObject.tag = "Pickup";
+
+		SphereCollider sphereCollider = gameObject.AddComponent<SphereCollider>();
+		sphereCollider.radius = 3.0f;
+		sphereCollider.isTrigger = true;
 	}
 
 	public Texture2D icon;
 	// Update is called once per frame
 	void Update () {
 	
+	}
+
+	void OnTriggerEnter () {
+		Player.SendMessage(
 	}
 }

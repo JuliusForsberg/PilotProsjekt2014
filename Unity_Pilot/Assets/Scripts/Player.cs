@@ -27,7 +27,10 @@ public class Player : MonoBehaviour {
 
 	void pickUpObject (GameObject _object)
 	{
-		mInventory.putObject(_object);
-		_object.SetActive(false);
+		if(mInventory.emptySlots > 0)
+		{
+			mInventory.putObject(_object);
+			_object.SetActive(false);
+		}
 	}
 }

@@ -17,6 +17,18 @@ public class Player : MonoBehaviour {
 
 		if(Input.GetKeyDown(KeyCode.E))
 	   	{
+
+//			forwardHits = Physics.RaycastAll(Camera.main.transform.position, Camera.main.transform.forward, 30.0f);
+//
+//			for(int i=0;i<forwardHits.Length-1;i++) //Using RaycastAll. Not needed i think.
+//			{
+//				if(forwardHits[i].transform.gameObject.tag == "Pickup")
+//				{
+//					pickUpObject(forwardHits[i].transform.gameObject);
+//					return;
+//				}
+//			}
+
 			Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * 3, Color.white, 0);
 			if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out forwardHit, 3.0f) && forwardHit.transform.gameObject.tag == "Pickup")
 			{

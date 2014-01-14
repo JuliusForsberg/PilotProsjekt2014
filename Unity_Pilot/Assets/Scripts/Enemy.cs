@@ -5,20 +5,12 @@ public class Enemy : MonoBehaviour {
 
 	public float health = 20f;	
 
-	void Start(){
-	
-	}
-
-	void Update(){
-	
-	}
-
 	public void TakeDamage(float damage){
 		health -= damage;
-		Debug.Log("TookDamage");
+		//Debug.Log("TookDamage");
 
 		if(health <= 0){
-			Debug.Log("DIED");
+			//Debug.Log("DIED");
 	
 			StartCoroutine(WaitAndDie());
 			//Destroy (gameObject);

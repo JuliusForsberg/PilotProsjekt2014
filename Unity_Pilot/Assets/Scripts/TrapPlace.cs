@@ -23,6 +23,12 @@ public class TrapPlace : MonoBehaviour {
 	Camera camTopDown;
 	Camera camMain;
 	bool _enabled;
+    bool invalid;
+
+    public Tower tower1;
+    public Tower tower2;
+    public Tower tower3;
+    Tower selectedTower;
 
 	public GameObject[] hitObjects;
 	public float gridSizeX=1;
@@ -30,7 +36,6 @@ public class TrapPlace : MonoBehaviour {
 	GameObject highLightObject;
     int highlightSizeX=1;
     int highlightSizeZ=1;
-    public GameObject createObject;
 
 	bool[,] gridSquares;
 	int coordX;
@@ -53,6 +58,8 @@ public class TrapPlace : MonoBehaviour {
                     {
                         highLightObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
                         highLightObject.transform.localScale = new Vector3(gridSizeX * highlightSizeX, 1, gridSizeZ * highlightSizeZ);
+                        highLightObject.renderer.material.shader = Shader.Find("Transparent/Diffuse");
+                        highLightObject.renderer.material.color = new Color(1.0f, 1.0f, 1.0f, .1f);
                     }
 
                     //				if(ball == null)
@@ -97,34 +104,42 @@ public class TrapPlace : MonoBehaviour {
                     coordX = (int)((x / gridSizeX) + 4);
                     coordZ = (int)((z / gridSizeZ) + 4);
 
-                    Debug.Log((coordZ) + " " + (coordX) + (gridSquares[coordX, coordZ]));
+                    Debug.Log((coordX) + " " + (coordZ) + (gridSquares[coordX, coordZ]));
 
                     highLightObject.transform.position = new Vector3(x + offsetX, rayHits[i].point.y, z + offsetZ);
 
                     if (highlightSizeX > 1 || highlightSizeZ > 1)
                     {
-                        for(int k=0;k<highlightSizeX;k++)
+                        int xHalf = Mathf.CeilToInt(highlightSizeX/2);
+
+                        int zHalf = Mathf.CeilToInt(highlightSizeZ/2);
+
+                        bool stop=false;
+
+                        for(int k=0;k<highlightSizeX && !stop;k++) //Checks if any of the squares are occupied.
                         {
                             for(int j=0;j<highlightSizeZ;j++)
                             {
-                                if( gridSquares[coordX + k, coordZ + j] == true)
+                                if(gridSquares[(coordX-xHalf) + k, (coordZ-zHalf) + j] == true)
                                 {
-                                    highLightObject.renderer.material.color = Color.red;
+                                    invalid = true;
+                                    stop = true;
                                     break;
                                 }
-                                highLightObject.renderer.material.color = Color.white;
+                                else
+                                    invalid = false;
                             }
                         }
-
+                        stop = false;
                     }
                     else
                     {
                         if (gridSquares[coordX, coordZ] == true)
                         {
-                            highLightObject.renderer.material.color = Color.red;
+                            invalid = true;
                         }
                         else
-                            highLightObject.renderer.material.color = Color.white;
+                            invalid = false;
                     }
 
                     break;
@@ -133,6 +148,16 @@ public class TrapPlace : MonoBehaviour {
                 else if(i == rayHits.Length-1)
                     Destroy(highLightObject);
             }
+            if (highLightObject != null)
+            {
+                if (invalid)
+                {
+                    highLightObject.renderer.material.color = new Color(1.0f, 0.0f, 0.0f, .5f);
+                }
+                else
+                    highLightObject.renderer.material.color = new Color(1.0f, 1.0f, 1.0f, .5f);
+            }
+
             if (rayHits.Length == 0)
             {
                 Destroy(highLightObject);
@@ -140,7 +165,8 @@ public class TrapPlace : MonoBehaviour {
 
             if (Input.GetKeyDown(KeyCode.R))
             {
-                placeObject(createObject);
+                if(selectedTower != null)
+                    placeTower(selectedTower);
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -152,8 +178,8 @@ public class TrapPlace : MonoBehaviour {
 
             if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                highlightSizeX = 3;
-                highlightSizeZ = 1;
+                highlightSizeX = 2;
+                highlightSizeZ = 2;
                 Destroy(highLightObject);
             }
         }
@@ -162,15 +188,22 @@ public class TrapPlace : MonoBehaviour {
 
 	}
 
-	void placeObject(GameObject _object) {
+    void setSelectedTower(Tower tower)
+    {
+        selectedTower = tower;
+        highlightSizeX = tower.sizeX;
+        highlightSizeZ = tower.sizeZ;
+    }
 
-			if(highLightObject != null)
+	void placeTower(Tower tower) {
+
+			if(highLightObject != null && !invalid)
 			{
 				Vector3 pos = highLightObject.transform.position;
 
 				if(gridSquares[coordX, coordZ] == false)
 					{
-                        Instantiate(_object, pos, _object.transform.rotation);
+                        Instantiate(tower.gameObject, pos, tower.gameObject.transform.rotation);
 						gridSquares[coordX, coordZ] = true;
 					}
 			}
@@ -179,10 +212,25 @@ public class TrapPlace : MonoBehaviour {
 	void OnGUI() {
 		if(_enabled)
 		{
-			if(GUI.Button(new Rect((Screen.width*0.8f), (Screen.height*0.8f), 100.0f, 50.0f), "Confirm"))
+			if(GUI.Button(new Rect((Screen.width*0.8f), (Screen.height*0.9f), 100.0f, 50.0f), "Confirm"))
 			{
 				endConstruction();
 			}
+
+            if (GUI.Button(new Rect((Screen.width * 0.8f), (Screen.height * 0.8f), 100.0f, 50.0f), tower1.gameObject.name))
+            {
+                setSelectedTower(tower1);
+            }
+
+            if (GUI.Button(new Rect((Screen.width * 0.8f), (Screen.height * 0.7f), 100.0f, 50.0f), tower2.gameObject.name))
+            {
+                setSelectedTower(tower2);
+            }
+
+            if (GUI.Button(new Rect((Screen.width * 0.8f), (Screen.height * 0.6f), 100.0f, 50.0f), tower3.gameObject.name))
+            {
+                setSelectedTower(tower3);
+            }
 		}
 	}
 
@@ -197,4 +245,13 @@ public class TrapPlace : MonoBehaviour {
 		camTopDown.enabled = false;
 		_enabled = false;
 	}
+}
+
+[System.Serializable]
+public class Tower
+{
+    public GameObject gameObject;
+    public int sizeX=1;
+    public int sizeZ=1;
+
 }

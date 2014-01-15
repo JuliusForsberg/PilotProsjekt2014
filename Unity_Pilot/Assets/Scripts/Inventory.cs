@@ -41,20 +41,20 @@ public class Inventory : MonoBehaviour {
 
 	public GameObject getObject (int gridCoordX, int gridCoordY)
 	{
-		return inventory[gridCoordX, gridCoordY]._object;
+		return inventory[gridCoordX, gridCoordY].gameObject;
 	}
 
-	public void putObject (GameObject _object)
+	public void putObject (GameObject gameObject)
 	{
 		for(int j=0;j<nrOfslotsY;j++)
 		{
 			for(int i=0;i<nrOfslotsX;i++)
 			{
-				if(inventory[i,j]._object == null)
+				if(inventory[i,j].gameObject == null)
 				{
 
-					inventory[i,j]._object = _object;
-					inventory[i,j].icon = _object.GetComponent<Pickup>().icon;
+					inventory[i,j].gameObject = gameObject;
+					inventory[i,j].icon = gameObject.GetComponent<Pickup>().icon;
 					emptySlots--;
 					return;
 				}
@@ -107,6 +107,6 @@ public class InventorySlot
 	}
 	public Vector2 position;
 	public Texture2D icon;
-	public GameObject _object;
+	public GameObject gameObject;
 
 }

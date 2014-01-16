@@ -5,6 +5,12 @@ public class Enemy : MonoBehaviour {
 
 	public float health = 20f;	
 
+	void Start(){
+		if(gameObject.GetComponent<AIPath>()){
+			gameObject.GetComponent<AIPath>().target = GameObject.FindGameObjectWithTag("Crystal").transform;
+		}
+	}
+
 	public void TakeDamage(float damage){
 		health -= damage;
 		//Debug.Log("TookDamage");

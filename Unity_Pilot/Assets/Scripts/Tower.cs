@@ -5,7 +5,6 @@ public class Tower : MonoBehaviour {
 
 	public GameObject projectile;
 	public Transform muzzle;
-	public Transform tilt;
 
 	public float turnSpeed = 5f;
 	public float reloadTime = 1f;
@@ -82,14 +81,6 @@ public class Tower : MonoBehaviour {
 	private void Fire(){
 		nextFireTime = Time.time + reloadTime;
 		nextMoveTime = Time.time + delayAfterShot;
-
-		if(tilt){
-			Vector3 relativePos = currentEnemy.transform.position - transform.position;
-			Quaternion newRotation = Quaternion.LookRotation(relativePos);
-			newRotation.eulerAngles = new Vector3(newRotation.eulerAngles.x, 0f, 0f);
-
-			tilt.localRotation = newRotation;
-		}
 
 		GameObject projectileObject = Instantiate(projectile, muzzle.position, muzzle.rotation) as GameObject;
 		projectileObject.GetComponent<Projectile>().Initialize(currentEnemy.transform, damage);

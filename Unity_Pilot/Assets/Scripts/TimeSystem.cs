@@ -32,8 +32,8 @@ public class TimeSystem : MonoBehaviour {
 
 	private bool fade;
 
-	enum timeOfDay{DUSK, DAY, DAWN, NIGHT};
-	private timeOfDay sunState;
+	private enum TimeOfDay{DUSK, DAY, DAWN, NIGHT};
+	private TimeOfDay sunState;
 	
 	void Start(){
 		timer = 0;
@@ -76,13 +76,13 @@ public class TimeSystem : MonoBehaviour {
 					Debug.Log("WAVE");
 				}
 				if(hour == 0){
-					ChangeState(timeOfDay.DAWN);
+					ChangeState(TimeOfDay.DAWN);
 				}else if(hour == 2){
-					ChangeState(timeOfDay.DAY);
+					ChangeState(TimeOfDay.DAY);
 				}else if(hour == 17){
-					ChangeState(timeOfDay.DUSK);
+					ChangeState(TimeOfDay.DUSK);
 				}else if(hour == 19){
-					ChangeState(timeOfDay.NIGHT);
+					ChangeState(TimeOfDay.NIGHT);
 				}
 				
 				Debug.Log(sunState);
@@ -93,19 +93,19 @@ public class TimeSystem : MonoBehaviour {
 
 		if(fade){
 			switch(sunState){
-				case timeOfDay.DAWN:
+				case TimeOfDay.DAWN:
 					//print ("dawn");
 					FadeToDawn();
 					break;
-				case timeOfDay.DAY:
+				case TimeOfDay.DAY:
 					//print ("day");
 					FadeToDay();
 					break;
-				case timeOfDay.DUSK:
+				case TimeOfDay.DUSK:
 					//print ("dusk");
 					FadeToDusk();
 					break;
-				case timeOfDay.NIGHT:
+				case TimeOfDay.NIGHT:
 					//print ("night");
 					FadeToNight();
 					break;
@@ -190,7 +190,7 @@ public class TimeSystem : MonoBehaviour {
 		}
 	}
 	
-	private void ChangeState(timeOfDay tod){
+	private void ChangeState(TimeOfDay tod){
 		sunState = tod;
 		fade = true;
 	}

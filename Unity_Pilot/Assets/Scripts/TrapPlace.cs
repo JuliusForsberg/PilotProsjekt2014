@@ -4,6 +4,7 @@ using System.Collections;
 public class TrapPlace : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
+        mInventory = GameObject.Find("GUI").GetComponent<Inventory>();
 		camTopDown = GameObject.Find("CameraTopDown").camera;
 		camMain = Camera.main;
 		camTopDown.enabled = false;
@@ -16,10 +17,10 @@ public class TrapPlace : MonoBehaviour {
 //				gridSquares[i,j] = false;
 //			}
 //		}
-		
 		hitObjects = new GameObject[3];
 	}
 
+    Inventory mInventory;
 	Camera camTopDown;
 	Camera camMain;
 	bool _enabled;
@@ -111,7 +112,6 @@ public class TrapPlace : MonoBehaviour {
                     if (highlightSizeX > 1 || highlightSizeZ > 1)
                     {
                         int xHalf = Mathf.CeilToInt(highlightSizeX/2);
-
                         int zHalf = Mathf.CeilToInt(highlightSizeZ/2);
 
                         bool stop=false;
@@ -163,7 +163,7 @@ public class TrapPlace : MonoBehaviour {
                 Destroy(highLightObject);
             }
 
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 if(selectedTower != null)
                     placeTower(selectedTower);
@@ -197,16 +197,40 @@ public class TrapPlace : MonoBehaviour {
 
 	void placeTower(Tower tower) {
 
-			if(highLightObject != null && !invalid)
-			{
-				Vector3 pos = highLightObject.transform.position;
+		if(highLightObject != null && !invalid)
+		{
+            int amountBlues = mInventory.getAmount("Blue");
+            int amountGreens = mInventory.getAmount("Green");
+            int amountReds = mInventory.getAmount("Red");
 
-				if(gridSquares[coordX, coordZ] == false)
-					{
-                        Instantiate(tower.gameObject, pos, tower.gameObject.transform.rotation);
-						gridSquares[coordX, coordZ] = true;
-					}
-			}
+
+            if (amountBlues >= selectedTower.blueCost &&
+                amountGreens >= selectedTower.greenCost &&
+                amountReds >= selectedTower.redCost)
+            {
+                Vector3 pos = highLightObject.transform.position;
+
+                int xHalf = Mathf.CeilToInt(highlightSizeX / 2);
+                int zHalf = Mathf.CeilToInt(highlightSizeZ / 2);
+
+                Instantiate(tower.gameObject, pos, tower.gameObject.transform.rotation);
+                gridSquares[coordX, coordZ] = true;
+
+                mInventory.removeObject("Blue", selectedTower.blueCost);
+                mInventory.removeObject("Red", selectedTower.greenCost);
+                mInventory.removeObject("Green", selectedTower.redCost);
+
+                for (int k = 0; k < highlightSizeX; k++) //Sets squares to occupied;
+                {
+                    for (int j = 0; j < highlightSizeZ; j++)
+                    {
+                        gridSquares[(coordX - xHalf) + k, (coordZ - zHalf) + j] = true;
+                    }
+                }
+            }
+            else
+                Debug.Log("Not Enough Resources");
+		}
 	}
 
 	void OnGUI() {
@@ -253,5 +277,8 @@ public class Tower
     public GameObject gameObject;
     public int sizeX=1;
     public int sizeZ=1;
+    public int blueCost;
+    public int greenCost;
+    public int redCost;
 
 }

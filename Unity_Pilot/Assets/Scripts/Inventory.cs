@@ -7,7 +7,11 @@ public class Inventory : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+
+        amountBlues = 9999;
+        amountGreens = 9999;
+        amountReds = 9999;
+
 		inventoryPosX = Screen.width * inventoryPosX;
 		inventoryPosY = Screen.height * inventoryPosY;
 
@@ -71,18 +75,35 @@ public class Inventory : MonoBehaviour {
 
     public void removeObject(string type, int amount)
     {
+        if (amount == 0)
+            return;
+
         int removed = 0;
-        bool stop=false;
+        bool stop = false;
 
         for (int j = 0; j < AmountSlotsY && !stop; j++)
         {
             for (int i = 0; i < AmountSlotsX && !stop; i++)
             {
-                if (inventory[i, j].gameObject.name == type)
+                if (inventory[i, j].gameObject != null)
                 {
-                    removed++;
-                    if (removed >= amount)
-                        stop = true;
+                    if (inventory[i, j].gameObject.name == type)
+                    {
+                        inventory[i, j].gameObject = null;
+                        inventory[i, j].icon = null;
+                        removed++;
+                        print(removed);
+
+                        switch (type)
+                        {
+                            case "Blue": amountBlues--; break;
+                            case "Green": amountGreens--; break;
+                            case "Red": amountReds--; break;
+                        }
+
+                        if (removed >= amount)
+                            stop = true;
+                    } 
                 }
             }
         }

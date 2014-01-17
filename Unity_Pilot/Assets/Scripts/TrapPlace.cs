@@ -34,7 +34,8 @@ public class TrapPlace : MonoBehaviour {
 	public GameObject[] hitObjects;
 	public float gridSizeX=1;
 	public float gridSizeZ=1;
-	GameObject highLightObject;
+    GameObject ghostObject; //Ghost of currently selected object/tower.
+	GameObject highLightObject; //Highlights an area of the grid. E.g. the size the tower will occupy.
     int highlightSizeX=1;
     int highlightSizeZ=1;
 
@@ -61,6 +62,13 @@ public class TrapPlace : MonoBehaviour {
                         highLightObject.transform.localScale = new Vector3(gridSizeX * highlightSizeX, 1, gridSizeZ * highlightSizeZ);
                         highLightObject.renderer.material.shader = Shader.Find("Transparent/Diffuse");
                         highLightObject.renderer.material.color = new Color(1.0f, 1.0f, 1.0f, .1f);
+
+                        if (selectedTower != null)
+                        {
+                            ghostObject = Instantiate(selectedTower.gameObject) as GameObject;
+                            ghostObject.transform.parent = highLightObject.transform;
+                            ghostObject.transform.position = new Vector3(0, 0, 0);
+                        }
                     }
 
                     //				if(ball == null)
@@ -105,7 +113,7 @@ public class TrapPlace : MonoBehaviour {
                     coordX = (int)((x / gridSizeX) + 4);
                     coordZ = (int)((z / gridSizeZ) + 4);
 
-                    Debug.Log((coordX) + " " + (coordZ) + (gridSquares[coordX, coordZ]));
+                    //Debug.Log((coordX) + " " + (coordZ) + (gridSquares[coordX, coordZ]));
 
                     highLightObject.transform.position = new Vector3(x + offsetX, rayHits[i].point.y, z + offsetZ);
 
@@ -142,8 +150,27 @@ public class TrapPlace : MonoBehaviour {
                             invalid = false;
                     }
 
-                    break;
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        ghostObject.transform.Rotate(Vector3.up, 90);
+                        if (selectedTower.sizeX != selectedTower.sizeZ)
+                        {
+                            int holdX = selectedTower.sizeX;
 
+                            selectedTower.sizeX = selectedTower.sizeZ;
+                            selectedTower.sizeZ = holdX;
+                        }
+
+                        if (highlightSizeX != highlightSizeZ)
+                        {
+                            int holdX = highlightSizeX;
+
+                            highlightSizeX = highlightSizeZ;
+                            highlightSizeZ = holdX;
+                        }
+                    }
+
+                    break;
                 }
                 else if(i == rayHits.Length-1)
                     Destroy(highLightObject);
@@ -213,7 +240,7 @@ public class TrapPlace : MonoBehaviour {
                 int xHalf = Mathf.CeilToInt(highlightSizeX / 2);
                 int zHalf = Mathf.CeilToInt(highlightSizeZ / 2);
 
-                Instantiate(tower.gameObject, pos, tower.gameObject.transform.rotation);
+                Instantiate(tower.gameObject, pos, ghostObject.transform.rotation);
                 gridSquares[coordX, coordZ] = true;
 
                 mInventory.removeObject("Blue", selectedTower.blueCost);
@@ -236,22 +263,26 @@ public class TrapPlace : MonoBehaviour {
 	void OnGUI() {
 		if(_enabled)
 		{
+            string tower1Info = tower1.gameObject.name + "\nB" + tower1.blueCost.ToString() + " G" + tower1.greenCost.ToString() + " R" + tower1.redCost.ToString();
+            string tower2Info = tower2.gameObject.name + "\nB" + tower2.blueCost.ToString() + " G" + tower2.greenCost.ToString() + " R" + tower2.redCost.ToString();
+            string tower3Info = tower3.gameObject.name + "\nB" + tower3.blueCost.ToString() + " G" + tower3.greenCost.ToString() + " R" + tower3.redCost.ToString();
+
 			if(GUI.Button(new Rect((Screen.width*0.8f), (Screen.height*0.9f), 100.0f, 50.0f), "Confirm"))
 			{
 				endConstruction();
 			}
 
-            if (GUI.Button(new Rect((Screen.width * 0.8f), (Screen.height * 0.8f), 100.0f, 50.0f), tower1.gameObject.name))
+            if (GUI.Button(new Rect((Screen.width * 0.8f), (Screen.height * 0.8f), 100.0f, 50.0f), tower1Info))
             {
                 setSelectedTower(tower1);
             }
 
-            if (GUI.Button(new Rect((Screen.width * 0.8f), (Screen.height * 0.7f), 100.0f, 50.0f), tower2.gameObject.name))
+            if (GUI.Button(new Rect((Screen.width * 0.8f), (Screen.height * 0.7f), 100.0f, 50.0f), tower2Info))
             {
                 setSelectedTower(tower2);
             }
 
-            if (GUI.Button(new Rect((Screen.width * 0.8f), (Screen.height * 0.6f), 100.0f, 50.0f), tower3.gameObject.name))
+            if (GUI.Button(new Rect((Screen.width * 0.8f), (Screen.height * 0.6f), 100.0f, 50.0f), tower3Info))
             {
                 setSelectedTower(tower3);
             }

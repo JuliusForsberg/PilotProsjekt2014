@@ -28,11 +28,18 @@ public class Projectile : MonoBehaviour {
 	void Update(){
 		bezierTime += Time.deltaTime/distanceModifier;
 
+		if(bezierTime > 2){
+			Destroy(gameObject);
+			return;
+		}
 		//Can't use target.position directly when calculating the curves, because the projectiles needs an end point even if the target is destroyed.
 		if(target){
 			endPointX = target.position.x;
 			endPointY  = target.position.y;
 			endPointZ  = target.position.z;
+
+			controlPointX = Mathf.Lerp(endPointX, startPointX, 0.5f);
+			controlPointZ = Mathf.Lerp(endPointZ, startPointZ, 0.5f);
 		}
 
 		curveX = (((1-bezierTime)*(1-bezierTime)) * startPointX) + (2 * bezierTime * (1 - bezierTime) * controlPointX) + ((bezierTime * bezierTime) * endPointX);
@@ -51,7 +58,7 @@ public class Projectile : MonoBehaviour {
 			target.GetComponent<Enemy>().TakeDamage(damage);
 			Destroy(gameObject);
 		}else if(col.gameObject.tag!="Tower"){
-			Destroy(gameObject);
+			//Destroy(gameObject);
 		}
 	}
 

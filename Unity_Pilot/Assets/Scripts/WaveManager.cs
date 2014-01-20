@@ -5,6 +5,10 @@ using System.Collections.Generic;
 public class WaveManager : MonoBehaviour {
 
 	public List<Wave> waves;
+
+	public float waveMultiplier;
+	public float defaultWaveLength;
+
 	public GameObject[] enemyType;
 	public Vector2 spawnInterval;
 	public Vector2 positionOffsetXZ;
@@ -14,7 +18,9 @@ public class WaveManager : MonoBehaviour {
 
 	private Transform[] spawns;
 	private float[] nextSpawnTime;
+	private float waveEndTime;
 
+	public float waveLength;
 	//TESTING
 	private float nextActiveTime;
 	private bool waveActive;
@@ -38,6 +44,11 @@ public class WaveManager : MonoBehaviour {
 	void OnEnable(){
 		waveActive = true;
 		waveNumber++;
+
+		waveMultiplier = ((Mathf.Pow (waveNumber, 2)) * 0.005f)+1;
+
+		waveLength = defaultWaveLength * waveMultiplier;
+		waveEndTime = Time.time + waveLength;
 	}
 
 	void Update(){
@@ -45,44 +56,45 @@ public class WaveManager : MonoBehaviour {
 			if(waves.Count > 0){
 				for(int i=0; i<spawns.Length; i++){
 					if(Time.time >= nextSpawnTime[i]){
-						if(waves[0].GetSpawn(i).SpawnNumber > 0){
-							int enemyType = waves[0].GetSpawn(i).EnemyType;
+						CheckSpawn(i);
+					}
+				}
+				if(spawnerFinished[0] == 1){
+					if(spawnerFinished[1] == 1){
+						if(spawnerFinished[2] == 1){
+							spawnerFinished[0] = 0;
+							spawnerFinished[1] = 0;
+							spawnerFinished[2] = 0;
 
-							//Spawn as normal. Else, go into sleep mode. Set type to -2 to prevent multiple Coroutines.
-							if(enemyType >= 0){
-								SpawnEnemy(i, enemyType);
-							}else if(enemyType == -1){
-								waves[0].GetSpawn(i).EnemyType = -2;
-								StartCoroutine(SleepForSeconds((float)waves[0].GetSpawn(i).GetEnemyCount(), i));
-							}
-						}else if(spawnerFinished[i] != 1){
-							spawnerFinished[i] = 1;
+							waves.RemoveAt(0);
+							
+							//TESTING
+							waveActive = false;
+							//gameObject.SetActive(false);
+							//------
+							
+							nextActiveTime = Time.time + 3f;
 						}
 					}
 				}
-			}else{
-				Debug.Log("Spawn waves with multiplier");
-			}
-		}
-
-		if(spawnerFinished[0] == 1){
-			if(spawnerFinished[1] == 1){
-				if(spawnerFinished[2] == 1){
-					spawnerFinished[0] = 0;
-					spawnerFinished[1] = 0;
-					spawnerFinished[2] = 0;
-
-					waves.RemoveAt(0);
-
-					//TESTING
-					waveActive = false;
-					//gameObject.SetActive(false);
-					//------
-
-					nextActiveTime = Time.time + 3f;
+			}else if(Time.time <= waveEndTime){
+				for(int i=0; i<spawns.Length; i++){
+					if(Time.time >= nextSpawnTime[i]){
+						int type = Random.Range(0, enemyType.Length);
+						SpawnEnemy(i, type);
+					}
 				}
+			}else{
+				//TESTING
+				waveActive = false;
+				//gameObject.SetActive(false);
+				//------
+				
+				nextActiveTime = Time.time + 5f;
 			}
 		}
+
+
 
 		//TESTING
 		if(!waveActive && Time.time >= nextActiveTime){
@@ -91,8 +103,24 @@ public class WaveManager : MonoBehaviour {
 		//------
 	}
 
+	private void CheckSpawn(int currentSpawn){
+		if(waves[0].GetSpawn(currentSpawn).SpawnNumber > 0){
+			int enemyType = waves[0].GetSpawn(currentSpawn).EnemyType;
+			
+			//Spawn as normal. Else, go into sleep mode. Set type to -2 to prevent multiple Coroutines.
+			if(enemyType >= 0){
+				SpawnEnemy(currentSpawn, enemyType);
+				waves[0].GetSpawn(currentSpawn).SpawnNumber = 1;
+			}else if(enemyType == -1){
+				waves[0].GetSpawn(currentSpawn).EnemyType = -2;
+				StartCoroutine(SleepForSeconds((float)waves[0].GetSpawn(currentSpawn).GetEnemyCount(), currentSpawn));
+			}
+		}else if(spawnerFinished[currentSpawn] != 1){
+			spawnerFinished[currentSpawn] = 1;
+		}
+	}
+
 	private void SpawnEnemy(int num, int spawnType=0){
-		waves[0].GetSpawn(num).SpawnNumber = 1;
 		nextSpawnTime[num] = Time.time + Random.Range(spawnInterval.x, spawnInterval.y);
 
 		Vector3 spawnPoint = new Vector3(spawns[num].position.x, spawns[num].position.y, spawns[num].position.z);
@@ -163,7 +191,7 @@ public class Spawn{
 			}
 		}
 	}
-
+	
 	public int EnemyType{
 		get{
 			return enemyType[0];
@@ -178,15 +206,13 @@ public class Spawn{
 	}
 
 	public void RemoveInternalWave(){
-		//Debug.Log ("Remove");
 		enemyCount.RemoveAt(0);
 		enemyType.RemoveAt(0);
 		internalWaves.RemoveAt(0);
 	}
-	
+
 	public int SpawnNumber{
 		get{
-			//Debug.Log ("Return: " + enemyCount.Count);
 			return internalWaves.Count;
 		}
 		set{

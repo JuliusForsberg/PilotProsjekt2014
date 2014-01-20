@@ -1113,7 +1113,7 @@ MonoBehaviour:
     redCost: 0
   tower2:
     gameObject: {fileID: 100000, guid: 94c4937ce0b13d64e8c795539f5685e9, type: 2}
-    sizeX: 4
+    sizeX: 5
     sizeZ: 1
     blueCost: 1
     greenCost: 1
@@ -1126,8 +1126,10 @@ MonoBehaviour:
     greenCost: 1
     redCost: 1
   hitObjects: []
-  gridSizeX: 2.5
-  gridSizeZ: 2.5
+  gridSizeX: 8
+  gridSizeZ: 8
+  squareSizeX: 2.5
+  squareSizeZ: 2.5
 --- !u!1001 &1271217569
 Prefab:
   m_ObjectHideFlags: 0

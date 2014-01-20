@@ -9,7 +9,7 @@ public class TrapPlace : MonoBehaviour {
 		camMain = Camera.main;
 		camTopDown.enabled = false;
 
-		gridSquares = new bool[20, 20]; //Maxuimum grid size. May have to do something smarter later.
+		gridSquares = new bool[gridSizeX, gridSizeZ]; //Maxuimum grid size. May have to do something smarter later.
 //		for(int i=0;i<20;i++)
 //		{
 //			for(int j=0;j<20;j++)
@@ -32,8 +32,10 @@ public class TrapPlace : MonoBehaviour {
     Tower selectedTower;
 
 	public GameObject[] hitObjects;
-	public float gridSizeX=1;
-	public float gridSizeZ=1;
+    public int gridSizeX=8;
+    public int gridSizeZ=8;
+	public float squareSizeX=1;
+	public float squareSizeZ=1;
     GameObject ghostObject; //Ghost of currently selected object/tower.
 	GameObject highLightObject; //Highlights an area of the grid. E.g. the size the tower will occupy.
     int highlightSizeX=1;
@@ -59,9 +61,9 @@ public class TrapPlace : MonoBehaviour {
                     if (highLightObject == null)
                     {
                         highLightObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                        highLightObject.transform.localScale = new Vector3(gridSizeX * highlightSizeX, 1, gridSizeZ * highlightSizeZ);
+                        highLightObject.transform.localScale = new Vector3(squareSizeX * highlightSizeX, 1, squareSizeZ * highlightSizeZ);
                         highLightObject.renderer.material.shader = Shader.Find("Transparent/Diffuse");
-                        highLightObject.renderer.material.color = new Color(1.0f, 1.0f, 1.0f, .1f);
+                        highLightObject.renderer.material.color = new Color(1.0f, 1.0f, 1.0f, .5f);
 
                         if (selectedTower != null)
                         {
@@ -70,6 +72,8 @@ public class TrapPlace : MonoBehaviour {
                             ghostObject.transform.position = new Vector3(0, 0, 0);
                         }
                     }
+                    else if (highLightObject.transform.localScale != new Vector3(squareSizeX * highlightSizeX, 1, squareSizeZ * highlightSizeZ))
+                        highLightObject.transform.localScale = new Vector3(squareSizeX * highlightSizeX, 1, squareSizeZ * highlightSizeZ);
 
                     //				if(ball == null)
                     //				{
@@ -86,7 +90,7 @@ public class TrapPlace : MonoBehaviour {
                     if (highlightSizeX%2 == 1) //If the size is an odd number.
                     {
                     
-                        offsetX = gridSizeX / 2; //Offsets the grid squares so that the corners are in 0,0,0. Seems like a good idea at this time.. 
+                        offsetX = squareSizeX / 2; //Offsets the grid squares so that the corners are in 0,0,0. Seems like a good idea at this time.. 
                     }
                     else
                     {
@@ -96,7 +100,7 @@ public class TrapPlace : MonoBehaviour {
                     if (highlightSizeZ%2 == 1)
                     {
                     
-                        offsetZ = gridSizeZ / 2;
+                        offsetZ = squareSizeZ / 2;
                     }
                     else
                     {
@@ -106,29 +110,77 @@ public class TrapPlace : MonoBehaviour {
                     float x = rayHits[i].point.x - offsetX;
                     float z = rayHits[i].point.z - offsetZ;
 
-                    x = (gridSizeX) * (Mathf.Round(x / gridSizeX ));
-                    z = (gridSizeZ) * (Mathf.Round(z / gridSizeZ ));
+                    x = (squareSizeX) * (Mathf.Round(x / squareSizeX));
+                    z = (squareSizeZ) * (Mathf.Round(z / squareSizeZ));
 
+                    coordX = (int)((x / squareSizeX) + 4);
+                    coordZ = (int)((z / squareSizeZ) + 4);
 
-                    coordX = (int)((x / gridSizeX) + 4);
-                    coordZ = (int)((z / gridSizeZ) + 4);
+                    //Debug.Log((coordX) + " " + (coordZ)+ " " + x + " " + z);
 
-                    //Debug.Log((coordX) + " " + (coordZ) + (gridSquares[coordX, coordZ]));
+                    if (highlightSizeX > 1 || highlightSizeZ > 1)
+                    {
+                        int xHalf = Mathf.CeilToInt(5 / 2);
+                        int zHalf = Mathf.CeilToInt(highlightSizeZ / 2);
+                        //print("CEIL"+highlightSizeX + " " + (xHalf));
+                        print(Mathf.CeilToInt(2.5f));
+                        if (xHalf%2 == 0)
+                        {
+                            if (coordX > (gridSizeX - xHalf - 1))
+                            {
+                                x -= squareSizeX * (coordX - gridSizeX + xHalf);
+                            }
+                            else
+                            {
+                                if (coordX < xHalf)
+                                {
+                                    x += squareSizeX * (xHalf - coordX);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if (coordX > (gridSizeX - xHalf))
+                            {
+                                x -= squareSizeX * (coordX - gridSizeX + xHalf-1);
+                            }
+                            else
+                            {
+                                if (coordX < xHalf)
+                                {
+                                    x += squareSizeX * (xHalf - coordX);
+                                }
+                            }
+                        }
+
+                        if (coordZ > (gridSizeZ - 1))
+                        {
+                            z -= (squareSizeZ);
+                        }
+                        else if (coordZ < 1)
+                        {
+                            z += squareSizeZ;
+                        }
+                        
+                    }
+
+                    coordX = (int)((x / squareSizeX) + 4);
+                    coordZ = (int)((z / squareSizeZ) + 4);
 
                     highLightObject.transform.position = new Vector3(x + offsetX, rayHits[i].point.y, z + offsetZ);
 
                     if (highlightSizeX > 1 || highlightSizeZ > 1)
                     {
-                        int xHalf = Mathf.CeilToInt(highlightSizeX/2);
-                        int zHalf = Mathf.CeilToInt(highlightSizeZ/2);
+                        int xHalf = Mathf.CeilToInt(highlightSizeX / 2);
+                        int zHalf = Mathf.CeilToInt(highlightSizeZ / 2);
 
-                        bool stop=false;
+                        bool stop = false;
 
-                        for(int k=0;k<highlightSizeX && !stop;k++) //Checks if any of the squares are occupied.
+                        for (int k = 0; k < highlightSizeX && !stop; k++) //Checks if any of the squares are occupied.
                         {
-                            for(int j=0;j<highlightSizeZ;j++)
+                            for (int j = 0; j < highlightSizeZ; j++)
                             {
-                                if(gridSquares[(coordX-xHalf) + k, (coordZ-zHalf) + j] == true)
+                                if (gridSquares[(coordX - xHalf) + k, (coordZ - zHalf) + j] == true)
                                 {
                                     invalid = true;
                                     stop = true;
@@ -150,9 +202,13 @@ public class TrapPlace : MonoBehaviour {
                             invalid = false;
                     }
 
-                    if (Input.GetKeyDown(KeyCode.E))
+                    
+
+                    if (Input.GetKeyDown(KeyCode.Q))
                     {
                         ghostObject.transform.Rotate(Vector3.up, 90);
+                        selectedTower.gameObject.transform.Rotate(Vector3.up, 90);
+
                         if (selectedTower.sizeX != selectedTower.sizeZ)
                         {
                             int holdX = selectedTower.sizeX;
@@ -161,13 +217,15 @@ public class TrapPlace : MonoBehaviour {
                             selectedTower.sizeZ = holdX;
                         }
 
-                        if (highlightSizeX != highlightSizeZ)
-                        {
-                            int holdX = highlightSizeX;
+                        setSelectedTower(selectedTower);
+                        //if (highlightSizeX != highlightSizeZ)
+                        //{
+                        //    int holdX = highlightSizeX;
 
-                            highlightSizeX = highlightSizeZ;
-                            highlightSizeZ = holdX;
-                        }
+                        //    highlightSizeX = highlightSizeZ;
+                        //    highlightSizeZ = holdX;
+                        //}
+
                     }
 
                     break;

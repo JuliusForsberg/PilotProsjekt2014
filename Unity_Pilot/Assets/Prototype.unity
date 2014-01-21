@@ -1113,7 +1113,7 @@ MonoBehaviour:
     redCost: 0
   tower2:
     gameObject: {fileID: 100000, guid: 94c4937ce0b13d64e8c795539f5685e9, type: 2}
-    sizeX: 5
+    sizeX: 4
     sizeZ: 1
     blueCost: 1
     greenCost: 1

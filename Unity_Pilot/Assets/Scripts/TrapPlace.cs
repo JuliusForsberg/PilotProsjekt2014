@@ -37,6 +37,7 @@ public class TrapPlace : MonoBehaviour {
 	public float squareSizeX=1;
 	public float squareSizeZ=1;
     GameObject ghostObject; //Ghost of currently selected object/tower.
+    Quaternion ghostObjRot;
 	GameObject highLightObject; //Highlights an area of the grid. E.g. the size the tower will occupy.
     int highlightSizeX=1;
     int highlightSizeZ=1;
@@ -55,6 +56,7 @@ public class TrapPlace : MonoBehaviour {
 
             for (int i = 0; i < rayHits.Length; i++)
             {
+                print(i + "" + rayHits[i].collider.gameObject.name);
                 if (rayHits[i].collider.gameObject.layer == LayerMask.NameToLayer("Environment"))
                 {
                     hitObjects[i] = rayHits[i].collider.gameObject;
@@ -68,6 +70,7 @@ public class TrapPlace : MonoBehaviour {
                         if (selectedTower != null)
                         {
                             ghostObject = Instantiate(selectedTower.gameObject) as GameObject;
+                            ghostObject.transform.rotation = ghostObjRot;
                             ghostObject.transform.parent = highLightObject.transform;
                             ghostObject.transform.position = new Vector3(0, 0, 0);
                         }
@@ -87,19 +90,19 @@ public class TrapPlace : MonoBehaviour {
                     float offsetX;
                     float offsetZ;
 
-                    if (highlightSizeX%2 == 1) //If the size is an odd number.
+                    if (highlightSizeX % 2 == 1) //If the size is an odd number.
                     {
-                    
+
                         offsetX = squareSizeX / 2; //Offsets the grid squares so that the corners are in 0,0,0. Seems like a good idea at this time.. 
                     }
                     else
                     {
                         offsetX = 0; //Offset is not needed if the highlightobject is bigger than 1 square.
                     }
-                    
-                    if (highlightSizeZ%2 == 1)
+
+                    if (highlightSizeZ % 2 == 1)
                     {
-                    
+
                         offsetZ = squareSizeZ / 2;
                     }
                     else
@@ -120,48 +123,71 @@ public class TrapPlace : MonoBehaviour {
 
                     if (highlightSizeX > 1 || highlightSizeZ > 1)
                     {
-                        int xHalf = Mathf.CeilToInt(5 / 2);
-                        int zHalf = Mathf.CeilToInt(highlightSizeZ / 2);
-                        //print("CEIL"+highlightSizeX + " " + (xHalf));
-                        print(Mathf.CeilToInt(2.5f));
-                        if (xHalf%2 == 0)
+                        int xHalf = Mathf.CeilToInt(highlightSizeX / 2.0f);
+                        int zHalf = Mathf.CeilToInt(highlightSizeZ / 2.0f);
+
+                        //if (xHalf%2 == 1)
+                        //{
+                        //    if (coordX > (gridSizeX - xHalf))
+                        //    {
+                        //        x -= squareSizeX * (coordX - gridSizeX + xHalf);
+                        //    }
+                        //    else
+                        //    {
+                        //        if (coordX < xHalf)
+                        //        {
+                        //            x += squareSizeX * (xHalf - coordX);
+                        //        }
+                        //    }
+                        //}
+                        //else
+                        //{
+                        if (highlightSizeX % 2 == 0)
                         {
-                            if (coordX > (gridSizeX - xHalf - 1))
+                            if (coordX > (gridSizeX - xHalf))
                             {
                                 x -= squareSizeX * (coordX - gridSizeX + xHalf);
                             }
-                            else
+                            else if (coordX < xHalf)
                             {
-                                if (coordX < xHalf)
-                                {
-                                    x += squareSizeX * (xHalf - coordX);
-                                }
+                                x += squareSizeX * (xHalf - coordX);
                             }
                         }
                         else
                         {
                             if (coordX > (gridSizeX - xHalf))
                             {
-                                x -= squareSizeX * (coordX - gridSizeX + xHalf-1);
+                                x -= squareSizeX * (coordX - gridSizeX + xHalf);
                             }
-                            else
+                            else if (coordX < (xHalf - 1))
                             {
-                                if (coordX < xHalf)
-                                {
-                                    x += squareSizeX * (xHalf - coordX);
-                                }
+                                x += squareSizeX * ((xHalf - 1) - coordX);
                             }
                         }
 
-                        if (coordZ > (gridSizeZ - 1))
+                        if (highlightSizeZ % 2 == 0)
                         {
-                            z -= (squareSizeZ);
+                            if (coordZ > (gridSizeZ - zHalf))
+                            {
+                                z -= squareSizeZ * (coordZ - gridSizeZ + zHalf);
+                            }
+                            else if (coordZ < zHalf)
+                            {
+                                z += squareSizeZ * (zHalf - coordZ);
+                            }
                         }
-                        else if (coordZ < 1)
+                        else
                         {
-                            z += squareSizeZ;
+                            if (coordZ > (gridSizeZ - zHalf))
+                            {
+                                z -= squareSizeZ * (coordZ - gridSizeZ + zHalf);
+                            }
+                            else if (coordZ < (zHalf - 1))
+                            {
+                                z += squareSizeZ * ((zHalf - 1) - coordZ);
+                            }
                         }
-                        
+
                     }
 
                     coordX = (int)((x / squareSizeX) + 4);
@@ -202,12 +228,12 @@ public class TrapPlace : MonoBehaviour {
                             invalid = false;
                     }
 
-                    
+
 
                     if (Input.GetKeyDown(KeyCode.Q))
                     {
                         ghostObject.transform.Rotate(Vector3.up, 90);
-                        selectedTower.gameObject.transform.Rotate(Vector3.up, 90);
+                        ghostObjRot = ghostObject.transform.rotation;
 
                         if (selectedTower.sizeX != selectedTower.sizeZ)
                         {
@@ -230,8 +256,11 @@ public class TrapPlace : MonoBehaviour {
 
                     break;
                 }
-                else if(i == rayHits.Length-1)
+                else if (i == rayHits.Length - 1)
+                {
                     Destroy(highLightObject);
+
+                }
             }
             if (highLightObject != null)
             {
@@ -243,14 +272,9 @@ public class TrapPlace : MonoBehaviour {
                     highLightObject.renderer.material.color = new Color(1.0f, 1.0f, 1.0f, .5f);
             }
 
-            if (rayHits.Length == 0)
-            {
-                Destroy(highLightObject);
-            }
-
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                if(selectedTower != null)
+                if (selectedTower != null)
                     placeTower(selectedTower);
             }
 
@@ -269,7 +293,10 @@ public class TrapPlace : MonoBehaviour {
             }
         }
         else
+        {
             Destroy(highLightObject);
+
+        }
 
 	}
 

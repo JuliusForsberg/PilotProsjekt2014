@@ -12,6 +12,11 @@ public class Projectile : MonoBehaviour {
 	private float endPointX;
 	private float endPointY;
 	private float endPointZ;
+
+	private float offsetX;
+	private float offsetY;
+	private float offsetZ;
+
 	private float curveX;
 	private float curveY;
 	private float curveZ;
@@ -21,22 +26,46 @@ public class Projectile : MonoBehaviour {
 	private Transform target;
 	private float damage;
 
+	private bool isActive;
+	private bool reachedEnd;
+
 	void Start(){
 		bezierTime = 0f;
+		isActive = true;
+		reachedEnd = false;
 	}
 
 	void Update(){
+		if(!isActive)
+			return;
+
 		bezierTime += Time.deltaTime/distanceModifier;
 
-		if(bezierTime > 2){
-			Destroy(gameObject);
-			return;
+		if(bezierTime >= 1){
+
+			if(bezierTime > 2){
+				Destroy(gameObject);
+				return;
+			}
+
+			if(!reachedEnd){
+				if(target){
+					target.GetComponent<Enemy>().TakeDamage(damage);
+
+					Destroy(gameObject);
+					return;
+				}else{
+					reachedEnd = true;
+					gameObject.collider.enabled = true;
+				}
+			}
 		}
+
 		//Can't use target.position directly when calculating the curves, because the projectiles needs an end point even if the target is destroyed.
 		if(target){
-			endPointX = target.position.x;
-			endPointY  = target.position.y;
-			endPointZ  = target.position.z;
+			endPointX = target.position.x + offsetX;
+			endPointY  = target.position.y + offsetY;
+			endPointZ  = target.position.z + offsetZ;
 
 			controlPointX = Mathf.Lerp(endPointX, startPointX, 0.5f);
 			controlPointZ = Mathf.Lerp(endPointZ, startPointZ, 0.5f);
@@ -54,24 +83,27 @@ public class Projectile : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider col){
-		if(col.gameObject.transform == target){
-			target.GetComponent<Enemy>().TakeDamage(damage);
-			Destroy(gameObject);
-		}else if(col.gameObject.tag!="Tower"){
-			//Destroy(gameObject);
+		if(col.gameObject.tag=="Ground"){
+			isActive = false;
+
+			Destroy(gameObject, 2.0f);
 		}
 	}
 
 	public void Initialize(Transform enemy, float dmg){
 		target = enemy;
 		damage = dmg;
-		
+
+		offsetX = Random.Range (-0.3f, 0.3f);
+		offsetY = Random.Range (-0.4f, 0.4f);
+		offsetZ = Random.Range (-0.3f, 0.3f);
+
 		startPointX = transform.position.x;
 		startPointY = transform.position.y;
 		startPointZ = transform.position.z;
-		endPointX = target.position.x;
-		endPointY  = target.position.y;
-		endPointZ  = target.position.z;
+		endPointX = target.position.x + offsetX;
+		endPointY  = target.position.y + offsetY;
+		endPointZ  = target.position.z + offsetZ;
 		
 		//Temporarily holds just the distance, so we can use it in controlPointY, then apply the modifier after.
 		distanceModifier = Vector3.Distance(target.position, transform.position);

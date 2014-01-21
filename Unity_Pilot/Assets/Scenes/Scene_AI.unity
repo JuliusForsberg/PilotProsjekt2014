@@ -1310,13 +1310,14 @@ GameObject:
   - 114: {fileID: 411894560}
   - 114: {fileID: 411894559}
   - 114: {fileID: 411894558}
+  - 114: {fileID: 411894563}
   m_Layer: 0
   m_Name: First Person Controller
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &411894558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1432,6 +1433,20 @@ Transform:
   - {fileID: 702996502}
   - {fileID: 2029841629}
   m_Father: {fileID: 0}
+--- !u!114 &411894563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 411894557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adb0378bbc8681a43b8f69af977f4cb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 50
+  damage: 2
+  attackSpeed: 1
 --- !u!1 &418595188
 GameObject:
   m_ObjectHideFlags: 0
@@ -2778,13 +2793,14 @@ MonoBehaviour:
       - '#1'
       - 2-1
   waveMultiplier: 2
-  waveLength: 5
+  defaultWaveLength: 5
   enemyType:
   - {fileID: 100000, guid: 326490310b3c21b48a1c495642cb81be, type: 2}
   - {fileID: 100000, guid: 4c912dd57e34cb64794d6a00474935c4, type: 2}
   spawnInterval: {x: 2, y: 2.5}
   positionOffsetXZ: {x: 1, y: 1}
   waveNumber: 0
+  waveLength: 5
 --- !u!1 &763173435
 GameObject:
   m_ObjectHideFlags: 0
@@ -3592,6 +3608,7 @@ GameObject:
   - 33: {fileID: 1054500982}
   - 65: {fileID: 1054500981}
   - 23: {fileID: 1054500980}
+  - 114: {fileID: 1054500984}
   m_Layer: 0
   m_Name: Target
   m_TagString: Crystal
@@ -3646,10 +3663,22 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1054500979}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 43.1706543, y: 3.42427301, z: -.696243286}
+  m_LocalPosition: {x: 47.6590958, y: 2.07687569, z: -.661626816}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!114 &1054500984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1054500979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b5740ed45381b745a0bfe3c59798fc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
 --- !u!1 &1063807395
 GameObject:
   m_ObjectHideFlags: 0
@@ -3663,7 +3692,7 @@ GameObject:
   - 23: {fileID: 1063807396}
   m_Layer: 9
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6304,13 +6333,15 @@ GameObject:
   - 23: {fileID: 1796199994}
   - 54: {fileID: 1796199998}
   - 114: {fileID: 1796199999}
+  - 114: {fileID: 1796200001}
+  - 114: {fileID: 1796200000}
   m_Layer: 0
   m_Name: Enemy Cube
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &1796199994
 Renderer:
   m_ObjectHideFlags: 0
@@ -6358,7 +6389,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1796199993}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.5603704, y: 2.23609543, z: 7.07875776}
+  m_LocalPosition: {x: 16.6558228, y: 2.23609543, z: 16.7484608}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6390,6 +6421,60 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10000
   damage: 10
+  attackSpeed: 2
+  defaultAggroLevel: 20
+  aggroLevel: 0
+  waveActive: 0
+--- !u!114 &1796200000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1796199993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5ac18cdd242041b6bebc0e95b624c85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  repathRate: .5
+  target: {fileID: 0}
+  canSearch: 1
+  canMove: 1
+  speed: 3
+  turningSpeed: 5
+  slowdownDistance: .600000024
+  pickNextWaypointDist: 2
+  forwardLook: 1
+  endReachedDistance: .200000003
+  closestOnPathCheck: 1
+--- !u!114 &1796200001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1796199993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drawGizmos: 1
+  detailedGizmos: 0
+  saveGetNearestHints: 1
+  startEndModifier:
+    priority: 1
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags:
+    tagsChange: -1
+    tagsSet: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 --- !u!1001 &1805917839
 Prefab:
   m_ObjectHideFlags: 0
@@ -6427,7 +6512,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: 9d4133d5d30b644bd87802a347eaccbe, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 9d4133d5d30b644bd87802a347eaccbe, type: 2}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9d4133d5d30b644bd87802a347eaccbe, type: 2}
@@ -7602,7 +7691,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &2103267572
 AudioListener:
   m_ObjectHideFlags: 0

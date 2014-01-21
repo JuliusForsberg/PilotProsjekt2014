@@ -42,7 +42,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.1973286, y: 9.9017868, z: -22.398674}
+  m_LocalPosition: {x: 21.794199, y: 3.8591342, z: -27.7242165}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400002}
@@ -112,15 +112,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1e40c2ab6d5d7440b7c2ce445887bab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startPointX: 0
-  startPointY: 0
-  startPointZ: 0
-  controlPointX: 20
-  controlPointY: 50
-  controlPointZ: 0
-  endPointX: 50
-  endPointY: 0
-  endPointZ: 0
 --- !u!136 &13600000
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -129,11 +120,11 @@ CapsuleCollider:
   m_GameObject: {fileID: 100000}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: .0199999996
   m_Height: .200000003
   m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0, z: .0399999991}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

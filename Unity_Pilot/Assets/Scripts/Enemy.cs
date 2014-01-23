@@ -16,6 +16,8 @@ public class Enemy : MonoBehaviour {
 
 	private float nextAttack;
 
+	private TimeSystem timeSystem;
+
 	//Testing
 	public bool waveActive;
 	//--------
@@ -36,6 +38,8 @@ public class Enemy : MonoBehaviour {
 
 			health *= waveManager.waveMultiplier;
 		}
+
+		timeSystem = GameObject.Find("_TimeSystem").GetComponent<TimeSystem>();
 	}
 
 	void Update(){
@@ -68,10 +72,18 @@ public class Enemy : MonoBehaviour {
 
 		if(health <= 0){
 			//Debug.Log("Enemy died");
-	
-			StartCoroutine(WaitAndDie());
+			StartCoroutine(WaitAndDie(0.2f));
 			//Destroy (gameObject);
 		}
+	}
+
+	public void Petrify(){
+		health = -1;
+		StartCoroutine(WaitAndDie(2f));
+	}
+	
+	public bool isDead(){
+		return health <= 0 ? true : false;
 	}
 
 	private void AttackTarget(){
@@ -87,12 +99,13 @@ public class Enemy : MonoBehaviour {
 		aggroLevel -= damage*0.2f;
 	}
 
-	public bool isDead(){
-		return health <= 0 ? true : false;
-	}
 
-	private IEnumerator WaitAndDie(){
-		yield return new WaitForSeconds(0.2f);
+	private IEnumerator WaitAndDie(float seconds){
+		timeSystem.RemoveEnemy(this);
+		GetComponent<AIPath>().enabled = false;
+		transform.Rotate(Vector3.forward, 90f);
+
+		yield return new WaitForSeconds(seconds);
 		Destroy(gameObject);
 	}
 }

@@ -23,7 +23,7 @@ public class Projectile : MonoBehaviour {
 	private float distanceModifier;
 	private float bezierTime;
 
-	private Transform target;
+	private Enemy target;
 	private float damage;
 
 	private bool isActive;
@@ -39,6 +39,12 @@ public class Projectile : MonoBehaviour {
 		if(!isActive)
 			return;
 
+		if(target){
+			if(target.isDead()){
+				target = null;
+			}
+		}
+
 		bezierTime += Time.deltaTime/distanceModifier;
 
 		if(bezierTime >= 1){
@@ -50,7 +56,7 @@ public class Projectile : MonoBehaviour {
 
 			if(!reachedEnd){
 				if(target){
-					target.GetComponent<Enemy>().TakeDamage(damage);
+					target.TakeDamage(damage);
 
 					Destroy(gameObject);
 					return;
@@ -63,9 +69,9 @@ public class Projectile : MonoBehaviour {
 
 		//Can't use target.position directly when calculating the curves, because the projectiles needs an end point even if the target is destroyed.
 		if(target){
-			endPointX = target.position.x + offsetX;
-			endPointY  = target.position.y + offsetY;
-			endPointZ  = target.position.z + offsetZ;
+			endPointX = target.transform.position.x + offsetX;
+			endPointY  = target.transform.position.y + offsetY;
+			endPointZ  = target.transform.position.z + offsetZ;
 
 			controlPointX = Mathf.Lerp(endPointX, startPointX, 0.5f);
 			controlPointZ = Mathf.Lerp(endPointZ, startPointZ, 0.5f);
@@ -90,7 +96,7 @@ public class Projectile : MonoBehaviour {
 		}
 	}
 
-	public void Initialize(Transform enemy, float dmg){
+	public void Initialize(Enemy enemy, float dmg){
 		target = enemy;
 		damage = dmg;
 
@@ -101,12 +107,12 @@ public class Projectile : MonoBehaviour {
 		startPointX = transform.position.x;
 		startPointY = transform.position.y;
 		startPointZ = transform.position.z;
-		endPointX = target.position.x + offsetX;
-		endPointY  = target.position.y + offsetY;
-		endPointZ  = target.position.z + offsetZ;
+		endPointX = target.transform.position.x + offsetX;
+		endPointY  = target.transform.position.y + offsetY;
+		endPointZ  = target.transform.position.z + offsetZ;
 		
 		//Temporarily holds just the distance, so we can use it in controlPointY, then apply the modifier after.
-		distanceModifier = Vector3.Distance(target.position, transform.position);
+		distanceModifier = Vector3.Distance(target.transform.position, transform.position);
 		
 		controlPointX = Mathf.Lerp(endPointX, startPointX, 0.5f);
 		controlPointY = startPointY + (distanceModifier*0.5f);

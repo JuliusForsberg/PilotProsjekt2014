@@ -17,7 +17,7 @@ public class Tower : MonoBehaviour {
 	private Quaternion desiredRotation;
 	
 	private ArrayList enemyList = new ArrayList();
-	private GameObject currentEnemy;
+	private Enemy currentEnemy;
 
 	private Quaternion defaultRotation;
 	
@@ -33,10 +33,10 @@ public class Tower : MonoBehaviour {
 		if(enemyList.Count > 0){
 			if(!currentEnemy){
 				//Debug.Log("SetNewTarget");
-				currentEnemy = (GameObject)enemyList[0];
+				currentEnemy = (Enemy)enemyList[0];
 				nextFireTime = Time.time + reloadTime;
 
-				if(!currentEnemy){
+				if(currentEnemy.isDead()){
 					//Debug.Log ("RemoveTarget");
 					enemyList.Remove(currentEnemy);
 					currentEnemy = null;
@@ -63,16 +63,16 @@ public class Tower : MonoBehaviour {
 	void OnTriggerEnter(Collider col){
 		if(col.gameObject.tag=="Enemy"){
 			//Debug.Log("Enter: " + col.gameObject);
-			enemyList.Add(col.gameObject);
+			enemyList.Add(col.gameObject.GetComponent<Enemy>());
 		}
 	}
 	
 	void OnTriggerExit(Collider col){
 		if(col.gameObject.tag=="Enemy"){
 			//Debug.Log("Exit: " + col.gameObject);
-			enemyList.Remove(col.gameObject);
+			enemyList.Remove(col.gameObject.GetComponent<Enemy>());
 
-			if(col.gameObject == currentEnemy){
+			if(col.gameObject.GetComponent<Enemy>() == currentEnemy){
 				currentEnemy = null;
 			}
 		}
@@ -83,6 +83,6 @@ public class Tower : MonoBehaviour {
 		nextMoveTime = Time.time + delayAfterShot;
 
 		GameObject projectileObject = Instantiate(projectile, muzzle.position, muzzle.rotation) as GameObject;
-		projectileObject.GetComponent<Projectile>().Initialize(currentEnemy.transform, damage);
+		projectileObject.GetComponent<Projectile>().Initialize(currentEnemy, damage);
 	}
 }

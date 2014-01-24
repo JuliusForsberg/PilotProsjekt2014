@@ -10,7 +10,7 @@ public class TrapPlace : MonoBehaviour {
 		camMain = Camera.main;
 		camTopDown.enabled = false;
 
-		gridSquares = new Tower[gridSizeX, gridSizeZ]; //Maxuimum grid size. May have to do something smarter later.
+		gridSquares = new bool[gridSizeX, gridSizeZ]; //Maxuimum grid size. May have to do something smarter later.
 	}
 
     Inventory mInventory;
@@ -21,11 +21,13 @@ public class TrapPlace : MonoBehaviour {
 
     GameObject player;
 
-    Tower delete = new Tower(null, 0, 0, 0, 0, 0);
-    public Tower tower1;
-    public Tower tower2;
-    public Tower tower3;
+    public GameObject[] towers;
     Tower selectedTower;
+    int sizeX;
+    int sizeZ;
+    int blueCost;
+    int greenCost;
+    int redCost;
 
     public int gridSizeX=8;
     public int gridSizeZ=8;
@@ -37,7 +39,7 @@ public class TrapPlace : MonoBehaviour {
     int highlightSizeX=1;
     int highlightSizeZ=1;
 
-	Tower[,] gridSquares;
+	bool[,] gridSquares;
 	int coordX;
 	int coordZ;
 	//GameObject ball;
@@ -183,7 +185,7 @@ public class TrapPlace : MonoBehaviour {
                         {
                             for (int j = 0; j < highlightSizeZ; j++)
                             {
-                                if (gridSquares[(coordX - xHalf) + k, (coordZ - zHalf) + j] != null)
+                                if (gridSquares[(coordX - xHalf) + k, (coordZ - zHalf) + j] == true)
                                 {
                                     invalid = true;
                                     stop = true;
@@ -197,7 +199,7 @@ public class TrapPlace : MonoBehaviour {
                     }
                     else
                     {
-                        if (gridSquares[coordX, coordZ] != null)
+                        if (gridSquares[coordX, coordZ] == true)
                         {
                             invalid = true;
                         }
@@ -218,9 +220,10 @@ public class TrapPlace : MonoBehaviour {
 
                             selectedTower.sizeX = selectedTower.sizeZ;
                             selectedTower.sizeZ = holdX;
-                        }
 
-                        setSelectedTower(selectedTower);
+                            highlightSizeX = selectedTower.sizeX;
+                            highlightSizeZ = selectedTower.sizeZ;
+                        }
 
                     }
 
@@ -235,9 +238,10 @@ public class TrapPlace : MonoBehaviour {
 
                             selectedTower.sizeX = selectedTower.sizeZ;
                             selectedTower.sizeZ = holdX;
-                        }
 
-                        setSelectedTower(selectedTower);
+                            highlightSizeX = selectedTower.sizeX;
+                            highlightSizeZ = selectedTower.sizeZ;
+                        }
 
                     }
                     break;
@@ -260,22 +264,18 @@ public class TrapPlace : MonoBehaviour {
 
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                if (selectedTower == delete)
+                if (selectedTower == null)
                 {
                     for (int i = 0; i < rayHits.Length; i++)
                     {
-                        //if (rayHits[i].collider.gameObject.GetComponent<Tower>() =! null)
-                        //{
                         if (rayHits[i].collider.gameObject.tag == "Tower")
                         {
-                            deleteTower(rayHits[i].collider.gameObject;
+                            deleteTower(rayHits[i].collider.gameObject);
                         }
-                        //}
-
                     }
                 }
                 else if (selectedTower != null)
-                    placeTower(selectedTower);
+                    placeTower(selectedTower.gameObject);
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -300,14 +300,16 @@ public class TrapPlace : MonoBehaviour {
 
 	}
 
-    void setSelectedTower(Tower tower)
+    void setSelectedTower(GameObject tower)
     {
-        selectedTower = tower;
-        highlightSizeX = tower.sizeX;
-        highlightSizeZ = tower.sizeZ;
+        selectedTower = tower.GetComponent<Tower>();
+
+        highlightSizeX = selectedTower.sizeX;
+        highlightSizeZ = selectedTower.sizeZ;
     }
 
-	void placeTower(Tower tower) {
+    void placeTower(GameObject tower)
+    {
 
 		if(highLightObject != null && !invalid)
 		{
@@ -325,9 +327,10 @@ public class TrapPlace : MonoBehaviour {
                 int xHalf = Mathf.CeilToInt(highlightSizeX / 2);
                 int zHalf = Mathf.CeilToInt(highlightSizeZ / 2);
 
-                Tower thisTower = towerCopy(tower);
-                thisTower.gameObject = Instantiate(tower.gameObject, pos, ghostObject.transform.rotation) as GameObject;
-                thisTower.gameObject.tag = "Tower";
+                //Tower thisTower = towerCopy(tower);
+                GameObject thisTower = Instantiate(tower, pos, ghostObject.transform.rotation) as GameObject;
+                print("PLACE DAT OBJECT");
+                //thisTower.gameObject.tag = "Tower";
 
                 mInventory.removeObject("Blue", selectedTower.blueCost);
                 mInventory.removeObject("Red", selectedTower.greenCost);
@@ -337,8 +340,8 @@ public class TrapPlace : MonoBehaviour {
                 {
                     for (int j = 0; j < highlightSizeZ; j++)
                     {
-                        gridSquares[(coordX - xHalf) + k, (coordZ - zHalf) + j] = thisTower;
-                        thisTower.occupiedSquares.Add(new Vector2((coordX - xHalf) + k, (coordZ - zHalf) + j));
+                        gridSquares[(coordX - xHalf) + k, (coordZ - zHalf) + j] = true;
+                        //thisTower.occupiedSquares.Add(new Vector2((coordX - xHalf) + k, (coordZ - zHalf) + j));
                     }
                 }
             }
@@ -347,21 +350,25 @@ public class TrapPlace : MonoBehaviour {
 		}
 	}
 
-    void deleteTower(Tower tower) {
+    void deleteTower(GameObject tower) {
 
-        for (int i = 0; i < tower.occupiedSquares.Count; i++)
-        {
-            gridSquares[(int)tower.occupiedSquares[i].x, (int)tower.occupiedSquares[i].y] = null;
-        }
+        //for (int i = 0; i < tower.occupiedSquares.Count; i++)
+        //{
+        //    gridSquares[(int)tower.occupiedSquares[i].x, (int)tower.occupiedSquares[i].y] = null;
+        //}
 
-        Destroy(tower.gameObject);
-        tower = null;
+        Destroy(tower);
 
     }
 
 	void OnGUI() {
 		if(_enabled)
 		{
+
+            Tower tower1 = towers[0].GetComponent<Tower>(); //Needs to be optimized.
+            Tower tower2 = towers[1].GetComponent<Tower>();
+            Tower tower3 = towers[2].GetComponent<Tower>();
+
             string tower1Info = tower1.gameObject.name + "\nB" + tower1.blueCost.ToString() + " G" + tower1.greenCost.ToString() + " R" + tower1.redCost.ToString();
             string tower2Info = tower2.gameObject.name + "\nB" + tower2.blueCost.ToString() + " G" + tower2.greenCost.ToString() + " R" + tower2.redCost.ToString();
             string tower3Info = tower3.gameObject.name + "\nB" + tower3.blueCost.ToString() + " G" + tower3.greenCost.ToString() + " R" + tower3.redCost.ToString();
@@ -373,22 +380,24 @@ public class TrapPlace : MonoBehaviour {
 
             if (GUI.Button(new Rect((Screen.width * 0.8f), (Screen.height * 0.8f), 100.0f, 50.0f), tower1Info))
             {
-                setSelectedTower(tower1);
+                setSelectedTower(towers[0]);
             }
 
             if (GUI.Button(new Rect((Screen.width * 0.8f), (Screen.height * 0.7f), 100.0f, 50.0f), tower2Info))
             {
-                setSelectedTower(tower2);
+                setSelectedTower(towers[1]);
             }
 
             if (GUI.Button(new Rect((Screen.width * 0.8f), (Screen.height * 0.6f), 100.0f, 50.0f), tower3Info))
             {
-                setSelectedTower(tower3);
+                setSelectedTower(towers[2]);
             }
 
             if (GUI.Button(new Rect((Screen.width * 0.8f), (Screen.height * 0.5f), 100.0f, 50.0f), "Remove"))
             {
-                setSelectedTower(delete);
+                selectedTower = null;
+                highlightSizeX = 0;
+                highlightSizeZ = 0;
             }
 		}
 	}
@@ -412,44 +421,44 @@ public class TrapPlace : MonoBehaviour {
         player.SetActive(true);
 	}
 
-    Tower towerCopy(Tower tower)
-    {
-        Tower newTower = new Tower();
+    //Tower towerCopy(Tower tower)
+    //{
+    //    Tower newTower = new Tower();
 
-        newTower.gameObject = tower.gameObject;
-        newTower.sizeX = tower.sizeX;
-        newTower.sizeZ = tower.sizeZ;
-        newTower.blueCost = tower.blueCost;
-        newTower.greenCost = tower.greenCost;
-        newTower.redCost = tower.redCost;
+    //    newTower.gameObject = tower.gameObject;
+    //    newTower.sizeX = tower.sizeX;
+    //    newTower.sizeZ = tower.sizeZ;
+    //    newTower.blueCost = tower.blueCost;
+    //    newTower.greenCost = tower.greenCost;
+    //    newTower.redCost = tower.redCost;
 
-        return newTower;
-    }
+    //    return newTower;
+    //}
 }
 
-[System.Serializable]
-public class Tower
-{
-    public Tower()
-    {
-    }
+//[System.Serializable]
+//public class Tower
+//{
+//    public Tower()
+//    {
+//    }
 
-    public Tower(GameObject _gameObject, int _sizeX, int _sizeZ, int _blueCost, int _greenCost, int _redCost)
-    {
-        gameObject = _gameObject;
-        sizeX = _sizeX;
-        sizeZ = _sizeZ;
-        blueCost = _blueCost;
-        greenCost = _greenCost;
-        redCost = _redCost;
-    }
+//    public Tower(GameObject _gameObject, int _sizeX, int _sizeZ, int _blueCost, int _greenCost, int _redCost)
+//    {
+//        gameObject = _gameObject;
+//        sizeX = _sizeX;
+//        sizeZ = _sizeZ;
+//        blueCost = _blueCost;
+//        greenCost = _greenCost;
+//        redCost = _redCost;
+//    }
 
-    public GameObject gameObject;
-    public int sizeX=1;
-    public int sizeZ=1;
-    public int blueCost;
-    public int greenCost;
-    public int redCost;
+//    public GameObject gameObject;
+//    public int sizeX=1;
+//    public int sizeZ=1;
+//    public int blueCost;
+//    public int greenCost;
+//    public int redCost;
 
-    public List<Vector2> occupiedSquares = new List<Vector2>();
-}
+//    public List<Vector2> occupiedSquares = new List<Vector2>();
+//}

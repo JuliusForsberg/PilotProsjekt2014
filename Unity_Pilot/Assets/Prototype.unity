@@ -1104,27 +1104,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 260990c08d431f44e8092c1858aebf20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tower1:
-    gameObject: {fileID: 100000, guid: 4fabb1ab83be15846aee7169e419aa97, type: 2}
-    sizeX: 1
-    sizeZ: 1
-    blueCost: 1
-    greenCost: 0
-    redCost: 0
-  tower2:
-    gameObject: {fileID: 100000, guid: 94c4937ce0b13d64e8c795539f5685e9, type: 2}
-    sizeX: 4
-    sizeZ: 1
-    blueCost: 1
-    greenCost: 1
-    redCost: 0
-  tower3:
-    gameObject: {fileID: 100000, guid: 3f97d6942fc08de43adb32807d1e57cd, type: 2}
-    sizeX: 2
-    sizeZ: 2
-    blueCost: 1
-    greenCost: 1
-    redCost: 1
+  towers:
+  - {fileID: 100000, guid: 3f97d6942fc08de43adb32807d1e57cd, type: 2}
+  - {fileID: 100000, guid: 94c4937ce0b13d64e8c795539f5685e9, type: 2}
+  - {fileID: 100000, guid: 4fabb1ab83be15846aee7169e419aa97, type: 2}
   gridSizeX: 8
   gridSizeZ: 8
   squareSizeX: 2.5

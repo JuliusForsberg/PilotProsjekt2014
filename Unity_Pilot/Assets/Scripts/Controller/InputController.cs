@@ -5,7 +5,7 @@ public class InputController : MonoBehaviour {
 
 	// This makes the character turn to face the current movement speed per default.
 	public bool autoRotate = true;
-	public float maxRotationSpeed = 360;
+	public float maxRotationSpeed = 360f;
 
 	private Vector3 directionVector;
 	private CharacterMotor motor;
@@ -49,7 +49,7 @@ public class InputController : MonoBehaviour {
 		motor.inputJump = Input.GetButton("Jump");
 		
 		// Set rotation to the move direction	
-		if (autoRotate && directionVector.sqrMagnitude > 0.01) {
+		if (autoRotate && directionVector.sqrMagnitude > 0.01f) {
 			Vector3 newForward = ConstantSlerp(transform.forward, directionVector, maxRotationSpeed * Time.deltaTime);
 			newForward = ProjectOntoPlane(newForward, transform.up);
 			transform.rotation = Quaternion.LookRotation(newForward, transform.up);

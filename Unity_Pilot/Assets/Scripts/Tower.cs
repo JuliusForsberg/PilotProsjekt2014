@@ -6,26 +6,31 @@ public class Tower : MonoBehaviour {
 	public GameObject projectile;
 	public Transform muzzle;
 
-	public float turnSpeed = 5f;
+	public float turnSpeed = 2f;
 	public float reloadTime = 1f;
 	public float delayAfterShot = 0.25f;
 	public float range = 8f;
 	public float damage = 20f;
+	public float projectileCurveHeight = 0.5f;
+	public float projectileSpeed = 1.0f;
 
 	private float nextFireTime;
 	private float nextMoveTime;
-	private Quaternion desiredRotation;
 	
 	private ArrayList enemyList = new ArrayList();
 	private Enemy currentEnemy;
 
 	private Quaternion defaultRotation;
+	private Quaternion defaultTiltRotation;
+	private Transform tilt;
 	
 	void Start(){
 		nextFireTime = 0f;
 		nextMoveTime = 0f;
 
-		defaultRotation = transform.rotation;
+		tilt = transform.FindChild("Tilt");
+		defaultRotation = transform.localRotation;
+		defaultTiltRotation = tilt.localRotation;
 		transform.GetComponent<SphereCollider>().radius = range;
 	}
 	
@@ -46,17 +51,25 @@ public class Tower : MonoBehaviour {
 			if(currentEnemy){
 				if(Time.time >= nextMoveTime){
 					Vector3 relativePos = currentEnemy.transform.position - transform.position;
-					desiredRotation = Quaternion.LookRotation(relativePos);
-					desiredRotation.eulerAngles = new Vector3(0f, desiredRotation.eulerAngles.y, 0f);
+					Quaternion desiredRotation = Quaternion.LookRotation(relativePos);
+					Quaternion desiredTiltRotation = desiredRotation;
 
-					transform.localRotation = Quaternion.Lerp(transform.localRotation, desiredRotation, Time.deltaTime*turnSpeed);
+					//Use the rotation for the tilt.
+					desiredTiltRotation.eulerAngles = new Vector3(desiredTiltRotation.eulerAngles.x - (20f + ((relativePos.sqrMagnitude/range)*2f)), 0f, 0f);
+					tilt.localRotation = Quaternion.Lerp(tilt.localRotation, desiredTiltRotation, turnSpeed*Time.deltaTime);
+
+					//Only use the y axis.
+					desiredRotation.eulerAngles = new Vector3(0f, desiredRotation.eulerAngles.y, 0f);
+					transform.localRotation = Quaternion.Lerp(transform.localRotation, desiredRotation, turnSpeed*Time.deltaTime);
 				}
 				if(Time.time >= nextFireTime){
 					Fire();
 				}
 			}
 		}else if(Quaternion.Angle(transform.localRotation, defaultRotation) > 0.1f){
-			transform.localRotation = Quaternion.Lerp(transform.rotation, defaultRotation, Time.deltaTime*turnSpeed);
+			transform.localRotation = Quaternion.Lerp(transform.rotation, defaultRotation, turnSpeed*Time.deltaTime);
+		}else if(Quaternion.Angle(tilt.localRotation, defaultTiltRotation) > 0.1f){
+			tilt.localRotation = Quaternion.Lerp(tilt.rotation, defaultTiltRotation, turnSpeed*Time.deltaTime);
 		}
 	}
 	
@@ -83,6 +96,6 @@ public class Tower : MonoBehaviour {
 		nextMoveTime = Time.time + delayAfterShot;
 
 		GameObject projectileObject = Instantiate(projectile, muzzle.position, muzzle.rotation) as GameObject;
-		projectileObject.GetComponent<Projectile>().Initialize(currentEnemy, damage);
+		projectileObject.GetComponent<Projectile>().Initialize(currentEnemy, damage, projectileSpeed, projectileCurveHeight);
 	}
 }

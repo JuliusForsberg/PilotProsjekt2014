@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Projectile : MonoBehaviour {
 		
+	//Curve points.
 	private float startPointX;
 	private float startPointY;
 	private float startPointZ;
@@ -13,6 +14,7 @@ public class Projectile : MonoBehaviour {
 	private float endPointY;
 	private float endPointZ;
 
+	//Offset from the endpoint.
 	private float offsetX;
 	private float offsetY;
 	private float offsetZ;
@@ -21,19 +23,15 @@ public class Projectile : MonoBehaviour {
 	private float curveY;
 	private float curveZ;
 	private float distanceModifier;
-	private float bezierTime;
+	private float bezierTime = 0f;
 
 	private Enemy target;
 	private float damage;
 
-	private bool isActive;
-	private bool reachedEnd;
+	private bool isActive = true;
+	private bool reachedEnd = false;
 
-	void Start(){
-		bezierTime = 0f;
-		isActive = true;
-		reachedEnd = false;
-	}
+	private float speed = 1.0f;
 
 	void Update(){
 		if(!isActive)
@@ -45,11 +43,12 @@ public class Projectile : MonoBehaviour {
 			}
 		}
 
-		bezierTime += Time.deltaTime/distanceModifier;
+		//bezierTime += Time.deltaTime/distanceModifier;
+		bezierTime += speed/distanceModifier*Time.deltaTime;
 
 		if(bezierTime >= 1){
 
-			if(bezierTime > 2){
+			if(bezierTime > 1.4f){
 				Destroy(gameObject);
 				return;
 			}
@@ -96,13 +95,14 @@ public class Projectile : MonoBehaviour {
 		}
 	}
 
-	public void Initialize(Enemy enemy, float dmg){
+	public void Initialize(Enemy enemy, float dmg, float spd, float curveHeight){
 		target = enemy;
 		damage = dmg;
+		speed = spd;
 
-		offsetX = Random.Range (-0.3f, 0.3f);
-		offsetY = Random.Range (-0.4f, 0.4f);
-		offsetZ = Random.Range (-0.3f, 0.3f);
+		offsetX = Random.Range (-0.4f, 0.4f);
+		offsetY = Random.Range (-0.6f, 0.6f);
+		offsetZ = Random.Range (-0.4f, 0.4f);
 
 		startPointX = transform.position.x;
 		startPointY = transform.position.y;
@@ -115,7 +115,7 @@ public class Projectile : MonoBehaviour {
 		distanceModifier = Vector3.Distance(target.transform.position, transform.position);
 		
 		controlPointX = Mathf.Lerp(endPointX, startPointX, 0.5f);
-		controlPointY = startPointY + (distanceModifier*0.5f);
+		controlPointY = startPointY + (distanceModifier*curveHeight);
 		controlPointZ = Mathf.Lerp(endPointZ, startPointZ, 0.5f);
 		
 		distanceModifier *= 0.1f;

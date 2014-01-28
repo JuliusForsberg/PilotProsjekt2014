@@ -130,7 +130,7 @@ GameObject:
   - 64: {fileID: 113879072}
   - 23: {fileID: 113879071}
   m_Layer: 8
-  m_Name: Quad
+  m_Name: gridVisuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -184,7 +184,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 113879070}
   m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 5, y: 0, z: 0}
   m_LocalScale: {x: 20, y: 20, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -933,6 +933,32 @@ Prefab:
   m_RootGameObject: {fileID: 2065357062}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1 &799511226
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 799511227}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &799511227
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 799511226}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
 --- !u!1 &968325320
 GameObject:
   m_ObjectHideFlags: 0
@@ -1104,6 +1130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 260990c08d431f44e8092c1858aebf20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridPosition: {fileID: 799511227}
   towers:
   - {fileID: 100000, guid: 3f97d6942fc08de43adb32807d1e57cd, type: 2}
   - {fileID: 100000, guid: 94c4937ce0b13d64e8c795539f5685e9, type: 2}

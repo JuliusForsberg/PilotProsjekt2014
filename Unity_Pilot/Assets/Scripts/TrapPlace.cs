@@ -18,6 +18,7 @@ public class TrapPlace : MonoBehaviour {
 	Camera camMain;
 	bool _enabled;
     bool invalid;
+    public Transform gridPosition;
 
     GameObject player;
 
@@ -111,10 +112,10 @@ public class TrapPlace : MonoBehaviour {
                     x = (squareSizeX) * (Mathf.Round(x / squareSizeX));
                     z = (squareSizeZ) * (Mathf.Round(z / squareSizeZ));
 
-                    coordX = (int)((x / squareSizeX) + 4);
-                    coordZ = (int)((z / squareSizeZ) + 4);
+                    coordX = (int)(((x - gridPosition.position.x) / squareSizeX) + 4);
+                    coordZ = (int)(((z - gridPosition.position.z) / squareSizeZ) + 4);
 
-                    //Debug.Log((coordX) + " " + (coordZ)+ " " + x + " " + z);
+                    Debug.Log((coordX) + " " + (coordZ)+ " " + x + " " + z);
 
                     if (highlightSizeX > 1 || highlightSizeZ > 1) //Code for stopping at the edge with larger object
                     {
@@ -169,8 +170,8 @@ public class TrapPlace : MonoBehaviour {
 
                     }
 
-                    coordX = (int)((x / squareSizeX) + 4);
-                    coordZ = (int)((z / squareSizeZ) + 4);
+                    coordX = (int)(((x-gridPosition.position.x) / squareSizeX) + 4); //Why is this here again, i don't remember!?
+                    coordZ = (int)(((z-gridPosition.position.z) / squareSizeZ) + 4);
 
                     highLightObject.transform.position = new Vector3(x + offsetX, rayHits[i].point.y, z + offsetZ);
 

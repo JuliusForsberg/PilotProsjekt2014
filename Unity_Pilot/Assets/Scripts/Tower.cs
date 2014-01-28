@@ -15,9 +15,19 @@ public class Tower : MonoBehaviour {
     public int greenCost;
     public int redCost;
 
-    public List<Vector2> occupiedSquares = new List<Vector2>();
+    List<Vector2> occupiedSquares = new List<Vector2>();
 
 	void Update () {
 	
 	}
+
+    public void setOccupied(List<Vector2> squares)
+    {
+        occupiedSquares = squares;
+    }
+
+    public List<Vector2> getOccupied()
+    {
+        return occupiedSquares;
+    }
 }

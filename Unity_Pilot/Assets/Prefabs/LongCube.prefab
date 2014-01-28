@@ -86,7 +86,6 @@ MonoBehaviour:
   blueCost: 1
   greenCost: 1
   redCost: 0
-  occupiedSquares: []
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

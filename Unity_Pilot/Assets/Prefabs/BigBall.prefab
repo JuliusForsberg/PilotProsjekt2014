@@ -74,7 +74,6 @@ MonoBehaviour:
   blueCost: 1
   greenCost: 1
   redCost: 1
-  occupiedSquares: []
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1

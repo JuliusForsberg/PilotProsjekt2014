@@ -34,7 +34,7 @@ public class TrapPlace : MonoBehaviour {
 	public float squareSizeX=1;
 	public float squareSizeZ=1;
     GameObject ghostObject; //Ghost of currently selected object/tower.
-    Quaternion ghostObjRot;
+    Quaternion ghostObjRot; //I need to store the rotation because the object is recreated each time it exits-and-enters the grid.
 	GameObject highLightObject; //Highlights an area of the grid. E.g. the size the tower will occupy.
     int highlightSizeX=1;
     int highlightSizeZ=1;
@@ -62,7 +62,7 @@ public class TrapPlace : MonoBehaviour {
                         highLightObject.renderer.material.shader = Shader.Find("Transparent/Diffuse");
                         highLightObject.renderer.material.color = new Color(1.0f, 1.0f, 1.0f, .5f);
 
-                        if (selectedTower.gameObject != null)
+                        if (selectedTower != null)
                         {
                             ghostObject = Instantiate(selectedTower.gameObject) as GameObject;
                             ghostObject.transform.rotation = ghostObjRot;
@@ -216,13 +216,7 @@ public class TrapPlace : MonoBehaviour {
 
                         if (selectedTower.sizeX != selectedTower.sizeZ)
                         {
-                            int holdX = selectedTower.sizeX;
-
-                            selectedTower.sizeX = selectedTower.sizeZ;
-                            selectedTower.sizeZ = holdX;
-
-                            highlightSizeX = selectedTower.sizeX;
-                            highlightSizeZ = selectedTower.sizeZ;
+                            flipHighlight(selectedTower);
                         }
 
                     }
@@ -234,13 +228,7 @@ public class TrapPlace : MonoBehaviour {
 
                         if (selectedTower.sizeX != selectedTower.sizeZ)
                         {
-                            int holdX = selectedTower.sizeX;
-
-                            selectedTower.sizeX = selectedTower.sizeZ;
-                            selectedTower.sizeZ = holdX;
-
-                            highlightSizeX = selectedTower.sizeX;
-                            highlightSizeZ = selectedTower.sizeZ;
+                            flipHighlight(selectedTower);
                         }
 
                     }
@@ -271,6 +259,7 @@ public class TrapPlace : MonoBehaviour {
                         if (rayHits[i].collider.gameObject.tag == "Tower")
                         {
                             deleteTower(rayHits[i].collider.gameObject);
+                            return;
                         }
                     }
                 }
@@ -300,9 +289,26 @@ public class TrapPlace : MonoBehaviour {
 
 	}
 
+    void flipHighlight(Tower tower)
+    {
+
+        if (highlightSizeX == tower.sizeX && highlightSizeZ == tower.sizeZ)
+        {
+            highlightSizeX = tower.sizeZ;
+            highlightSizeZ = tower.sizeX;
+        }
+        else
+        {
+            highlightSizeX = tower.sizeX;
+            highlightSizeZ = tower.sizeZ;
+        }
+    }
+
     void setSelectedTower(GameObject tower)
     {
         selectedTower = tower.GetComponent<Tower>();
+
+        ghostObjRot = tower.transform.rotation;
 
         highlightSizeX = selectedTower.sizeX;
         highlightSizeZ = selectedTower.sizeZ;
@@ -329,21 +335,25 @@ public class TrapPlace : MonoBehaviour {
 
                 //Tower thisTower = towerCopy(tower);
                 GameObject thisTower = Instantiate(tower, pos, ghostObject.transform.rotation) as GameObject;
-                print("PLACE DAT OBJECT");
                 //thisTower.gameObject.tag = "Tower";
 
                 mInventory.removeObject("Blue", selectedTower.blueCost);
                 mInventory.removeObject("Red", selectedTower.greenCost);
                 mInventory.removeObject("Green", selectedTower.redCost);
 
+                List<Vector2> mOccupiedSquares = new List<Vector2>();
+
                 for (int k = 0; k < highlightSizeX; k++) //Sets squares to occupied;
                 {
                     for (int j = 0; j < highlightSizeZ; j++)
                     {
                         gridSquares[(coordX - xHalf) + k, (coordZ - zHalf) + j] = true;
-                        //thisTower.occupiedSquares.Add(new Vector2((coordX - xHalf) + k, (coordZ - zHalf) + j));
+                        mOccupiedSquares.Add(new Vector2((coordX - xHalf) + k, (coordZ - zHalf) + j));
+                        
                     }
                 }
+
+                thisTower.GetComponent<Tower>().setOccupied(mOccupiedSquares);
             }
             else
                 Debug.Log("Not Enough Resources");
@@ -352,10 +362,12 @@ public class TrapPlace : MonoBehaviour {
 
     void deleteTower(GameObject tower) {
 
-        //for (int i = 0; i < tower.occupiedSquares.Count; i++)
-        //{
-        //    gridSquares[(int)tower.occupiedSquares[i].x, (int)tower.occupiedSquares[i].y] = null;
-        //}
+        List<Vector2> mOccupiedSquares = tower.GetComponent<Tower>().getOccupied();
+
+        for (int i = 0; i < mOccupiedSquares.Count; i++)
+        {
+            gridSquares[(int)mOccupiedSquares[i].x, (int)mOccupiedSquares[i].y] = false;
+        }
 
         Destroy(tower);
 
@@ -396,8 +408,8 @@ public class TrapPlace : MonoBehaviour {
             if (GUI.Button(new Rect((Screen.width * 0.8f), (Screen.height * 0.5f), 100.0f, 50.0f), "Remove"))
             {
                 selectedTower = null;
-                highlightSizeX = 0;
-                highlightSizeZ = 0;
+                highlightSizeX = 1;
+                highlightSizeZ = 1;
             }
 		}
 	}

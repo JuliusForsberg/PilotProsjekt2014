@@ -75,7 +75,7 @@ public class WaveManager : MonoBehaviour {
 							
 							//TESTING
 							waveActive = false;
-							gameObject.SetActive(false);
+							//gameObject.SetActive(false);
 							//------
 							nextActiveTime = Time.time + 3f;
 						}
@@ -84,14 +84,14 @@ public class WaveManager : MonoBehaviour {
 			}else if(Time.time <= waveEndTime){
 				for(int i=0; i<spawns.Length; i++){
 					if(Time.time >= nextSpawnTime[i]){
-						int type = Random.Range(0, enemyType.Length);
+						int type = Mathf.Clamp(Random.Range(-1, enemyType.Length), 0, enemyType.Length);
 						SpawnEnemy(i, type);
 					}
 				}
 			}else{
 				//TESTING
 				waveActive = false;
-				gameObject.SetActive(false);
+				//gameObject.SetActive(false);
 				//------
 				
 				nextActiveTime = Time.time + 5f;

@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour {
 	private PlayerStats player;
 	private Crystal crystal;
 	private AIPath pathTarget;
+	private Gate gate;
 
 	public float defaultAggroLevel = 20f;
 	public float aggroLevel;
@@ -25,12 +26,20 @@ public class Enemy : MonoBehaviour {
 	void Start(){
 		player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
 		crystal = GameObject.FindGameObjectWithTag("Crystal").GetComponent<Crystal>();
+
+		if(GameObject.FindGameObjectWithTag("Gate")){
+			gate = GameObject.FindGameObjectWithTag("Gate").GetComponent<Gate>();
+		}
+
 		pathTarget = gameObject.GetComponent<AIPath>();
 
 		aggroLevel = 30f;
 
 		if(pathTarget){
-			pathTarget.target = crystal.transform;
+			if(gate)
+				pathTarget.target = gate.transform;
+			else
+				pathTarget.target = crystal.transform;
 		}
 
 		if(waveActive){
@@ -43,6 +52,12 @@ public class Enemy : MonoBehaviour {
 	}
 
 	void Update(){
+		if(gate != null){
+			if(pathTarget.target == gate.transform && gate.isDestroyed()){
+				pathTarget.target = crystal.transform;
+			}
+		}
+
 		if(aggroLevel > defaultAggroLevel+5f && pathTarget.target != player.transform){
 			if((player.transform.position - transform.position).sqrMagnitude < 5f*5f){
 				Debug.Log("SetTarget: Player");
@@ -94,6 +109,8 @@ public class Enemy : MonoBehaviour {
 			player.TakeDamage(damage);
 		}else if(pathTarget.target == crystal.transform){
 			crystal.TakeDamage(damage);
+		}else if(pathTarget.target == gate.transform){
+			gate.TakeDamage(damage);
 		}
 
 		aggroLevel -= damage*0.2f;

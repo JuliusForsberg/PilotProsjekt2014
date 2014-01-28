@@ -55,7 +55,7 @@ public class Tower : MonoBehaviour {
 					Quaternion desiredTiltRotation = desiredRotation;
 
 					//Use the rotation for the tilt.
-					desiredTiltRotation.eulerAngles = new Vector3(desiredTiltRotation.eulerAngles.x - (20f + ((relativePos.sqrMagnitude/range)*2f)), 0f, 0f);
+					desiredTiltRotation.eulerAngles = new Vector3(desiredTiltRotation.eulerAngles.x - (15f + ((relativePos.sqrMagnitude/range)*2f)), 0f, 0f);
 					tilt.localRotation = Quaternion.Lerp(tilt.localRotation, desiredTiltRotation, turnSpeed*Time.deltaTime);
 
 					//Only use the y axis.
@@ -67,9 +67,9 @@ public class Tower : MonoBehaviour {
 				}
 			}
 		}else if(Quaternion.Angle(transform.localRotation, defaultRotation) > 0.1f){
-			transform.localRotation = Quaternion.Lerp(transform.rotation, defaultRotation, turnSpeed*Time.deltaTime);
+			transform.localRotation = Quaternion.Lerp(transform.localRotation, defaultRotation, turnSpeed*Time.deltaTime);
 		}else if(Quaternion.Angle(tilt.localRotation, defaultTiltRotation) > 0.1f){
-			tilt.localRotation = Quaternion.Lerp(tilt.rotation, defaultTiltRotation, turnSpeed*Time.deltaTime);
+			tilt.localRotation = Quaternion.Lerp(tilt.localRotation, defaultTiltRotation, turnSpeed*Time.deltaTime);
 		}
 	}
 	

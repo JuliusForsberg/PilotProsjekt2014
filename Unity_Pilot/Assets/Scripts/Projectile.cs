@@ -43,7 +43,6 @@ public class Projectile : MonoBehaviour {
 			}
 		}
 
-		//bezierTime += Time.deltaTime/distanceModifier;
 		bezierTime += speed/distanceModifier*Time.deltaTime;
 
 		if(bezierTime >= 1){

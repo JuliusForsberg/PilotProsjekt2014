@@ -1,0 +1,292 @@
+fileFormatVersion: 2
+guid: 013a2d93dd40e1c4e9e14915b49ee22d
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Door:BlockingPole
+    100004: Door:DoorLockSwing
+    100006: Door:L_DoorKnob
+    100008: Door:L_DoorKnob2
+    100010: Door:L_Hinge
+    100012: Door:L_Hinge 1
+    100014: Door:Left_Door
+    100016: Door:R_DoorKnob
+    100018: Door:R_DoorKnob2
+    100020: Door:R_DoorLock
+    100022: Door:R_Hinge
+    100024: Door:R_Hinge2
+    100026: Door:Right_Door
+    400000: //RootNode
+    400002: Door:BlockingPole
+    400004: Door:DoorLockSwing
+    400006: Door:L_DoorKnob
+    400008: Door:L_DoorKnob2
+    400010: Door:L_Hinge
+    400012: Door:L_Hinge 1
+    400014: Door:Left_Door
+    400016: Door:R_DoorKnob
+    400018: Door:R_DoorKnob2
+    400020: Door:R_DoorLock
+    400022: Door:R_Hinge
+    400024: Door:R_Hinge2
+    400026: Door:Right_Door
+    2300000: Door:BlockingPole
+    2300002: Door:DoorLockSwing
+    2300004: Door:L_DoorKnob
+    2300006: Door:L_DoorKnob2
+    2300008: Door:L_Hinge
+    2300010: Door:L_Hinge 1
+    2300012: Door:Left_Door
+    2300014: Door:R_DoorKnob
+    2300016: Door:R_DoorKnob2
+    2300018: Door:R_DoorLock
+    2300020: Door:R_Hinge
+    2300022: Door:R_Hinge2
+    2300024: Door:Right_Door
+    3300000: Door:BlockingPole
+    3300002: Door:DoorLockSwing
+    3300004: Door:L_DoorKnob
+    3300006: Door:L_DoorKnob2
+    3300008: Door:L_Hinge
+    3300010: Door:L_Hinge 1
+    3300012: Door:Left_Door
+    3300014: Door:R_DoorKnob
+    3300016: Door:R_DoorKnob2
+    3300018: Door:R_DoorLock
+    3300020: Door:R_Hinge
+    3300022: Door:R_Hinge2
+    3300024: Door:Right_Door
+    4300000: Door:Left_Door
+    4300002: Door:DoorLockSwing
+    4300004: Door:BlockingPole
+    4300006: Door:L_DoorKnob
+    4300008: Door:L_Hinge
+    4300010: Door:L_DoorKnob2
+    4300012: Door:L_Hinge
+    4300014: Door:Right_Door
+    4300016: Door:R_DoorLock
+    4300018: Door:R_DoorKnob2
+    4300020: Door:R_Hinge2
+    4300022: Door:R_DoorKnob
+    4300024: Door:R_Hinge
+    7400000: DoorOpen
+    7400002: DoorClose
+    7400004: DoorSlam
+    9500000: //RootNode
+    11100000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: DoorOpen
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 76
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Door:Left_Door
+        weight: 1
+      - path: Door:Left_Door/Door:DoorLockSwing
+        weight: 1
+      - path: Door:Left_Door/Door:DoorLockSwing/Door:BlockingPole
+        weight: 1
+      - path: Door:Left_Door/Door:L_DoorKnob
+        weight: 1
+      - path: Door:Left_Door/Door:L_DoorKnob/Door:L_Hinge
+        weight: 1
+      - path: Door:Left_Door/Door:L_DoorKnob2
+        weight: 1
+      - path: Door:Left_Door/Door:L_DoorKnob2/Door:L_Hinge 1
+        weight: 1
+      - path: Door:Right_Door
+        weight: 1
+      - path: Door:Right_Door/Door:R_DoorKnob
+        weight: 1
+      - path: Door:Right_Door/Door:R_DoorKnob/Door:R_Hinge
+        weight: 1
+      - path: Door:Right_Door/Door:R_DoorKnob2
+        weight: 1
+      - path: Door:Right_Door/Door:R_DoorKnob2/Door:R_Hinge2
+        weight: 1
+      - path: Door:Right_Door/Door:R_DoorLock
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: DoorClose
+      takeName: Take 001
+      firstFrame: 77
+      lastFrame: 121
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Door:Left_Door
+        weight: 1
+      - path: Door:Left_Door/Door:DoorLockSwing
+        weight: 1
+      - path: Door:Left_Door/Door:DoorLockSwing/Door:BlockingPole
+        weight: 1
+      - path: Door:Left_Door/Door:L_DoorKnob
+        weight: 1
+      - path: Door:Left_Door/Door:L_DoorKnob/Door:L_Hinge
+        weight: 1
+      - path: Door:Left_Door/Door:L_DoorKnob2
+        weight: 1
+      - path: Door:Left_Door/Door:L_DoorKnob2/Door:L_Hinge 1
+        weight: 1
+      - path: Door:Right_Door
+        weight: 1
+      - path: Door:Right_Door/Door:R_DoorKnob
+        weight: 1
+      - path: Door:Right_Door/Door:R_DoorKnob/Door:R_Hinge
+        weight: 1
+      - path: Door:Right_Door/Door:R_DoorKnob2
+        weight: 1
+      - path: Door:Right_Door/Door:R_DoorKnob2/Door:R_Hinge2
+        weight: 1
+      - path: Door:Right_Door/Door:R_DoorLock
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: DoorSlam
+      takeName: Take 001
+      firstFrame: 122
+      lastFrame: 160
+      wrapMode: 2
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Door:Left_Door
+        weight: 1
+      - path: Door:Left_Door/Door:DoorLockSwing
+        weight: 1
+      - path: Door:Left_Door/Door:DoorLockSwing/Door:BlockingPole
+        weight: 1
+      - path: Door:Left_Door/Door:L_DoorKnob
+        weight: 1
+      - path: Door:Left_Door/Door:L_DoorKnob/Door:L_Hinge
+        weight: 1
+      - path: Door:Left_Door/Door:L_DoorKnob2
+        weight: 1
+      - path: Door:Left_Door/Door:L_DoorKnob2/Door:L_Hinge 1
+        weight: 1
+      - path: Door:Right_Door
+        weight: 1
+      - path: Door:Right_Door/Door:R_DoorKnob
+        weight: 1
+      - path: Door:Right_Door/Door:R_DoorKnob/Door:R_Hinge
+        weight: 1
+      - path: Door:Right_Door/Door:R_DoorKnob2
+        weight: 1
+      - path: Door:Right_Door/Door:R_DoorKnob2/Door:R_Hinge2
+        weight: 1
+      - path: Door:Right_Door/Door:R_DoorLock
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  additionalBone: 0
+  userData: 

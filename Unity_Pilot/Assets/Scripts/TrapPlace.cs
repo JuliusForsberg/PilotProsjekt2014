@@ -313,6 +313,8 @@ public class TrapPlace : MonoBehaviour {
 
         highlightSizeX = selectedTower.sizeX;
         highlightSizeZ = selectedTower.sizeZ;
+
+        Destroy(highLightObject);
     }
 
     void placeTower(GameObject tower)

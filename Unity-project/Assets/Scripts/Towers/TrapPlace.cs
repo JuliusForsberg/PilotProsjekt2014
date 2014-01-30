@@ -1,6 +1,6 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic; //For using list.
+using UnityEngine;
 
 public class TrapPlace : MonoBehaviour {
 	// Use this for initialization
@@ -10,7 +10,10 @@ public class TrapPlace : MonoBehaviour {
 		camMain = Camera.main;
 		camTopDown.enabled = false;
 
-		gridSquares = new bool[gridSizeX, gridSizeZ]; //Maxuimum grid size. May have to do something smarter later.
+        //if(gridSquares == null)
+		    gridSquares = new bool[gridSizeX, gridSizeZ];
+
+        checkSquares();
 	}
 
     Inventory mInventory;
@@ -18,7 +21,7 @@ public class TrapPlace : MonoBehaviour {
 	Camera camMain;
 	bool _enabled;
     bool invalid;
-    public GameObject gridArea;
+    public Transform gridCenter;
 
     GameObject player;
 
@@ -40,7 +43,7 @@ public class TrapPlace : MonoBehaviour {
     int highlightSizeX=1;
     int highlightSizeZ=1;
 
-	bool[,] gridSquares;
+	public bool[,] gridSquares;
 	int coordX;
 	int coordZ;
 	//GameObject ball;
@@ -54,7 +57,7 @@ public class TrapPlace : MonoBehaviour {
 
             for (int i = 0; i < rayHits.Length; i++)
             {
-                if (rayHits[i].collider.gameObject == gridArea)
+                if (rayHits[i].collider.gameObject.layer == LayerMask.NameToLayer("Ground"))
                 {
 
                     float offsetX;
@@ -86,130 +89,138 @@ public class TrapPlace : MonoBehaviour {
                     x = (squareSizeX) * (Mathf.Round(x / squareSizeX));
                     z = (squareSizeZ) * (Mathf.Round(z / squareSizeZ));
 
-                    coordX = (int)(((x - gridArea.transform.position.x) / squareSizeX) + gridSizeX/2);
-                    coordZ = (int)(((z - gridArea.transform.position.z) / squareSizeZ) + gridSizeZ/2);
+                    coordX = (int)(((x - gridCenter.position.x) / squareSizeX) + gridSizeX/2);
+                    coordZ = (int)(((z - gridCenter.position.z) / squareSizeZ) + gridSizeZ/2);
 
-                    Debug.Log((coordX) + " " + (coordZ) + " " + x + " " + z);
+                    //coordX = Mathf.Clamp(coordX, 0, gridSizeX - 1);
+                    //coordZ = Mathf.Clamp(coordZ, 0, gridSizeZ - 1);
 
-                    if (highLightObject == null)
+                    //Debug.Log((coordX) + " " + (coordZ) + " " + x + " " + z);
+
+                    if (coordX <= gridSizeX-1 && coordX >= 0 && coordZ <= gridSizeZ-1 && coordZ >= 0)
                     {
-                        highLightObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                        highLightObject.transform.localScale = new Vector3(squareSizeX * highlightSizeX, 1, squareSizeZ * highlightSizeZ);
-                        highLightObject.renderer.material.shader = Shader.Find("Transparent/Diffuse");
-                        highLightObject.renderer.material.color = new Color(1.0f, 1.0f, 1.0f, .5f);
-
-                        if (selectedTower != null)
+                        if (highLightObject == null)
                         {
-                            ghostObject = Instantiate(selectedTower.gameObject) as GameObject;
-                            ghostObject.transform.rotation = ghostObjRot;
-                            ghostObject.transform.parent = highLightObject.transform;
-                            ghostObject.transform.position = new Vector3(0, 0, 0);
-                        }
-                    }
-                    else if (highLightObject.transform.localScale != new Vector3(squareSizeX * highlightSizeX, 1, squareSizeZ * highlightSizeZ))
-                        highLightObject.transform.localScale = new Vector3(squareSizeX * highlightSizeX, 1, squareSizeZ * highlightSizeZ);
+                            highLightObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                            highLightObject.transform.localScale = new Vector3(squareSizeX * highlightSizeX, 1, squareSizeZ * highlightSizeZ);
+                            highLightObject.renderer.material.shader = Shader.Find("Transparent/Diffuse");
+                            highLightObject.renderer.material.color = new Color(1.0f, 1.0f, 1.0f, .5f);
 
-                    //				if(ball == null)
-                    //				{
-                    //					ball = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                    //					ball.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-                    //					//ball.renderer.material.color = new Vector4(1.0f, 1.0f, 1.0f, 0.1f);
-                    //					ball.collider.enabled = false;
-                    //				}
-                    //				ball.transform.position = new Vector3(rayHits[i].point.x, rayHits[i].point.y, rayHits[i].point.z);
-
-                    if (highlightSizeX > 1 || highlightSizeZ > 1) //Code for stopping at the edge with larger object
-                    {
-                        int xHalf = Mathf.CeilToInt(highlightSizeX / 2.0f);
-                        int zHalf = Mathf.CeilToInt(highlightSizeZ / 2.0f);
-
-                        if (highlightSizeX % 2 == 0)
-                        {
-                            if (coordX > (gridSizeX - xHalf))
+                            if (selectedTower != null)
                             {
-                                x -= squareSizeX * (coordX - gridSizeX + xHalf);
-                            }
-                            else if (coordX < xHalf)
-                            {
-                                x += squareSizeX * (xHalf - coordX);
+                                ghostObject = Instantiate(selectedTower.gameObject) as GameObject;
+                                ghostObject.transform.rotation = ghostObjRot;
+                                ghostObject.transform.parent = highLightObject.transform;
+                                ghostObject.transform.position = new Vector3(0, 0, 0);
                             }
                         }
-                        else
+                        else if (highLightObject.transform.localScale != new Vector3(squareSizeX * highlightSizeX, 1, squareSizeZ * highlightSizeZ))
+                            highLightObject.transform.localScale = new Vector3(squareSizeX * highlightSizeX, 1, squareSizeZ * highlightSizeZ);
+
+
+                        //				if(ball == null)
+                        //				{
+                        //					ball = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                        //					ball.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                        //					//ball.renderer.material.color = new Vector4(1.0f, 1.0f, 1.0f, 0.1f);
+                        //					ball.collider.enabled = false;
+                        //				}
+                        //				ball.transform.position = new Vector3(rayHits[i].point.x, rayHits[i].point.y, rayHits[i].point.z);
+
+                        if (highlightSizeX > 1 || highlightSizeZ > 1) //Code for stopping at the edge with larger object
                         {
-                            if (coordX > (gridSizeX - xHalf))
-                            {
-                                x -= squareSizeX * (coordX - gridSizeX + xHalf);
-                            }
-                            else if (coordX < (xHalf - 1))
-                            {
-                                x += squareSizeX * ((xHalf - 1) - coordX);
-                            }
-                        }
+                            int xHalf = Mathf.CeilToInt(highlightSizeX / 2.0f);
+                            int zHalf = Mathf.CeilToInt(highlightSizeZ / 2.0f);
 
-                        if (highlightSizeZ % 2 == 0)
-                        {
-                            if (coordZ > (gridSizeZ - zHalf))
+                            if (highlightSizeX % 2 == 0)
                             {
-                                z -= squareSizeZ * (coordZ - gridSizeZ + zHalf);
-                            }
-                            else if (coordZ < zHalf)
-                            {
-                                z += squareSizeZ * (zHalf - coordZ);
-                            }
-                        }
-                        else
-                        {
-                            if (coordZ > (gridSizeZ - zHalf))
-                            {
-                                z -= squareSizeZ * (coordZ - gridSizeZ + zHalf);
-                            }
-                            else if (coordZ < (zHalf - 1))
-                            {
-                                z += squareSizeZ * ((zHalf - 1) - coordZ);
-                            }
-                        }
-
-                    }
-
-                    coordX = (int)(((x-gridArea.transform.position.x) / squareSizeX) + gridSizeX/2); //Why is this here again, i don't remember!?
-                    coordZ = (int)(((z - gridArea.transform.position.z) / squareSizeZ) + gridSizeZ/2);
-
-                    highLightObject.transform.position = new Vector3(x + offsetX, rayHits[i].point.y, z + offsetZ);
-
-                    if (highlightSizeX > 1 || highlightSizeZ > 1)
-                    {
-                        int xHalf = Mathf.CeilToInt(highlightSizeX / 2);
-                        int zHalf = Mathf.CeilToInt(highlightSizeZ / 2);
-
-                        bool stop = false;
-
-                        for (int k = 0; k < highlightSizeX && !stop; k++) //Checks if any of the squares are occupied.
-                        {
-                            for (int j = 0; j < highlightSizeZ; j++)
-                            {
-                                if (gridSquares[(coordX - xHalf) + k, (coordZ - zHalf) + j] == true)
+                                if (coordX > (gridSizeX - xHalf))
                                 {
-                                    invalid = true;
-                                    stop = true;
-                                    break;
+                                    x -= squareSizeX * (coordX - gridSizeX + xHalf);
                                 }
-                                else
-                                    invalid = false;
+                                else if (coordX < xHalf)
+                                {
+                                    x += squareSizeX * (xHalf - coordX);
+                                }
                             }
+                            else
+                            {
+                                if (coordX > (gridSizeX - xHalf))
+                                {
+                                    x -= squareSizeX * (coordX - gridSizeX + xHalf);
+                                }
+                                else if (coordX < (xHalf - 1))
+                                {
+                                    x += squareSizeX * ((xHalf - 1) - coordX);
+                                }
+                            }
+
+                            if (highlightSizeZ % 2 == 0)
+                            {
+                                if (coordZ > (gridSizeZ - zHalf))
+                                {
+                                    z -= squareSizeZ * (coordZ - gridSizeZ + zHalf);
+                                }
+                                else if (coordZ < zHalf)
+                                {
+                                    z += squareSizeZ * (zHalf - coordZ);
+                                }
+                            }
+                            else
+                            {
+                                if (coordZ > (gridSizeZ - zHalf))
+                                {
+                                    z -= squareSizeZ * (coordZ - gridSizeZ + zHalf);
+                                }
+                                else if (coordZ < (zHalf - 1))
+                                {
+                                    z += squareSizeZ * ((zHalf - 1) - coordZ);
+                                }
+                            }
+
                         }
-                        stop = false;
-                    }
-                    else
-                    {
-                        if (gridSquares[coordX, coordZ] == true)
+
+                        //coordX = (int)(((x-gridCenter.position.x) / squareSizeX) + gridSizeX/2); //Why is this here again, i don't remember!?
+                        //coordZ = (int)(((z-gridCenter.position.z) / squareSizeZ) + gridSizeZ/2);
+
+                        highLightObject.transform.position = new Vector3(x + offsetX, rayHits[i].point.y, z + offsetZ);
+
+                        if (highlightSizeX > 1 || highlightSizeZ > 1)
                         {
-                            invalid = true;
+                            int xHalf = Mathf.CeilToInt(highlightSizeX / 2);
+                            int zHalf = Mathf.CeilToInt(highlightSizeZ / 2);
+
+                            bool stop = false;
+
+                            for (int k = 0; k < highlightSizeX && !stop; k++) //Checks if any of the squares are occupied.
+                            {
+                                for (int j = 0; j < highlightSizeZ; j++)
+                                {
+                                    if (gridSquares[(coordX - xHalf) + k, (coordZ - zHalf) + j] == true)
+                                    {
+                                        invalid = true;
+                                        stop = true;
+                                        break;
+                                    }
+                                    else
+                                        invalid = false;
+                                }
+                            }
+                            stop = false;
                         }
                         else
-                            invalid = false;
+                        {
+                            if (gridSquares[coordX, coordZ] == true)
+                            {
+                                invalid = true;
+                            }
+                            else
+                                invalid = false;
+                        }
+
                     }
-
-
+                    else // if (coordX - 1 < gridSizeX && coordX > 0 && coordZ < gridSizeZ - 1 && coordZ > 0)
+                        Destroy(highLightObject);
 
                     if (Input.GetKeyDown(KeyCode.Q))
                     {
@@ -235,7 +246,7 @@ public class TrapPlace : MonoBehaviour {
 
                     }
                     break;
-                }
+                } //raycast hit ground
                 else if (i == rayHits.Length - 1)
                 {
                     Destroy(highLightObject);
@@ -425,7 +436,8 @@ public class TrapPlace : MonoBehaviour {
         if (player == null)
             player = GameObject.FindWithTag("Player");
 
-        //player.GetComponent<CharacterController>().canControl = false;
+        player.GetComponent<CharacterMotor>().canControl = false;
+        player.GetComponent<InputController>().enabled = false;
 	}
 
 	void endConstruction () {
@@ -433,20 +445,59 @@ public class TrapPlace : MonoBehaviour {
 		camTopDown.enabled = false;
 		_enabled = false;
         player.SetActive(true);
+
+        player.GetComponent<CharacterMotor>().canControl = true;
+        player.GetComponent<InputController>().enabled = true;
 	}
 
-    //Tower towerCopy(Tower tower)
+    public void checkSquares()
+    {
+        //gridSquares = new bool[gridSizeX, gridSizeZ];
+        print("I RAN THIS SHIT");
+        Vector3 corner = new Vector3(gridCenter.position.x - (squareSizeX * gridSizeX / 2), gridCenter.position.y, gridCenter.position.z - (squareSizeZ * gridSizeZ / 2));
+        RaycastHit hit;
+        for (int i = 0; i < gridSizeX; i++)
+        {
+            for (int j = 0; j < gridSizeZ; j++)
+            {
+
+                Vector3 origin = new Vector3(corner.x + (squareSizeX * i), corner.y, corner.z + (squareSizeZ * j));
+                Debug.DrawRay(origin + Vector3.up, Vector3.down, Color.red);
+
+                if (Physics.Raycast(origin + Vector3.up, Vector3.down, out hit, 1) && hit.collider.gameObject.name == "GridMask")
+                {
+                    print("I HIT THAT SHIT");
+                    gridSquares[i, j] = true;
+
+                    if (i - 1 >= 0)
+                        gridSquares[i - 1, j] = true;
+                    if (i - 1 >= 0 && j - 1 >= 0)
+                        gridSquares[i - 1, j - 1] = true;
+                    if (j - 1 >= 0)
+                        gridSquares[i, j - 1] = true;
+                }
+            }
+        }
+    }
+
+
+
+    //void OnDrawGizmosSelected()
     //{
-    //    Tower newTower = new Tower();
 
-    //    newTower.gameObject = tower.gameObject;
-    //    newTower.sizeX = tower.sizeX;
-    //    newTower.sizeZ = tower.sizeZ;
-    //    newTower.blueCost = tower.blueCost;
-    //    newTower.greenCost = tower.greenCost;
-    //    newTower.redCost = tower.redCost;
+    //    Vector3 corner = new Vector3(gridCenter.position.x - (squareSizeX * gridSizeX / 2), gridCenter.position.y, gridCenter.position.z - (squareSizeZ * gridSizeZ / 2));
+    //    for (int i = 0; i < gridSizeX; i++)
+    //    {
+    //        for (int j = 0; j < gridSizeZ; j++)
+    //        {
 
-    //    return newTower;
+    //            Vector3 origin = new Vector3(corner.x + (squareSizeX * i), corner.y, corner.z + (squareSizeZ * j));
+    //            if(gridSquares[i, j] == true)
+    //                Debug.DrawRay(origin + Vector3.up, Vector3.down, Color.red);
+    //            else
+    //                Debug.DrawRay(origin + Vector3.up, Vector3.down, Color.blue);
+    //        }
+    //    }
     //}
 }
 

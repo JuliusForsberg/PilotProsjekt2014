@@ -10,7 +10,7 @@ using System.Collections.Generic;
 public class CharacterMotor : MonoBehaviour
 {
 	// Does this script currently respond to input?
-	bool canControl = true;
+	public bool canControl = true;
 	bool useFixedUpdate = true;
 	
 	// For the next variables, [System.NonSerialized] tells Unity to not serialize the variable or show it in the inspector view.

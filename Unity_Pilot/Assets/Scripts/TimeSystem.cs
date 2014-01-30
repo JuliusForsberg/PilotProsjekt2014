@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class TimeSystem : MonoBehaviour {
 
+	private delegate void Fade();
+
 	public GUIText clock;
 	public Transform hand;
 	public GameObject waveManager;
@@ -35,13 +37,9 @@ public class TimeSystem : MonoBehaviour {
 	private bool fade;
 	private float fadeNight;
 
-	private enum TimeOfDay{DUSK, DAY, DAWN, NIGHT};
-	private TimeOfDay sunState;
+	private Fade fadeTo;
 
-	private List<Enemy> enemyList;
-	private float nextUpdatePath;
-
-	private List<Light> lightList;
+	private List<GameObject> lightList;
 
 	void Start(){
 		timer = 0;
@@ -52,14 +50,12 @@ public class TimeSystem : MonoBehaviour {
 
 		fade = false;
 
-		enemyList = new List<Enemy>();
-
-		lightList = new List<Light>();
+		lightList = new List<GameObject>();
 
 		GameObject[] lightArray = GameObject.FindGameObjectsWithTag("NightLight");
 
 		foreach(GameObject light in lightArray){
-			lightList.Add(light.GetComponent<Light>());
+			lightList.Add(light);
 		}
 	}
 
@@ -84,8 +80,7 @@ public class TimeSystem : MonoBehaviour {
 				}
 			}
 
-			hand.localEulerAngles = new Vector3(0,0,(hour * 15.0f * -1.0f));
-			hand.Rotate(0.0f, 0.0f,(minute * 0.25f * -1.0f));
+			ClockHand.angle = (hour * 15f) + (minute * 0.25f);
 
 			//Temp clock
 			clock.text = hour.ToString("00") + ":" + minute.ToString("00");
@@ -96,70 +91,48 @@ public class TimeSystem : MonoBehaviour {
 					waveManager.SetActive(true);
 				}
 				switch(hour){
-				case 0:
-					sunState = TimeOfDay.DAWN;
-					fade = true;
-					if(enemyList.Count > 0){
-						while(enemyList.Count > 0){
-							enemyList[0].Petrify();
+					case 0:
+						fadeTo = FadeToDawn;
+						fade = true;
+						
+						GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+						foreach(GameObject en in enemies){
+							en.GetComponent<Enemy>().Petrify();
 						}
-					}
-					for(int i=0; i<lightList.Count; i++){
-						lightList[i].enabled = false;
-					}
-					break;
-				case 2:
-					sunState = TimeOfDay.DAY;
-					fade = true;
-					break;
-				case 16:
-					sunState = TimeOfDay.DUSK;
-					fade = true;
-					break;
-				case 19:
-					sunState = TimeOfDay.NIGHT;
-					fade = true;
-					fadeNight = Time.time + 2f;
-					for(int i=0; i<lightList.Count; i++){
-						lightList[i].enabled = true;
-					}
-					break;
+
+						foreach(GameObject light in lightList){
+							light.SetActive(false);
+						}
+						break;
+					case 2:
+						fadeTo = FadeToDay;
+						fade = true;
+						break;
+					case 16:
+						fadeTo = FadeToDusk;
+						fade = true;
+						break;
+					case 19:
+						fadeTo = FadeToNight;
+						fade = true;
+						fadeNight = Time.time + 3f;
+
+						foreach(GameObject light in lightList){
+							light.SetActive(true);
+						}
+						break;
 				}
-				
-				//Debug.Log(sunState);
-				
 				lastHourChange = hour;
 			}
 		}
 
 		if(fade){
-			switch(sunState){
-				case TimeOfDay.DAWN:
-					FadeToDawn();
-					break;
-				case TimeOfDay.DAY:
-					FadeToDay();
-					break;
-				case TimeOfDay.DUSK:
-					FadeToDusk();
-					break;
-				case TimeOfDay.NIGHT:
-					FadeToNight();
-					break;
-			}
-		}
-
-		//Update pathfinding if there are enemies.
-		if(enemyList.Count > 0){
-			if(Time.time >= nextUpdatePath){
-				//Debug.Log("Update path");
-				AstarPath.active.Scan();
-				nextUpdatePath = Time.time + 1f;
-			}
+			fadeTo();
 		}
 	}
 
 	private void FadeToDawn(){
+		//Debug.Log("FadeDawn");
 		if(!sun.gameObject.activeSelf){
 			sun.gameObject.SetActive(true);
 		}
@@ -183,6 +156,7 @@ public class TimeSystem : MonoBehaviour {
 	}
 	
 	private void FadeToDay(){
+		//Debug.Log("FadeDay");
 		Quaternion quatDayRotation = Quaternion.Euler(new Vector3(dayRotation,0f,0f));
 
 		sun.rotation = Quaternion.RotateTowards(sun.rotation, quatDayRotation, Time.deltaTime*10f);
@@ -199,6 +173,7 @@ public class TimeSystem : MonoBehaviour {
 	}
 
 	private void FadeToDusk(){
+		//Debug.Log("FadeDusk");
 		Quaternion quatDuskRotation = Quaternion.Euler(new Vector3(duskRotation,0f,0f));
 
 		sun.rotation = Quaternion.RotateTowards(sun.rotation, quatDuskRotation, Time.deltaTime*10f);
@@ -215,6 +190,7 @@ public class TimeSystem : MonoBehaviour {
 	}
 
 	private void FadeToNight(){
+		//Debug.Log("FadeNight");
 		Quaternion quatNightRotation = Quaternion.Euler(new Vector3(nightRotation,0f,0f));
 
 		sun.rotation = Quaternion.RotateTowards(sun.rotation, quatNightRotation, Time.deltaTime*10f);
@@ -236,13 +212,5 @@ public class TimeSystem : MonoBehaviour {
 			sun.rotation = Quaternion.identity;
 			sun.gameObject.SetActive(false);
 		}
-	}
-
-	public void AddEnemy(Enemy enemy){
-		enemyList.Add (enemy);
-	}
-
-	public void RemoveEnemy(Enemy enemy){
-		enemyList.Remove (enemy);
 	}
 }

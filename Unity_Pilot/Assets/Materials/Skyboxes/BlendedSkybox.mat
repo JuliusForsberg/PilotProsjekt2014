@@ -108,7 +108,7 @@ Material:
       data:
         first:
           name: _Blend
-        second: 7.15003957e-14
+        second: .000250731449
     m_Colors:
       data:
         first:

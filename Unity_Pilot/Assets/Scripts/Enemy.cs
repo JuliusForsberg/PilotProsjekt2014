@@ -9,7 +9,6 @@ public class Enemy : MonoBehaviour {
 
 	private PlayerStats player;
 	private Crystal crystal;
-	private AIPath pathTarget;
 	private Gate gate;
 
 	public float defaultAggroLevel = 20f;
@@ -17,13 +16,16 @@ public class Enemy : MonoBehaviour {
 
 	private float nextAttack;
 
-	private TimeSystem timeSystem;
+	private NavMeshAgent navAgent;
+	private Transform currentTarget;
 
 	//Testing
 	public bool waveActive;
 	//--------
 
 	void Start(){
+		navAgent = GetComponent<NavMeshAgent>();
+
 		player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
 		crystal = GameObject.FindGameObjectWithTag("Crystal").GetComponent<Crystal>();
 
@@ -31,41 +33,44 @@ public class Enemy : MonoBehaviour {
 			gate = GameObject.FindGameObjectWithTag("Gate").GetComponent<Gate>();
 		}
 
-		pathTarget = gameObject.GetComponent<AIPath>();
-
 		aggroLevel = 30f;
 
-		if(pathTarget){
-			if(gate)
-				pathTarget.target = gate.transform;
-			else
-				pathTarget.target = crystal.transform;
-		}
+		if(gate)
+			currentTarget = gate.transform;
+		else
+			currentTarget = crystal.transform;
+
+		navAgent.SetDestination(currentTarget.position);
 
 		if(waveActive){
 			WaveManager waveManager = GameObject.Find("_WaveManager").gameObject.GetComponent<WaveManager>();
 
 			health *= waveManager.waveMultiplier;
 		}
-
-		timeSystem = GameObject.Find("_TimeSystem").GetComponent<TimeSystem>();
 	}
 
 	void Update(){
 		if(gate != null){
-			if(pathTarget.target == gate.transform && gate.isDestroyed()){
-				pathTarget.target = crystal.transform;
+			if(currentTarget == gate.transform && gate.isDestroyed()){
+				currentTarget = crystal.transform;
+				navAgent.SetDestination(crystal.transform.position);
 			}
 		}
 
-		if(aggroLevel > defaultAggroLevel+5f && pathTarget.target != player.transform){
+		if(currentTarget == player.transform){
+			navAgent.SetDestination(player.transform.position);
+		}
+
+		if(aggroLevel > defaultAggroLevel+5f && currentTarget != player.transform){
 			if((player.transform.position - transform.position).sqrMagnitude < 5f*5f){
 				Debug.Log("SetTarget: Player");
-				pathTarget.target = player.transform;
+				currentTarget = player.transform;
+				navAgent.SetDestination(player.transform.position);
 			}
-		}else if(aggroLevel < defaultAggroLevel && pathTarget.target == player.transform){
+		}else if(aggroLevel < defaultAggroLevel+1f && currentTarget == player.transform){
 			Debug.Log("SetTarget: Crystal");
-			pathTarget.target = crystal.transform;
+			currentTarget = crystal.transform;
+			navAgent.SetDestination(crystal.transform.position);
 		}
 
 		if(Mathf.Abs(aggroLevel - defaultAggroLevel) > 0.1f){
@@ -73,7 +78,7 @@ public class Enemy : MonoBehaviour {
 		}
 
 		if(Time.time >= nextAttack){
-			if((pathTarget.target.position - transform.position).sqrMagnitude < 3f*3f){
+			if((currentTarget.position - transform.position).sqrMagnitude < 3f*3f){
 				AttackTarget();
 			}
 		}
@@ -105,11 +110,11 @@ public class Enemy : MonoBehaviour {
 		//Debug.Log("Attack Target");
 		nextAttack = Time.time + attackSpeed;
 
-		if(pathTarget.target == player.transform){
+		if(currentTarget == player.transform){
 			player.TakeDamage(damage);
-		}else if(pathTarget.target == crystal.transform){
+		}else if(currentTarget == crystal.transform){
 			crystal.TakeDamage(damage);
-		}else if(pathTarget.target == gate.transform){
+		}else if(currentTarget == gate.transform){
 			gate.TakeDamage(damage);
 		}
 
@@ -118,8 +123,7 @@ public class Enemy : MonoBehaviour {
 
 
 	private IEnumerator WaitAndDie(float seconds){
-		timeSystem.RemoveEnemy(this);
-		GetComponent<AIPath>().enabled = false;
+		navAgent.enabled = false;
 		transform.Rotate(Vector3.forward, 90f);
 
 		yield return new WaitForSeconds(seconds);

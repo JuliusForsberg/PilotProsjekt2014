@@ -21,9 +21,7 @@ public class WaveManager : MonoBehaviour {
 	private float waveEndTime;
 
 	public float waveLength;
-
-	private TimeSystem timeSystem;
-
+	
 	//TESTING
 	private float nextActiveTime;
 	private bool waveActive;
@@ -42,8 +40,6 @@ public class WaveManager : MonoBehaviour {
 		spawns[2] = transform.FindChild("SpawnPointEast");
 		
 		nextSpawnTime = new float[transform.childCount];
-
-		timeSystem = GameObject.Find("_TimeSystem").GetComponent<TimeSystem>();
 	}
 
 	void OnEnable(){
@@ -75,7 +71,7 @@ public class WaveManager : MonoBehaviour {
 							
 							//TESTING
 							waveActive = false;
-							//gameObject.SetActive(false);
+							gameObject.SetActive(false);
 							//------
 							nextActiveTime = Time.time + 3f;
 						}
@@ -91,7 +87,7 @@ public class WaveManager : MonoBehaviour {
 			}else{
 				//TESTING
 				waveActive = false;
-				//gameObject.SetActive(false);
+				gameObject.SetActive(false);
 				//------
 				
 				nextActiveTime = Time.time + 5f;
@@ -130,8 +126,7 @@ public class WaveManager : MonoBehaviour {
 		Vector3 spawnPoint = new Vector3(spawns[num].position.x, spawns[num].position.y, spawns[num].position.z);
 		spawnPoint.x = Random.Range(spawnPoint.x - positionOffsetXZ.x, spawnPoint.x + positionOffsetXZ.x);
 		spawnPoint.z = Random.Range(spawnPoint.z - positionOffsetXZ.y, spawnPoint.z + positionOffsetXZ.y);
-		GameObject enemy = Instantiate(enemyType[spawnType].gameObject, spawnPoint, spawns[num].rotation) as GameObject;
-		timeSystem.AddEnemy(enemy.GetComponent<Enemy>());
+		Instantiate(enemyType[spawnType].gameObject, spawnPoint, spawns[num].rotation);
 	}
 
 	private IEnumerator SleepForSeconds(float seconds, int spawnNumber){

@@ -54,7 +54,7 @@ public class TowerLogic : MonoBehaviour {
 					Quaternion desiredTiltRotation = desiredRotation;
 
 					//Use the rotation for the tilt.
-					desiredTiltRotation.eulerAngles = new Vector3(desiredTiltRotation.eulerAngles.x - (15f + ((relativePos.sqrMagnitude/range)*2f)), 0f, 0f);
+					desiredTiltRotation.eulerAngles = new Vector3(desiredTiltRotation.eulerAngles.x - (5f + ((relativePos.sqrMagnitude/range)*2f)), 0f, 0f);
 					tilt.localRotation = Quaternion.Lerp(tilt.localRotation, desiredTiltRotation, turnSpeed*Time.deltaTime);
 
 					//Only use the y axis.

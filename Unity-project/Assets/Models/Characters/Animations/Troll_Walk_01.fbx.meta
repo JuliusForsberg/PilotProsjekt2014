@@ -1,0 +1,947 @@
+fileFormatVersion: 2
+guid: d429f045d01b3594ca6cc9e66c056779
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: ABT_Rig_Troll:back
+    100002: ABT_Rig_Troll:be_beard_b01
+    100004: ABT_Rig_Troll:be_head01
+    100006: ABT_Rig_Troll:be_l_ind_d01
+    100008: ABT_Rig_Troll:be_l_mid_d01
+    100010: ABT_Rig_Troll:be_l_shld01
+    100012: ABT_Rig_Troll:be_l_toe01
+    100014: ABT_Rig_Troll:be_nose_c01
+    100016: ABT_Rig_Troll:be_r_ind_d01
+    100018: ABT_Rig_Troll:be_r_mid_d01
+    100020: ABT_Rig_Troll:be_r_shld01
+    100022: ABT_Rig_Troll:be_r_toe01
+    100024: ABT_Rig_Troll:be_spE01
+    100026: ABT_Rig_Troll:be_tail_f01
+    100028: ABT_Rig_Troll:bn_beard_a01
+    100030: ABT_Rig_Troll:bn_hair01
+    100032: ABT_Rig_Troll:bn_head01
+    100034: ABT_Rig_Troll:bn_l_arm01
+    100036: ABT_Rig_Troll:bn_l_ball01
+    100038: ABT_Rig_Troll:bn_l_elbow01
+    100040: ABT_Rig_Troll:bn_l_foot01
+    100042: ABT_Rig_Troll:bn_l_ind_a01
+    100044: ABT_Rig_Troll:bn_l_ind_b01
+    100046: ABT_Rig_Troll:bn_l_ind_c01
+    100048: ABT_Rig_Troll:bn_l_knee01
+    100050: ABT_Rig_Troll:bn_l_mid_a01
+    100052: ABT_Rig_Troll:bn_l_mid_b01
+    100054: ABT_Rig_Troll:bn_l_mid_c01
+    100056: ABT_Rig_Troll:bn_l_shld01
+    100058: ABT_Rig_Troll:bn_l_thigh01
+    100060: ABT_Rig_Troll:bn_l_thmb_a01
+    100062: ABT_Rig_Troll:bn_l_thmb_b01
+    100064: ABT_Rig_Troll:bn_l_thmb_c01
+    100066: ABT_Rig_Troll:bn_l_thmb_d01
+    100068: ABT_Rig_Troll:bn_l_wrist01
+    100070: ABT_Rig_Troll:bn_neck01
+    100072: ABT_Rig_Troll:bn_nose_a01
+    100074: ABT_Rig_Troll:bn_nose_b01
+    100076: ABT_Rig_Troll:bn_r_arm01
+    100078: ABT_Rig_Troll:bn_r_ball01
+    100080: ABT_Rig_Troll:bn_r_elbow01
+    100082: ABT_Rig_Troll:bn_r_foot01
+    100084: ABT_Rig_Troll:bn_r_ind_a01
+    100086: ABT_Rig_Troll:bn_r_ind_b01
+    100088: ABT_Rig_Troll:bn_r_ind_c01
+    100090: ABT_Rig_Troll:bn_r_knee01
+    100092: ABT_Rig_Troll:bn_r_mid_a01
+    100094: ABT_Rig_Troll:bn_r_mid_b01
+    100096: ABT_Rig_Troll:bn_r_mid_c01
+    100098: ABT_Rig_Troll:bn_r_shld01
+    100100: ABT_Rig_Troll:bn_r_thigh01
+    100102: ABT_Rig_Troll:bn_r_thmb_a01
+    100104: ABT_Rig_Troll:bn_r_thmb_b01
+    100106: ABT_Rig_Troll:bn_r_thmb_c01
+    100108: ABT_Rig_Troll:bn_r_thmb_d01
+    100110: ABT_Rig_Troll:bn_r_wrist01
+    100112: ABT_Rig_Troll:bn_spA01
+    100114: ABT_Rig_Troll:bn_spB01
+    100116: ABT_Rig_Troll:bn_spC01
+    100118: ABT_Rig_Troll:bn_spD01
+    100120: ABT_Rig_Troll:bn_tail_a01
+    100122: ABT_Rig_Troll:bn_tail_b01
+    100124: ABT_Rig_Troll:bn_tail_c01
+    100126: ABT_Rig_Troll:bn_tail_d01
+    100128: ABT_Rig_Troll:bn_tail_e01
+    100130: ABT_Rig_Troll:Body
+    100132: ABT_Rig_Troll:cc_beard01
+    100134: ABT_Rig_Troll:cc_chest01
+    100136: ABT_Rig_Troll:cc_COG01
+    100138: ABT_Rig_Troll:cc_eyes01
+    100140: ABT_Rig_Troll:cc_global1
+    100142: ABT_Rig_Troll:cc_hair01
+    100144: ABT_Rig_Troll:cc_head01
+    100146: ABT_Rig_Troll:cc_hip01
+    100148: ABT_Rig_Troll:cc_l_armFK01
+    100150: ABT_Rig_Troll:cc_l_armPos01
+    100152: ABT_Rig_Troll:cc_l_ball01
+    100154: ABT_Rig_Troll:cc_l_ballfree01
+    100156: ABT_Rig_Troll:cc_l_bklt_FootPivot01
+    100158: ABT_Rig_Troll:cc_l_bkrt_FootPivot01
+    100160: ABT_Rig_Troll:cc_l_elbow01
+    100162: ABT_Rig_Troll:cc_l_elbowFK01
+    100164: ABT_Rig_Troll:cc_l_eye01
+    100166: ABT_Rig_Troll:cc_l_foot01
+    100168: ABT_Rig_Troll:cc_l_ftlt_FootPivot01
+    100170: ABT_Rig_Troll:cc_l_ftrt_FootPivot01
+    100172: ABT_Rig_Troll:cc_l_heel01
+    100174: ABT_Rig_Troll:cc_l_ikfk01
+    100176: ABT_Rig_Troll:cc_l_knee01
+    100178: ABT_Rig_Troll:cc_l_midlt_FootPivot01
+    100180: ABT_Rig_Troll:cc_l_midrt_FootPivot01
+    100182: ABT_Rig_Troll:cc_l_shld01
+    100184: ABT_Rig_Troll:cc_l_toe01
+    100186: ABT_Rig_Troll:cc_l_wristFK01
+    100188: ABT_Rig_Troll:cc_neck01
+    100190: ABT_Rig_Troll:cc_nose_a01
+    100192: ABT_Rig_Troll:cc_nose_b01
+    100194: ABT_Rig_Troll:cc_r_armFK01
+    100196: ABT_Rig_Troll:cc_r_armPos01
+    100198: ABT_Rig_Troll:cc_r_ball02
+    100200: ABT_Rig_Troll:cc_r_ballfree01
+    100202: ABT_Rig_Troll:cc_r_bklt_FootPivot01
+    100204: ABT_Rig_Troll:cc_r_bkrt_FootPivot01
+    100206: ABT_Rig_Troll:cc_r_elbow01
+    100208: ABT_Rig_Troll:cc_r_elbowFK01
+    100210: ABT_Rig_Troll:cc_r_eye01
+    100212: ABT_Rig_Troll:cc_r_foot01
+    100214: ABT_Rig_Troll:cc_r_ftlt_FootPivot01
+    100216: ABT_Rig_Troll:cc_r_ftrt_FootPivot01
+    100218: ABT_Rig_Troll:cc_r_heel01
+    100220: ABT_Rig_Troll:cc_r_ikfk01
+    100222: ABT_Rig_Troll:cc_r_knee01
+    100224: ABT_Rig_Troll:cc_r_midlt_FootPivot01
+    100226: ABT_Rig_Troll:cc_r_midrt_FootPivot01
+    100228: ABT_Rig_Troll:cc_r_shld01
+    100230: ABT_Rig_Troll:cc_r_toe01
+    100232: ABT_Rig_Troll:cc_r_wristFK01
+    100234: ABT_Rig_Troll:cc_tail_a01
+    100236: ABT_Rig_Troll:cc_tail_b01
+    100238: ABT_Rig_Troll:cc_tail_c01
+    100240: ABT_Rig_Troll:cc_tail_d01
+    100242: ABT_Rig_Troll:cc_tail_e01
+    100244: ABT_Rig_Troll:cl_crvCnt_l_elbow_a01
+    100246: ABT_Rig_Troll:cl_crvCnt_l_elbow_b01
+    100248: ABT_Rig_Troll:cl_crvCnt_l_knee_a01
+    100250: ABT_Rig_Troll:cl_crvCnt_l_knee_b01
+    100252: ABT_Rig_Troll:cl_crvCnt_r_elbow_a01
+    100254: ABT_Rig_Troll:cl_crvCnt_r_elbow_b01
+    100256: ABT_Rig_Troll:cl_crvCnt_r_knee_a01
+    100258: ABT_Rig_Troll:cl_crvCnt_r_knee_b01
+    100260: ABT_Rig_Troll:controlObjects01
+    100262: ABT_Rig_Troll:crvCnt_l_elbow01
+    100264: ABT_Rig_Troll:crvCnt_l_knee01
+    100266: ABT_Rig_Troll:crvCnt_r_elbow01
+    100268: ABT_Rig_Troll:crvCnt_r_knee01
+    100270: ABT_Rig_Troll:cSpl_Spine01
+    100272: ABT_Rig_Troll:extraNodes01
+    100274: ABT_Rig_Troll:eye1
+    100276: ABT_Rig_Troll:eye2
+    100278: ABT_Rig_Troll:globalMove01
+    100280: ABT_Rig_Troll:grp_cc_beard01
+    100282: ABT_Rig_Troll:grp_cc_hair01
+    100284: ABT_Rig_Troll:grp_cc_l_armFK01
+    100286: ABT_Rig_Troll:grp_cc_l_ballfree01
+    100288: ABT_Rig_Troll:grp_cc_nose_a01
+    100290: ABT_Rig_Troll:grp_cc_nose_b01
+    100292: ABT_Rig_Troll:grp_cc_r_armFK01
+    100294: ABT_Rig_Troll:grp_cc_r_ballfree01
+    100296: ABT_Rig_Troll:grp_cc_tail_a01
+    100298: ABT_Rig_Troll:grp_cc_tail_b01
+    100300: ABT_Rig_Troll:grp_cc_tail_c01
+    100302: ABT_Rig_Troll:grp_cc_tail_d01
+    100304: ABT_Rig_Troll:grp_cc_tail_e01
+    100306: ABT_Rig_Troll:grp_cl_crvCnt_elbows01
+    100308: ABT_Rig_Troll:grp_cl_crvCnt_knees01
+    100310: ABT_Rig_Troll:grp_locAim_bn_spA01
+    100312: ABT_Rig_Troll:grp_locAim_bn_spB01
+    100314: ABT_Rig_Troll:grp_locAim_bn_spC01
+    100316: ABT_Rig_Troll:grp_locAim_bn_spD01
+    100318: ABT_Rig_Troll:hair
+    100320: ABT_Rig_Troll:iks01
+    100322: ABT_Rig_Troll:jntCtrl_chest01
+    100324: ABT_Rig_Troll:jntCtrl_hip01
+    100326: ABT_Rig_Troll:jntDrv_spA01
+    100328: ABT_Rig_Troll:jntDrv_spB01
+    100330: ABT_Rig_Troll:jntDrv_spC01
+    100332: ABT_Rig_Troll:jntDrv_spD01
+    100334: ABT_Rig_Troll:jntDrv_spE01
+    100336: ABT_Rig_Troll:joints01
+    100338: ABT_Rig_Troll:locAim_bn_spA01
+    100340: ABT_Rig_Troll:locAim_bn_spB01
+    100342: ABT_Rig_Troll:locAim_bn_spC01
+    100344: ABT_Rig_Troll:locAim_bn_spD01
+    100346: ABT_Rig_Troll:locator1
+    100348: ABT_Rig_Troll:locMatch_l_armFK01
+    100350: ABT_Rig_Troll:locMatch_l_elbowFK01
+    100352: ABT_Rig_Troll:locMatch_l_wristIKFK01
+    100354: ABT_Rig_Troll:locMatch_r_armFK01
+    100356: ABT_Rig_Troll:locMatch_r_elbowFK01
+    100358: ABT_Rig_Troll:locMatch_r_wristIKFK01
+    100360: ABT_Rig_Troll:locOri_cc_l_foot01
+    100362: ABT_Rig_Troll:locOri_cc_r_foot01
+    100364: ABT_Rig_Troll:locOri_head01
+    100366: ABT_Rig_Troll:locOri_l_ball01
+    100368: ABT_Rig_Troll:locOri_l_shld01
+    100370: ABT_Rig_Troll:locOri_l_wristCtrl01
+    100372: ABT_Rig_Troll:locOri_neck01
+    100374: ABT_Rig_Troll:locOri_r_ball01
+    100376: ABT_Rig_Troll:locOri_r_shld01
+    100378: ABT_Rig_Troll:locOri_r_wristCtrl01
+    100380: ABT_Rig_Troll:model01
+    100382: ABT_Rig_Troll:rl_l_ball01
+    100384: ABT_Rig_Troll:rl_l_foot01
+    100386: ABT_Rig_Troll:rl_l_heel01
+    100388: ABT_Rig_Troll:rl_l_toe01
+    100390: ABT_Rig_Troll:rl_r_ball01
+    100392: ABT_Rig_Troll:rl_r_foot01
+    100394: ABT_Rig_Troll:rl_r_heel01
+    100396: ABT_Rig_Troll:rl_r_toe01
+    100398: ABT_Rig_Troll:rp_l_arm01
+    100400: ABT_Rig_Troll:rp_l_leg01
+    100402: ABT_Rig_Troll:rp_r_arm01
+    100404: ABT_Rig_Troll:rp_r_leg01
+    100406: ABT_Rig_Troll:spIK_spine01
+    100408: ABT_Rig_Troll:transform1
+    100410: ABT_Rig_Troll:transform2
+    100412: ABT_Rig_Troll:troll
+    100414: ABT_Rig_Troll:xtra_toHide01
+    100416: ABT_Rig_Troll:xtra_toShow01
+    100418: pPlane1
+    100420: pPlane2
+    100422: //RootNode
+    400000: ABT_Rig_Troll:back
+    400002: ABT_Rig_Troll:be_beard_b01
+    400004: ABT_Rig_Troll:be_head01
+    400006: ABT_Rig_Troll:be_l_ind_d01
+    400008: ABT_Rig_Troll:be_l_mid_d01
+    400010: ABT_Rig_Troll:be_l_shld01
+    400012: ABT_Rig_Troll:be_l_toe01
+    400014: ABT_Rig_Troll:be_nose_c01
+    400016: ABT_Rig_Troll:be_r_ind_d01
+    400018: ABT_Rig_Troll:be_r_mid_d01
+    400020: ABT_Rig_Troll:be_r_shld01
+    400022: ABT_Rig_Troll:be_r_toe01
+    400024: ABT_Rig_Troll:be_spE01
+    400026: ABT_Rig_Troll:be_tail_f01
+    400028: ABT_Rig_Troll:bn_beard_a01
+    400030: ABT_Rig_Troll:bn_hair01
+    400032: ABT_Rig_Troll:bn_head01
+    400034: ABT_Rig_Troll:bn_l_arm01
+    400036: ABT_Rig_Troll:bn_l_ball01
+    400038: ABT_Rig_Troll:bn_l_elbow01
+    400040: ABT_Rig_Troll:bn_l_foot01
+    400042: ABT_Rig_Troll:bn_l_ind_a01
+    400044: ABT_Rig_Troll:bn_l_ind_b01
+    400046: ABT_Rig_Troll:bn_l_ind_c01
+    400048: ABT_Rig_Troll:bn_l_knee01
+    400050: ABT_Rig_Troll:bn_l_mid_a01
+    400052: ABT_Rig_Troll:bn_l_mid_b01
+    400054: ABT_Rig_Troll:bn_l_mid_c01
+    400056: ABT_Rig_Troll:bn_l_shld01
+    400058: ABT_Rig_Troll:bn_l_thigh01
+    400060: ABT_Rig_Troll:bn_l_thmb_a01
+    400062: ABT_Rig_Troll:bn_l_thmb_b01
+    400064: ABT_Rig_Troll:bn_l_thmb_c01
+    400066: ABT_Rig_Troll:bn_l_thmb_d01
+    400068: ABT_Rig_Troll:bn_l_wrist01
+    400070: ABT_Rig_Troll:bn_neck01
+    400072: ABT_Rig_Troll:bn_nose_a01
+    400074: ABT_Rig_Troll:bn_nose_b01
+    400076: ABT_Rig_Troll:bn_r_arm01
+    400078: ABT_Rig_Troll:bn_r_ball01
+    400080: ABT_Rig_Troll:bn_r_elbow01
+    400082: ABT_Rig_Troll:bn_r_foot01
+    400084: ABT_Rig_Troll:bn_r_ind_a01
+    400086: ABT_Rig_Troll:bn_r_ind_b01
+    400088: ABT_Rig_Troll:bn_r_ind_c01
+    400090: ABT_Rig_Troll:bn_r_knee01
+    400092: ABT_Rig_Troll:bn_r_mid_a01
+    400094: ABT_Rig_Troll:bn_r_mid_b01
+    400096: ABT_Rig_Troll:bn_r_mid_c01
+    400098: ABT_Rig_Troll:bn_r_shld01
+    400100: ABT_Rig_Troll:bn_r_thigh01
+    400102: ABT_Rig_Troll:bn_r_thmb_a01
+    400104: ABT_Rig_Troll:bn_r_thmb_b01
+    400106: ABT_Rig_Troll:bn_r_thmb_c01
+    400108: ABT_Rig_Troll:bn_r_thmb_d01
+    400110: ABT_Rig_Troll:bn_r_wrist01
+    400112: ABT_Rig_Troll:bn_spA01
+    400114: ABT_Rig_Troll:bn_spB01
+    400116: ABT_Rig_Troll:bn_spC01
+    400118: ABT_Rig_Troll:bn_spD01
+    400120: ABT_Rig_Troll:bn_tail_a01
+    400122: ABT_Rig_Troll:bn_tail_b01
+    400124: ABT_Rig_Troll:bn_tail_c01
+    400126: ABT_Rig_Troll:bn_tail_d01
+    400128: ABT_Rig_Troll:bn_tail_e01
+    400130: ABT_Rig_Troll:Body
+    400132: ABT_Rig_Troll:cc_beard01
+    400134: ABT_Rig_Troll:cc_chest01
+    400136: ABT_Rig_Troll:cc_COG01
+    400138: ABT_Rig_Troll:cc_eyes01
+    400140: ABT_Rig_Troll:cc_global1
+    400142: ABT_Rig_Troll:cc_hair01
+    400144: ABT_Rig_Troll:cc_head01
+    400146: ABT_Rig_Troll:cc_hip01
+    400148: ABT_Rig_Troll:cc_l_armFK01
+    400150: ABT_Rig_Troll:cc_l_armPos01
+    400152: ABT_Rig_Troll:cc_l_ball01
+    400154: ABT_Rig_Troll:cc_l_ballfree01
+    400156: ABT_Rig_Troll:cc_l_bklt_FootPivot01
+    400158: ABT_Rig_Troll:cc_l_bkrt_FootPivot01
+    400160: ABT_Rig_Troll:cc_l_elbow01
+    400162: ABT_Rig_Troll:cc_l_elbowFK01
+    400164: ABT_Rig_Troll:cc_l_eye01
+    400166: ABT_Rig_Troll:cc_l_foot01
+    400168: ABT_Rig_Troll:cc_l_ftlt_FootPivot01
+    400170: ABT_Rig_Troll:cc_l_ftrt_FootPivot01
+    400172: ABT_Rig_Troll:cc_l_heel01
+    400174: ABT_Rig_Troll:cc_l_ikfk01
+    400176: ABT_Rig_Troll:cc_l_knee01
+    400178: ABT_Rig_Troll:cc_l_midlt_FootPivot01
+    400180: ABT_Rig_Troll:cc_l_midrt_FootPivot01
+    400182: ABT_Rig_Troll:cc_l_shld01
+    400184: ABT_Rig_Troll:cc_l_toe01
+    400186: ABT_Rig_Troll:cc_l_wristFK01
+    400188: ABT_Rig_Troll:cc_neck01
+    400190: ABT_Rig_Troll:cc_nose_a01
+    400192: ABT_Rig_Troll:cc_nose_b01
+    400194: ABT_Rig_Troll:cc_r_armFK01
+    400196: ABT_Rig_Troll:cc_r_armPos01
+    400198: ABT_Rig_Troll:cc_r_ball02
+    400200: ABT_Rig_Troll:cc_r_ballfree01
+    400202: ABT_Rig_Troll:cc_r_bklt_FootPivot01
+    400204: ABT_Rig_Troll:cc_r_bkrt_FootPivot01
+    400206: ABT_Rig_Troll:cc_r_elbow01
+    400208: ABT_Rig_Troll:cc_r_elbowFK01
+    400210: ABT_Rig_Troll:cc_r_eye01
+    400212: ABT_Rig_Troll:cc_r_foot01
+    400214: ABT_Rig_Troll:cc_r_ftlt_FootPivot01
+    400216: ABT_Rig_Troll:cc_r_ftrt_FootPivot01
+    400218: ABT_Rig_Troll:cc_r_heel01
+    400220: ABT_Rig_Troll:cc_r_ikfk01
+    400222: ABT_Rig_Troll:cc_r_knee01
+    400224: ABT_Rig_Troll:cc_r_midlt_FootPivot01
+    400226: ABT_Rig_Troll:cc_r_midrt_FootPivot01
+    400228: ABT_Rig_Troll:cc_r_shld01
+    400230: ABT_Rig_Troll:cc_r_toe01
+    400232: ABT_Rig_Troll:cc_r_wristFK01
+    400234: ABT_Rig_Troll:cc_tail_a01
+    400236: ABT_Rig_Troll:cc_tail_b01
+    400238: ABT_Rig_Troll:cc_tail_c01
+    400240: ABT_Rig_Troll:cc_tail_d01
+    400242: ABT_Rig_Troll:cc_tail_e01
+    400244: ABT_Rig_Troll:cl_crvCnt_l_elbow_a01
+    400246: ABT_Rig_Troll:cl_crvCnt_l_elbow_b01
+    400248: ABT_Rig_Troll:cl_crvCnt_l_knee_a01
+    400250: ABT_Rig_Troll:cl_crvCnt_l_knee_b01
+    400252: ABT_Rig_Troll:cl_crvCnt_r_elbow_a01
+    400254: ABT_Rig_Troll:cl_crvCnt_r_elbow_b01
+    400256: ABT_Rig_Troll:cl_crvCnt_r_knee_a01
+    400258: ABT_Rig_Troll:cl_crvCnt_r_knee_b01
+    400260: ABT_Rig_Troll:controlObjects01
+    400262: ABT_Rig_Troll:crvCnt_l_elbow01
+    400264: ABT_Rig_Troll:crvCnt_l_knee01
+    400266: ABT_Rig_Troll:crvCnt_r_elbow01
+    400268: ABT_Rig_Troll:crvCnt_r_knee01
+    400270: ABT_Rig_Troll:cSpl_Spine01
+    400272: ABT_Rig_Troll:extraNodes01
+    400274: ABT_Rig_Troll:eye1
+    400276: ABT_Rig_Troll:eye2
+    400278: ABT_Rig_Troll:globalMove01
+    400280: ABT_Rig_Troll:grp_cc_beard01
+    400282: ABT_Rig_Troll:grp_cc_hair01
+    400284: ABT_Rig_Troll:grp_cc_l_armFK01
+    400286: ABT_Rig_Troll:grp_cc_l_ballfree01
+    400288: ABT_Rig_Troll:grp_cc_nose_a01
+    400290: ABT_Rig_Troll:grp_cc_nose_b01
+    400292: ABT_Rig_Troll:grp_cc_r_armFK01
+    400294: ABT_Rig_Troll:grp_cc_r_ballfree01
+    400296: ABT_Rig_Troll:grp_cc_tail_a01
+    400298: ABT_Rig_Troll:grp_cc_tail_b01
+    400300: ABT_Rig_Troll:grp_cc_tail_c01
+    400302: ABT_Rig_Troll:grp_cc_tail_d01
+    400304: ABT_Rig_Troll:grp_cc_tail_e01
+    400306: ABT_Rig_Troll:grp_cl_crvCnt_elbows01
+    400308: ABT_Rig_Troll:grp_cl_crvCnt_knees01
+    400310: ABT_Rig_Troll:grp_locAim_bn_spA01
+    400312: ABT_Rig_Troll:grp_locAim_bn_spB01
+    400314: ABT_Rig_Troll:grp_locAim_bn_spC01
+    400316: ABT_Rig_Troll:grp_locAim_bn_spD01
+    400318: ABT_Rig_Troll:hair
+    400320: ABT_Rig_Troll:iks01
+    400322: ABT_Rig_Troll:jntCtrl_chest01
+    400324: ABT_Rig_Troll:jntCtrl_hip01
+    400326: ABT_Rig_Troll:jntDrv_spA01
+    400328: ABT_Rig_Troll:jntDrv_spB01
+    400330: ABT_Rig_Troll:jntDrv_spC01
+    400332: ABT_Rig_Troll:jntDrv_spD01
+    400334: ABT_Rig_Troll:jntDrv_spE01
+    400336: ABT_Rig_Troll:joints01
+    400338: ABT_Rig_Troll:locAim_bn_spA01
+    400340: ABT_Rig_Troll:locAim_bn_spB01
+    400342: ABT_Rig_Troll:locAim_bn_spC01
+    400344: ABT_Rig_Troll:locAim_bn_spD01
+    400346: ABT_Rig_Troll:locator1
+    400348: ABT_Rig_Troll:locMatch_l_armFK01
+    400350: ABT_Rig_Troll:locMatch_l_elbowFK01
+    400352: ABT_Rig_Troll:locMatch_l_wristIKFK01
+    400354: ABT_Rig_Troll:locMatch_r_armFK01
+    400356: ABT_Rig_Troll:locMatch_r_elbowFK01
+    400358: ABT_Rig_Troll:locMatch_r_wristIKFK01
+    400360: ABT_Rig_Troll:locOri_cc_l_foot01
+    400362: ABT_Rig_Troll:locOri_cc_r_foot01
+    400364: ABT_Rig_Troll:locOri_head01
+    400366: ABT_Rig_Troll:locOri_l_ball01
+    400368: ABT_Rig_Troll:locOri_l_shld01
+    400370: ABT_Rig_Troll:locOri_l_wristCtrl01
+    400372: ABT_Rig_Troll:locOri_neck01
+    400374: ABT_Rig_Troll:locOri_r_ball01
+    400376: ABT_Rig_Troll:locOri_r_shld01
+    400378: ABT_Rig_Troll:locOri_r_wristCtrl01
+    400380: ABT_Rig_Troll:model01
+    400382: ABT_Rig_Troll:rl_l_ball01
+    400384: ABT_Rig_Troll:rl_l_foot01
+    400386: ABT_Rig_Troll:rl_l_heel01
+    400388: ABT_Rig_Troll:rl_l_toe01
+    400390: ABT_Rig_Troll:rl_r_ball01
+    400392: ABT_Rig_Troll:rl_r_foot01
+    400394: ABT_Rig_Troll:rl_r_heel01
+    400396: ABT_Rig_Troll:rl_r_toe01
+    400398: ABT_Rig_Troll:rp_l_arm01
+    400400: ABT_Rig_Troll:rp_l_leg01
+    400402: ABT_Rig_Troll:rp_r_arm01
+    400404: ABT_Rig_Troll:rp_r_leg01
+    400406: ABT_Rig_Troll:spIK_spine01
+    400408: ABT_Rig_Troll:transform1
+    400410: ABT_Rig_Troll:transform2
+    400412: ABT_Rig_Troll:troll
+    400414: ABT_Rig_Troll:xtra_toHide01
+    400416: ABT_Rig_Troll:xtra_toShow01
+    400418: pPlane1
+    400420: pPlane2
+    400422: //RootNode
+    2300000: pPlane1
+    2300002: pPlane2
+    3300000: pPlane1
+    3300002: pPlane2
+    4300000: pPlane1
+    4300002: pPlane2
+    4300004: ABT_Rig_Troll:hair
+    4300006: ABT_Rig_Troll:eye2
+    4300008: ABT_Rig_Troll:eye1
+    4300010: ABT_Rig_Troll:Body
+    7400000: Troll_Walk
+    9500000: //RootNode
+    11100000: //RootNode
+    13700000: ABT_Rig_Troll:Body
+    13700002: ABT_Rig_Troll:eye1
+    13700004: ABT_Rig_Troll:eye2
+    13700006: ABT_Rig_Troll:hair
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Troll_Walk
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 40
+      wrapMode: 2
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: ABT_Rig_Troll:back
+        weight: 1
+      - path: ABT_Rig_Troll:locator1
+        weight: 1
+      - path: ABT_Rig_Troll:troll
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:cc_global1
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:extraNodes01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:extraNodes01/ABT_Rig_Troll:xtra_toHide01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:extraNodes01/ABT_Rig_Troll:xtra_toHide01/ABT_Rig_Troll:cSpl_Spine01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:extraNodes01/ABT_Rig_Troll:xtra_toHide01/ABT_Rig_Troll:grp_cl_crvCnt_elbows01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:extraNodes01/ABT_Rig_Troll:xtra_toHide01/ABT_Rig_Troll:grp_cl_crvCnt_elbows01/ABT_Rig_Troll:cl_crvCnt_l_elbow_a01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:extraNodes01/ABT_Rig_Troll:xtra_toHide01/ABT_Rig_Troll:grp_cl_crvCnt_elbows01/ABT_Rig_Troll:cl_crvCnt_l_elbow_b01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:extraNodes01/ABT_Rig_Troll:xtra_toHide01/ABT_Rig_Troll:grp_cl_crvCnt_elbows01/ABT_Rig_Troll:cl_crvCnt_r_elbow_a01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:extraNodes01/ABT_Rig_Troll:xtra_toHide01/ABT_Rig_Troll:grp_cl_crvCnt_elbows01/ABT_Rig_Troll:cl_crvCnt_r_elbow_b01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:extraNodes01/ABT_Rig_Troll:xtra_toHide01/ABT_Rig_Troll:grp_cl_crvCnt_knees01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:extraNodes01/ABT_Rig_Troll:xtra_toHide01/ABT_Rig_Troll:grp_cl_crvCnt_knees01/ABT_Rig_Troll:cl_crvCnt_l_knee_a01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:extraNodes01/ABT_Rig_Troll:xtra_toHide01/ABT_Rig_Troll:grp_cl_crvCnt_knees01/ABT_Rig_Troll:cl_crvCnt_l_knee_b01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:extraNodes01/ABT_Rig_Troll:xtra_toHide01/ABT_Rig_Troll:grp_cl_crvCnt_knees01/ABT_Rig_Troll:cl_crvCnt_r_knee_a01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:extraNodes01/ABT_Rig_Troll:xtra_toHide01/ABT_Rig_Troll:grp_cl_crvCnt_knees01/ABT_Rig_Troll:cl_crvCnt_r_knee_b01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:extraNodes01/ABT_Rig_Troll:xtra_toShow01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:extraNodes01/ABT_Rig_Troll:xtra_toShow01/ABT_Rig_Troll:crvCnt_l_elbow01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:extraNodes01/ABT_Rig_Troll:xtra_toShow01/ABT_Rig_Troll:crvCnt_l_knee01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:extraNodes01/ABT_Rig_Troll:xtra_toShow01/ABT_Rig_Troll:crvCnt_r_elbow01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:extraNodes01/ABT_Rig_Troll:xtra_toShow01/ABT_Rig_Troll:crvCnt_r_knee01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:cc_COG01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:cc_COG01/ABT_Rig_Troll:cc_chest01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:cc_COG01/ABT_Rig_Troll:cc_chest01/ABT_Rig_Troll:cc_l_shld01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:cc_COG01/ABT_Rig_Troll:cc_chest01/ABT_Rig_Troll:cc_l_shld01/ABT_Rig_Troll:locOri_l_shld01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:cc_COG01/ABT_Rig_Troll:cc_chest01/ABT_Rig_Troll:cc_neck01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:cc_COG01/ABT_Rig_Troll:cc_chest01/ABT_Rig_Troll:cc_neck01/ABT_Rig_Troll:cc_head01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:cc_COG01/ABT_Rig_Troll:cc_chest01/ABT_Rig_Troll:cc_neck01/ABT_Rig_Troll:cc_head01/ABT_Rig_Troll:grp_cc_beard01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:cc_COG01/ABT_Rig_Troll:cc_chest01/ABT_Rig_Troll:cc_neck01/ABT_Rig_Troll:cc_head01/ABT_Rig_Troll:grp_cc_beard01/ABT_Rig_Troll:cc_beard01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:cc_COG01/ABT_Rig_Troll:cc_chest01/ABT_Rig_Troll:cc_neck01/ABT_Rig_Troll:cc_head01/ABT_Rig_Troll:grp_cc_hair01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:cc_COG01/ABT_Rig_Troll:cc_chest01/ABT_Rig_Troll:cc_neck01/ABT_Rig_Troll:cc_head01/ABT_Rig_Troll:grp_cc_hair01/ABT_Rig_Troll:cc_hair01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:cc_COG01/ABT_Rig_Troll:cc_chest01/ABT_Rig_Troll:cc_neck01/ABT_Rig_Troll:cc_head01/ABT_Rig_Troll:grp_cc_nose_a01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:cc_COG01/ABT_Rig_Troll:cc_chest01/ABT_Rig_Troll:cc_neck01/ABT_Rig_Troll:cc_head01/ABT_Rig_Troll:grp_cc_nose_a01/ABT_Rig_Troll:cc_nose_a01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:cc_COG01/ABT_Rig_Troll:cc_chest01/ABT_Rig_Troll:cc_neck01/ABT_Rig_Troll:cc_head01/ABT_Rig_Troll:grp_cc_nose_a01/ABT_Rig_Troll:cc_nose_a01/ABT_Rig_Troll:grp_cc_nose_b01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:cc_COG01/ABT_Rig_Troll:cc_chest01/ABT_Rig_Troll:cc_neck01/ABT_Rig_Troll:cc_head01/ABT_Rig_Troll:grp_cc_nose_a01/ABT_Rig_Troll:cc_nose_a01/ABT_Rig_Troll:grp_cc_nose_b01/ABT_Rig_Troll:cc_nose_b01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:cc_COG01/ABT_Rig_Troll:cc_chest01/ABT_Rig_Troll:cc_neck01/ABT_Rig_Troll:cc_head01/ABT_Rig_Troll:locOri_head01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:cc_COG01/ABT_Rig_Troll:cc_chest01/ABT_Rig_Troll:cc_neck01/ABT_Rig_Troll:locOri_neck01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:cc_COG01/ABT_Rig_Troll:cc_chest01/ABT_Rig_Troll:cc_r_shld01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:cc_COG01/ABT_Rig_Troll:cc_chest01/ABT_Rig_Troll:cc_r_shld01/ABT_Rig_Troll:locOri_r_shld01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:cc_COG01/ABT_Rig_Troll:cc_chest01/ABT_Rig_Troll:jntCtrl_chest01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:cc_COG01/ABT_Rig_Troll:cc_hip01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:cc_COG01/ABT_Rig_Troll:cc_hip01/ABT_Rig_Troll:grp_cc_tail_a01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:cc_COG01/ABT_Rig_Troll:cc_hip01/ABT_Rig_Troll:grp_cc_tail_a01/ABT_Rig_Troll:cc_tail_a01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:cc_COG01/ABT_Rig_Troll:cc_hip01/ABT_Rig_Troll:grp_cc_tail_a01/ABT_Rig_Troll:cc_tail_a01/ABT_Rig_Troll:grp_cc_tail_b01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:cc_COG01/ABT_Rig_Troll:cc_hip01/ABT_Rig_Troll:grp_cc_tail_a01/ABT_Rig_Troll:cc_tail_a01/ABT_Rig_Troll:grp_cc_tail_b01/ABT_Rig_Troll:cc_tail_b01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:cc_COG01/ABT_Rig_Troll:cc_hip01/ABT_Rig_Troll:grp_cc_tail_a01/ABT_Rig_Troll:cc_tail_a01/ABT_Rig_Troll:grp_cc_tail_b01/ABT_Rig_Troll:cc_tail_b01/ABT_Rig_Troll:grp_cc_tail_c01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:cc_COG01/ABT_Rig_Troll:cc_hip01/ABT_Rig_Troll:grp_cc_tail_a01/ABT_Rig_Troll:cc_tail_a01/ABT_Rig_Troll:grp_cc_tail_b01/ABT_Rig_Troll:cc_tail_b01/ABT_Rig_Troll:grp_cc_tail_c01/ABT_Rig_Troll:cc_tail_c01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:cc_COG01/ABT_Rig_Troll:cc_hip01/ABT_Rig_Troll:grp_cc_tail_a01/ABT_Rig_Troll:cc_tail_a01/ABT_Rig_Troll:grp_cc_tail_b01/ABT_Rig_Troll:cc_tail_b01/ABT_Rig_Troll:grp_cc_tail_c01/ABT_Rig_Troll:cc_tail_c01/ABT_Rig_Troll:grp_cc_tail_d01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:cc_COG01/ABT_Rig_Troll:cc_hip01/ABT_Rig_Troll:grp_cc_tail_a01/ABT_Rig_Troll:cc_tail_a01/ABT_Rig_Troll:grp_cc_tail_b01/ABT_Rig_Troll:cc_tail_b01/ABT_Rig_Troll:grp_cc_tail_c01/ABT_Rig_Troll:cc_tail_c01/ABT_Rig_Troll:grp_cc_tail_d01/ABT_Rig_Troll:cc_tail_d01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:cc_COG01/ABT_Rig_Troll:cc_hip01/ABT_Rig_Troll:grp_cc_tail_a01/ABT_Rig_Troll:cc_tail_a01/ABT_Rig_Troll:grp_cc_tail_b01/ABT_Rig_Troll:cc_tail_b01/ABT_Rig_Troll:grp_cc_tail_c01/ABT_Rig_Troll:cc_tail_c01/ABT_Rig_Troll:grp_cc_tail_d01/ABT_Rig_Troll:cc_tail_d01/ABT_Rig_Troll:grp_cc_tail_e01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:cc_COG01/ABT_Rig_Troll:cc_hip01/ABT_Rig_Troll:grp_cc_tail_a01/ABT_Rig_Troll:cc_tail_a01/ABT_Rig_Troll:grp_cc_tail_b01/ABT_Rig_Troll:cc_tail_b01/ABT_Rig_Troll:grp_cc_tail_c01/ABT_Rig_Troll:cc_tail_c01/ABT_Rig_Troll:grp_cc_tail_d01/ABT_Rig_Troll:cc_tail_d01/ABT_Rig_Troll:grp_cc_tail_e01/ABT_Rig_Troll:cc_tail_e01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:cc_COG01/ABT_Rig_Troll:cc_hip01/ABT_Rig_Troll:jntCtrl_hip01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:cc_eyes01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:cc_eyes01/ABT_Rig_Troll:cc_l_eye01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:cc_eyes01/ABT_Rig_Troll:cc_r_eye01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:cc_l_armPos01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:cc_l_armPos01/ABT_Rig_Troll:locOri_l_wristCtrl01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:cc_l_elbow01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:cc_l_ikfk01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:cc_l_knee01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:cc_r_armPos01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:cc_r_armPos01/ABT_Rig_Troll:locOri_r_wristCtrl01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:cc_r_elbow01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:cc_r_ikfk01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:cc_r_knee01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:grp_cc_l_armFK01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:grp_cc_l_armFK01/ABT_Rig_Troll:cc_l_armFK01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:grp_cc_l_armFK01/ABT_Rig_Troll:cc_l_armFK01/ABT_Rig_Troll:cc_l_elbowFK01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:grp_cc_l_armFK01/ABT_Rig_Troll:cc_l_armFK01/ABT_Rig_Troll:cc_l_elbowFK01/ABT_Rig_Troll:cc_l_wristFK01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:grp_cc_l_armFK01/ABT_Rig_Troll:cc_l_armFK01/ABT_Rig_Troll:cc_l_elbowFK01/ABT_Rig_Troll:locMatch_l_elbowFK01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:grp_cc_l_armFK01/ABT_Rig_Troll:cc_l_armFK01/ABT_Rig_Troll:locMatch_l_armFK01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:grp_cc_r_armFK01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:grp_cc_r_armFK01/ABT_Rig_Troll:cc_r_armFK01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:grp_cc_r_armFK01/ABT_Rig_Troll:cc_r_armFK01/ABT_Rig_Troll:cc_r_elbowFK01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:grp_cc_r_armFK01/ABT_Rig_Troll:cc_r_armFK01/ABT_Rig_Troll:cc_r_elbowFK01/ABT_Rig_Troll:cc_r_wristFK01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:grp_cc_r_armFK01/ABT_Rig_Troll:cc_r_armFK01/ABT_Rig_Troll:cc_r_elbowFK01/ABT_Rig_Troll:locMatch_r_elbowFK01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:grp_cc_r_armFK01/ABT_Rig_Troll:cc_r_armFK01/ABT_Rig_Troll:locMatch_r_armFK01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:locMatch_l_wristIKFK01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:locMatch_r_wristIKFK01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:locOri_cc_l_foot01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:locOri_cc_l_foot01/ABT_Rig_Troll:cc_l_foot01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:locOri_cc_l_foot01/ABT_Rig_Troll:cc_l_foot01/ABT_Rig_Troll:cc_l_bkrt_FootPivot01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:locOri_cc_l_foot01/ABT_Rig_Troll:cc_l_foot01/ABT_Rig_Troll:cc_l_bkrt_FootPivot01/ABT_Rig_Troll:cc_l_midrt_FootPivot01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:locOri_cc_l_foot01/ABT_Rig_Troll:cc_l_foot01/ABT_Rig_Troll:cc_l_bkrt_FootPivot01/ABT_Rig_Troll:cc_l_midrt_FootPivot01/ABT_Rig_Troll:cc_l_ftrt_FootPivot01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:locOri_cc_l_foot01/ABT_Rig_Troll:cc_l_foot01/ABT_Rig_Troll:cc_l_bkrt_FootPivot01/ABT_Rig_Troll:cc_l_midrt_FootPivot01/ABT_Rig_Troll:cc_l_ftrt_FootPivot01/ABT_Rig_Troll:cc_l_toe01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:locOri_cc_l_foot01/ABT_Rig_Troll:cc_l_foot01/ABT_Rig_Troll:cc_l_bkrt_FootPivot01/ABT_Rig_Troll:cc_l_midrt_FootPivot01/ABT_Rig_Troll:cc_l_ftrt_FootPivot01/ABT_Rig_Troll:cc_l_toe01/ABT_Rig_Troll:cc_l_ftlt_FootPivot01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:locOri_cc_l_foot01/ABT_Rig_Troll:cc_l_foot01/ABT_Rig_Troll:cc_l_bkrt_FootPivot01/ABT_Rig_Troll:cc_l_midrt_FootPivot01/ABT_Rig_Troll:cc_l_ftrt_FootPivot01/ABT_Rig_Troll:cc_l_toe01/ABT_Rig_Troll:cc_l_ftlt_FootPivot01/ABT_Rig_Troll:cc_l_midlt_FootPivot01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:locOri_cc_l_foot01/ABT_Rig_Troll:cc_l_foot01/ABT_Rig_Troll:cc_l_bkrt_FootPivot01/ABT_Rig_Troll:cc_l_midrt_FootPivot01/ABT_Rig_Troll:cc_l_ftrt_FootPivot01/ABT_Rig_Troll:cc_l_toe01/ABT_Rig_Troll:cc_l_ftlt_FootPivot01/ABT_Rig_Troll:cc_l_midlt_FootPivot01/ABT_Rig_Troll:cc_l_bklt_FootPivot01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:locOri_cc_l_foot01/ABT_Rig_Troll:cc_l_foot01/ABT_Rig_Troll:cc_l_bkrt_FootPivot01/ABT_Rig_Troll:cc_l_midrt_FootPivot01/ABT_Rig_Troll:cc_l_ftrt_FootPivot01/ABT_Rig_Troll:cc_l_toe01/ABT_Rig_Troll:cc_l_ftlt_FootPivot01/ABT_Rig_Troll:cc_l_midlt_FootPivot01/ABT_Rig_Troll:cc_l_bklt_FootPivot01/ABT_Rig_Troll:cc_l_heel01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:locOri_cc_l_foot01/ABT_Rig_Troll:cc_l_foot01/ABT_Rig_Troll:cc_l_bkrt_FootPivot01/ABT_Rig_Troll:cc_l_midrt_FootPivot01/ABT_Rig_Troll:cc_l_ftrt_FootPivot01/ABT_Rig_Troll:cc_l_toe01/ABT_Rig_Troll:cc_l_ftlt_FootPivot01/ABT_Rig_Troll:cc_l_midlt_FootPivot01/ABT_Rig_Troll:cc_l_bklt_FootPivot01/ABT_Rig_Troll:cc_l_heel01/ABT_Rig_Troll:cc_l_ball01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:locOri_cc_l_foot01/ABT_Rig_Troll:cc_l_foot01/ABT_Rig_Troll:cc_l_bkrt_FootPivot01/ABT_Rig_Troll:cc_l_midrt_FootPivot01/ABT_Rig_Troll:cc_l_ftrt_FootPivot01/ABT_Rig_Troll:cc_l_toe01/ABT_Rig_Troll:cc_l_ftlt_FootPivot01/ABT_Rig_Troll:cc_l_midlt_FootPivot01/ABT_Rig_Troll:cc_l_bklt_FootPivot01/ABT_Rig_Troll:cc_l_heel01/ABT_Rig_Troll:cc_l_ball01/ABT_Rig_Troll:locOri_l_ball01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:locOri_cc_l_foot01/ABT_Rig_Troll:cc_l_foot01/ABT_Rig_Troll:cc_l_bkrt_FootPivot01/ABT_Rig_Troll:cc_l_midrt_FootPivot01/ABT_Rig_Troll:cc_l_ftrt_FootPivot01/ABT_Rig_Troll:cc_l_toe01/ABT_Rig_Troll:cc_l_ftlt_FootPivot01/ABT_Rig_Troll:cc_l_midlt_FootPivot01/ABT_Rig_Troll:cc_l_bklt_FootPivot01/ABT_Rig_Troll:cc_l_heel01/ABT_Rig_Troll:grp_cc_l_ballfree01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:locOri_cc_l_foot01/ABT_Rig_Troll:cc_l_foot01/ABT_Rig_Troll:cc_l_bkrt_FootPivot01/ABT_Rig_Troll:cc_l_midrt_FootPivot01/ABT_Rig_Troll:cc_l_ftrt_FootPivot01/ABT_Rig_Troll:cc_l_toe01/ABT_Rig_Troll:cc_l_ftlt_FootPivot01/ABT_Rig_Troll:cc_l_midlt_FootPivot01/ABT_Rig_Troll:cc_l_bklt_FootPivot01/ABT_Rig_Troll:cc_l_heel01/ABT_Rig_Troll:grp_cc_l_ballfree01/ABT_Rig_Troll:cc_l_ballfree01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:locOri_cc_l_foot01/ABT_Rig_Troll:cc_l_foot01/ABT_Rig_Troll:cc_l_bkrt_FootPivot01/ABT_Rig_Troll:cc_l_midrt_FootPivot01/ABT_Rig_Troll:cc_l_ftrt_FootPivot01/ABT_Rig_Troll:cc_l_toe01/ABT_Rig_Troll:cc_l_ftlt_FootPivot01/ABT_Rig_Troll:cc_l_midlt_FootPivot01/ABT_Rig_Troll:cc_l_bklt_FootPivot01/ABT_Rig_Troll:cc_l_heel01/ABT_Rig_Troll:transform1
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:locOri_cc_l_foot01/ABT_Rig_Troll:cc_l_foot01/ABT_Rig_Troll:cc_l_bkrt_FootPivot01/ABT_Rig_Troll:cc_l_midrt_FootPivot01/ABT_Rig_Troll:cc_l_ftrt_FootPivot01/ABT_Rig_Troll:cc_l_toe01/ABT_Rig_Troll:cc_l_ftlt_FootPivot01/ABT_Rig_Troll:cc_l_midlt_FootPivot01/ABT_Rig_Troll:cc_l_bklt_FootPivot01/ABT_Rig_Troll:cc_l_heel01/ABT_Rig_Troll:transform1/ABT_Rig_Troll:rl_l_heel01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:locOri_cc_l_foot01/ABT_Rig_Troll:cc_l_foot01/ABT_Rig_Troll:cc_l_bkrt_FootPivot01/ABT_Rig_Troll:cc_l_midrt_FootPivot01/ABT_Rig_Troll:cc_l_ftrt_FootPivot01/ABT_Rig_Troll:cc_l_toe01/ABT_Rig_Troll:cc_l_ftlt_FootPivot01/ABT_Rig_Troll:cc_l_midlt_FootPivot01/ABT_Rig_Troll:cc_l_bklt_FootPivot01/ABT_Rig_Troll:cc_l_heel01/ABT_Rig_Troll:transform1/ABT_Rig_Troll:rl_l_heel01/ABT_Rig_Troll:rl_l_toe01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:locOri_cc_l_foot01/ABT_Rig_Troll:cc_l_foot01/ABT_Rig_Troll:cc_l_bkrt_FootPivot01/ABT_Rig_Troll:cc_l_midrt_FootPivot01/ABT_Rig_Troll:cc_l_ftrt_FootPivot01/ABT_Rig_Troll:cc_l_toe01/ABT_Rig_Troll:cc_l_ftlt_FootPivot01/ABT_Rig_Troll:cc_l_midlt_FootPivot01/ABT_Rig_Troll:cc_l_bklt_FootPivot01/ABT_Rig_Troll:cc_l_heel01/ABT_Rig_Troll:transform1/ABT_Rig_Troll:rl_l_heel01/ABT_Rig_Troll:rl_l_toe01/ABT_Rig_Troll:rl_l_ball01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:locOri_cc_l_foot01/ABT_Rig_Troll:cc_l_foot01/ABT_Rig_Troll:cc_l_bkrt_FootPivot01/ABT_Rig_Troll:cc_l_midrt_FootPivot01/ABT_Rig_Troll:cc_l_ftrt_FootPivot01/ABT_Rig_Troll:cc_l_toe01/ABT_Rig_Troll:cc_l_ftlt_FootPivot01/ABT_Rig_Troll:cc_l_midlt_FootPivot01/ABT_Rig_Troll:cc_l_bklt_FootPivot01/ABT_Rig_Troll:cc_l_heel01/ABT_Rig_Troll:transform1/ABT_Rig_Troll:rl_l_heel01/ABT_Rig_Troll:rl_l_toe01/ABT_Rig_Troll:rl_l_ball01/ABT_Rig_Troll:rl_l_foot01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:locOri_cc_r_foot01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:locOri_cc_r_foot01/ABT_Rig_Troll:cc_r_foot01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:locOri_cc_r_foot01/ABT_Rig_Troll:cc_r_foot01/ABT_Rig_Troll:cc_r_bklt_FootPivot01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:locOri_cc_r_foot01/ABT_Rig_Troll:cc_r_foot01/ABT_Rig_Troll:cc_r_bklt_FootPivot01/ABT_Rig_Troll:cc_r_midlt_FootPivot01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:locOri_cc_r_foot01/ABT_Rig_Troll:cc_r_foot01/ABT_Rig_Troll:cc_r_bklt_FootPivot01/ABT_Rig_Troll:cc_r_midlt_FootPivot01/ABT_Rig_Troll:cc_r_ftlt_FootPivot01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:locOri_cc_r_foot01/ABT_Rig_Troll:cc_r_foot01/ABT_Rig_Troll:cc_r_bklt_FootPivot01/ABT_Rig_Troll:cc_r_midlt_FootPivot01/ABT_Rig_Troll:cc_r_ftlt_FootPivot01/ABT_Rig_Troll:cc_r_toe01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:locOri_cc_r_foot01/ABT_Rig_Troll:cc_r_foot01/ABT_Rig_Troll:cc_r_bklt_FootPivot01/ABT_Rig_Troll:cc_r_midlt_FootPivot01/ABT_Rig_Troll:cc_r_ftlt_FootPivot01/ABT_Rig_Troll:cc_r_toe01/ABT_Rig_Troll:cc_r_ftrt_FootPivot01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:locOri_cc_r_foot01/ABT_Rig_Troll:cc_r_foot01/ABT_Rig_Troll:cc_r_bklt_FootPivot01/ABT_Rig_Troll:cc_r_midlt_FootPivot01/ABT_Rig_Troll:cc_r_ftlt_FootPivot01/ABT_Rig_Troll:cc_r_toe01/ABT_Rig_Troll:cc_r_ftrt_FootPivot01/ABT_Rig_Troll:cc_r_midrt_FootPivot01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:locOri_cc_r_foot01/ABT_Rig_Troll:cc_r_foot01/ABT_Rig_Troll:cc_r_bklt_FootPivot01/ABT_Rig_Troll:cc_r_midlt_FootPivot01/ABT_Rig_Troll:cc_r_ftlt_FootPivot01/ABT_Rig_Troll:cc_r_toe01/ABT_Rig_Troll:cc_r_ftrt_FootPivot01/ABT_Rig_Troll:cc_r_midrt_FootPivot01/ABT_Rig_Troll:cc_r_bkrt_FootPivot01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:locOri_cc_r_foot01/ABT_Rig_Troll:cc_r_foot01/ABT_Rig_Troll:cc_r_bklt_FootPivot01/ABT_Rig_Troll:cc_r_midlt_FootPivot01/ABT_Rig_Troll:cc_r_ftlt_FootPivot01/ABT_Rig_Troll:cc_r_toe01/ABT_Rig_Troll:cc_r_ftrt_FootPivot01/ABT_Rig_Troll:cc_r_midrt_FootPivot01/ABT_Rig_Troll:cc_r_bkrt_FootPivot01/ABT_Rig_Troll:cc_r_heel01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:locOri_cc_r_foot01/ABT_Rig_Troll:cc_r_foot01/ABT_Rig_Troll:cc_r_bklt_FootPivot01/ABT_Rig_Troll:cc_r_midlt_FootPivot01/ABT_Rig_Troll:cc_r_ftlt_FootPivot01/ABT_Rig_Troll:cc_r_toe01/ABT_Rig_Troll:cc_r_ftrt_FootPivot01/ABT_Rig_Troll:cc_r_midrt_FootPivot01/ABT_Rig_Troll:cc_r_bkrt_FootPivot01/ABT_Rig_Troll:cc_r_heel01/ABT_Rig_Troll:cc_r_ball02
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:locOri_cc_r_foot01/ABT_Rig_Troll:cc_r_foot01/ABT_Rig_Troll:cc_r_bklt_FootPivot01/ABT_Rig_Troll:cc_r_midlt_FootPivot01/ABT_Rig_Troll:cc_r_ftlt_FootPivot01/ABT_Rig_Troll:cc_r_toe01/ABT_Rig_Troll:cc_r_ftrt_FootPivot01/ABT_Rig_Troll:cc_r_midrt_FootPivot01/ABT_Rig_Troll:cc_r_bkrt_FootPivot01/ABT_Rig_Troll:cc_r_heel01/ABT_Rig_Troll:cc_r_ball02/ABT_Rig_Troll:locOri_r_ball01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:locOri_cc_r_foot01/ABT_Rig_Troll:cc_r_foot01/ABT_Rig_Troll:cc_r_bklt_FootPivot01/ABT_Rig_Troll:cc_r_midlt_FootPivot01/ABT_Rig_Troll:cc_r_ftlt_FootPivot01/ABT_Rig_Troll:cc_r_toe01/ABT_Rig_Troll:cc_r_ftrt_FootPivot01/ABT_Rig_Troll:cc_r_midrt_FootPivot01/ABT_Rig_Troll:cc_r_bkrt_FootPivot01/ABT_Rig_Troll:cc_r_heel01/ABT_Rig_Troll:grp_cc_r_ballfree01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:locOri_cc_r_foot01/ABT_Rig_Troll:cc_r_foot01/ABT_Rig_Troll:cc_r_bklt_FootPivot01/ABT_Rig_Troll:cc_r_midlt_FootPivot01/ABT_Rig_Troll:cc_r_ftlt_FootPivot01/ABT_Rig_Troll:cc_r_toe01/ABT_Rig_Troll:cc_r_ftrt_FootPivot01/ABT_Rig_Troll:cc_r_midrt_FootPivot01/ABT_Rig_Troll:cc_r_bkrt_FootPivot01/ABT_Rig_Troll:cc_r_heel01/ABT_Rig_Troll:grp_cc_r_ballfree01/ABT_Rig_Troll:cc_r_ballfree01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:locOri_cc_r_foot01/ABT_Rig_Troll:cc_r_foot01/ABT_Rig_Troll:cc_r_bklt_FootPivot01/ABT_Rig_Troll:cc_r_midlt_FootPivot01/ABT_Rig_Troll:cc_r_ftlt_FootPivot01/ABT_Rig_Troll:cc_r_toe01/ABT_Rig_Troll:cc_r_ftrt_FootPivot01/ABT_Rig_Troll:cc_r_midrt_FootPivot01/ABT_Rig_Troll:cc_r_bkrt_FootPivot01/ABT_Rig_Troll:cc_r_heel01/ABT_Rig_Troll:rl_r_heel01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:locOri_cc_r_foot01/ABT_Rig_Troll:cc_r_foot01/ABT_Rig_Troll:cc_r_bklt_FootPivot01/ABT_Rig_Troll:cc_r_midlt_FootPivot01/ABT_Rig_Troll:cc_r_ftlt_FootPivot01/ABT_Rig_Troll:cc_r_toe01/ABT_Rig_Troll:cc_r_ftrt_FootPivot01/ABT_Rig_Troll:cc_r_midrt_FootPivot01/ABT_Rig_Troll:cc_r_bkrt_FootPivot01/ABT_Rig_Troll:cc_r_heel01/ABT_Rig_Troll:rl_r_heel01/ABT_Rig_Troll:rl_r_toe01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:locOri_cc_r_foot01/ABT_Rig_Troll:cc_r_foot01/ABT_Rig_Troll:cc_r_bklt_FootPivot01/ABT_Rig_Troll:cc_r_midlt_FootPivot01/ABT_Rig_Troll:cc_r_ftlt_FootPivot01/ABT_Rig_Troll:cc_r_toe01/ABT_Rig_Troll:cc_r_ftrt_FootPivot01/ABT_Rig_Troll:cc_r_midrt_FootPivot01/ABT_Rig_Troll:cc_r_bkrt_FootPivot01/ABT_Rig_Troll:cc_r_heel01/ABT_Rig_Troll:rl_r_heel01/ABT_Rig_Troll:rl_r_toe01/ABT_Rig_Troll:rl_r_ball01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:locOri_cc_r_foot01/ABT_Rig_Troll:cc_r_foot01/ABT_Rig_Troll:cc_r_bklt_FootPivot01/ABT_Rig_Troll:cc_r_midlt_FootPivot01/ABT_Rig_Troll:cc_r_ftlt_FootPivot01/ABT_Rig_Troll:cc_r_toe01/ABT_Rig_Troll:cc_r_ftrt_FootPivot01/ABT_Rig_Troll:cc_r_midrt_FootPivot01/ABT_Rig_Troll:cc_r_bkrt_FootPivot01/ABT_Rig_Troll:cc_r_heel01/ABT_Rig_Troll:rl_r_heel01/ABT_Rig_Troll:rl_r_toe01/ABT_Rig_Troll:rl_r_ball01/ABT_Rig_Troll:rl_r_foot01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:controlObjects01/ABT_Rig_Troll:locOri_cc_r_foot01/ABT_Rig_Troll:cc_r_foot01/ABT_Rig_Troll:cc_r_bklt_FootPivot01/ABT_Rig_Troll:cc_r_midlt_FootPivot01/ABT_Rig_Troll:cc_r_ftlt_FootPivot01/ABT_Rig_Troll:cc_r_toe01/ABT_Rig_Troll:cc_r_ftrt_FootPivot01/ABT_Rig_Troll:cc_r_midrt_FootPivot01/ABT_Rig_Troll:cc_r_bkrt_FootPivot01/ABT_Rig_Troll:cc_r_heel01/ABT_Rig_Troll:transform2
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:iks01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:iks01/ABT_Rig_Troll:rp_l_arm01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:iks01/ABT_Rig_Troll:rp_l_leg01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:iks01/ABT_Rig_Troll:rp_r_arm01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:iks01/ABT_Rig_Troll:rp_r_leg01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:iks01/ABT_Rig_Troll:spIK_spine01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_l_thigh01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_l_thigh01/ABT_Rig_Troll:bn_l_knee01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_l_thigh01/ABT_Rig_Troll:bn_l_knee01/ABT_Rig_Troll:bn_l_foot01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_l_thigh01/ABT_Rig_Troll:bn_l_knee01/ABT_Rig_Troll:bn_l_foot01/ABT_Rig_Troll:bn_l_ball01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_l_thigh01/ABT_Rig_Troll:bn_l_knee01/ABT_Rig_Troll:bn_l_foot01/ABT_Rig_Troll:bn_l_ball01/ABT_Rig_Troll:be_l_toe01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_r_thigh01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_r_thigh01/ABT_Rig_Troll:bn_r_knee01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_r_thigh01/ABT_Rig_Troll:bn_r_knee01/ABT_Rig_Troll:bn_r_foot01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_r_thigh01/ABT_Rig_Troll:bn_r_knee01/ABT_Rig_Troll:bn_r_foot01/ABT_Rig_Troll:bn_r_ball01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_r_thigh01/ABT_Rig_Troll:bn_r_knee01/ABT_Rig_Troll:bn_r_foot01/ABT_Rig_Troll:bn_r_ball01/ABT_Rig_Troll:be_r_toe01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_spB01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_spB01/ABT_Rig_Troll:bn_spC01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_spB01/ABT_Rig_Troll:bn_spC01/ABT_Rig_Troll:bn_spD01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_spB01/ABT_Rig_Troll:bn_spC01/ABT_Rig_Troll:bn_spD01/ABT_Rig_Troll:be_spE01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_spB01/ABT_Rig_Troll:bn_spC01/ABT_Rig_Troll:bn_spD01/ABT_Rig_Troll:be_spE01/ABT_Rig_Troll:bn_neck01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_spB01/ABT_Rig_Troll:bn_spC01/ABT_Rig_Troll:bn_spD01/ABT_Rig_Troll:be_spE01/ABT_Rig_Troll:bn_neck01/ABT_Rig_Troll:bn_head01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_spB01/ABT_Rig_Troll:bn_spC01/ABT_Rig_Troll:bn_spD01/ABT_Rig_Troll:be_spE01/ABT_Rig_Troll:bn_neck01/ABT_Rig_Troll:bn_head01/ABT_Rig_Troll:be_head01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_spB01/ABT_Rig_Troll:bn_spC01/ABT_Rig_Troll:bn_spD01/ABT_Rig_Troll:be_spE01/ABT_Rig_Troll:bn_neck01/ABT_Rig_Troll:bn_head01/ABT_Rig_Troll:bn_beard_a01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_spB01/ABT_Rig_Troll:bn_spC01/ABT_Rig_Troll:bn_spD01/ABT_Rig_Troll:be_spE01/ABT_Rig_Troll:bn_neck01/ABT_Rig_Troll:bn_head01/ABT_Rig_Troll:bn_beard_a01/ABT_Rig_Troll:be_beard_b01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_spB01/ABT_Rig_Troll:bn_spC01/ABT_Rig_Troll:bn_spD01/ABT_Rig_Troll:be_spE01/ABT_Rig_Troll:bn_neck01/ABT_Rig_Troll:bn_head01/ABT_Rig_Troll:bn_hair01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_spB01/ABT_Rig_Troll:bn_spC01/ABT_Rig_Troll:bn_spD01/ABT_Rig_Troll:be_spE01/ABT_Rig_Troll:bn_neck01/ABT_Rig_Troll:bn_head01/ABT_Rig_Troll:bn_nose_a01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_spB01/ABT_Rig_Troll:bn_spC01/ABT_Rig_Troll:bn_spD01/ABT_Rig_Troll:be_spE01/ABT_Rig_Troll:bn_neck01/ABT_Rig_Troll:bn_head01/ABT_Rig_Troll:bn_nose_a01/ABT_Rig_Troll:bn_nose_b01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_spB01/ABT_Rig_Troll:bn_spC01/ABT_Rig_Troll:bn_spD01/ABT_Rig_Troll:be_spE01/ABT_Rig_Troll:bn_neck01/ABT_Rig_Troll:bn_head01/ABT_Rig_Troll:bn_nose_a01/ABT_Rig_Troll:bn_nose_b01/ABT_Rig_Troll:be_nose_c01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_spB01/ABT_Rig_Troll:bn_spC01/ABT_Rig_Troll:bn_spD01/ABT_Rig_Troll:bn_l_shld01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_spB01/ABT_Rig_Troll:bn_spC01/ABT_Rig_Troll:bn_spD01/ABT_Rig_Troll:bn_l_shld01/ABT_Rig_Troll:be_l_shld01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_spB01/ABT_Rig_Troll:bn_spC01/ABT_Rig_Troll:bn_spD01/ABT_Rig_Troll:bn_l_shld01/ABT_Rig_Troll:be_l_shld01/ABT_Rig_Troll:bn_l_arm01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_spB01/ABT_Rig_Troll:bn_spC01/ABT_Rig_Troll:bn_spD01/ABT_Rig_Troll:bn_l_shld01/ABT_Rig_Troll:be_l_shld01/ABT_Rig_Troll:bn_l_arm01/ABT_Rig_Troll:bn_l_elbow01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_spB01/ABT_Rig_Troll:bn_spC01/ABT_Rig_Troll:bn_spD01/ABT_Rig_Troll:bn_l_shld01/ABT_Rig_Troll:be_l_shld01/ABT_Rig_Troll:bn_l_arm01/ABT_Rig_Troll:bn_l_elbow01/ABT_Rig_Troll:bn_l_wrist01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_spB01/ABT_Rig_Troll:bn_spC01/ABT_Rig_Troll:bn_spD01/ABT_Rig_Troll:bn_l_shld01/ABT_Rig_Troll:be_l_shld01/ABT_Rig_Troll:bn_l_arm01/ABT_Rig_Troll:bn_l_elbow01/ABT_Rig_Troll:bn_l_wrist01/ABT_Rig_Troll:bn_l_ind_a01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_spB01/ABT_Rig_Troll:bn_spC01/ABT_Rig_Troll:bn_spD01/ABT_Rig_Troll:bn_l_shld01/ABT_Rig_Troll:be_l_shld01/ABT_Rig_Troll:bn_l_arm01/ABT_Rig_Troll:bn_l_elbow01/ABT_Rig_Troll:bn_l_wrist01/ABT_Rig_Troll:bn_l_ind_a01/ABT_Rig_Troll:bn_l_ind_b01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_spB01/ABT_Rig_Troll:bn_spC01/ABT_Rig_Troll:bn_spD01/ABT_Rig_Troll:bn_l_shld01/ABT_Rig_Troll:be_l_shld01/ABT_Rig_Troll:bn_l_arm01/ABT_Rig_Troll:bn_l_elbow01/ABT_Rig_Troll:bn_l_wrist01/ABT_Rig_Troll:bn_l_ind_a01/ABT_Rig_Troll:bn_l_ind_b01/ABT_Rig_Troll:bn_l_ind_c01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_spB01/ABT_Rig_Troll:bn_spC01/ABT_Rig_Troll:bn_spD01/ABT_Rig_Troll:bn_l_shld01/ABT_Rig_Troll:be_l_shld01/ABT_Rig_Troll:bn_l_arm01/ABT_Rig_Troll:bn_l_elbow01/ABT_Rig_Troll:bn_l_wrist01/ABT_Rig_Troll:bn_l_ind_a01/ABT_Rig_Troll:bn_l_ind_b01/ABT_Rig_Troll:bn_l_ind_c01/ABT_Rig_Troll:be_l_ind_d01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_spB01/ABT_Rig_Troll:bn_spC01/ABT_Rig_Troll:bn_spD01/ABT_Rig_Troll:bn_l_shld01/ABT_Rig_Troll:be_l_shld01/ABT_Rig_Troll:bn_l_arm01/ABT_Rig_Troll:bn_l_elbow01/ABT_Rig_Troll:bn_l_wrist01/ABT_Rig_Troll:bn_l_mid_a01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_spB01/ABT_Rig_Troll:bn_spC01/ABT_Rig_Troll:bn_spD01/ABT_Rig_Troll:bn_l_shld01/ABT_Rig_Troll:be_l_shld01/ABT_Rig_Troll:bn_l_arm01/ABT_Rig_Troll:bn_l_elbow01/ABT_Rig_Troll:bn_l_wrist01/ABT_Rig_Troll:bn_l_mid_a01/ABT_Rig_Troll:bn_l_mid_b01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_spB01/ABT_Rig_Troll:bn_spC01/ABT_Rig_Troll:bn_spD01/ABT_Rig_Troll:bn_l_shld01/ABT_Rig_Troll:be_l_shld01/ABT_Rig_Troll:bn_l_arm01/ABT_Rig_Troll:bn_l_elbow01/ABT_Rig_Troll:bn_l_wrist01/ABT_Rig_Troll:bn_l_mid_a01/ABT_Rig_Troll:bn_l_mid_b01/ABT_Rig_Troll:bn_l_mid_c01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_spB01/ABT_Rig_Troll:bn_spC01/ABT_Rig_Troll:bn_spD01/ABT_Rig_Troll:bn_l_shld01/ABT_Rig_Troll:be_l_shld01/ABT_Rig_Troll:bn_l_arm01/ABT_Rig_Troll:bn_l_elbow01/ABT_Rig_Troll:bn_l_wrist01/ABT_Rig_Troll:bn_l_mid_a01/ABT_Rig_Troll:bn_l_mid_b01/ABT_Rig_Troll:bn_l_mid_c01/ABT_Rig_Troll:be_l_mid_d01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_spB01/ABT_Rig_Troll:bn_spC01/ABT_Rig_Troll:bn_spD01/ABT_Rig_Troll:bn_l_shld01/ABT_Rig_Troll:be_l_shld01/ABT_Rig_Troll:bn_l_arm01/ABT_Rig_Troll:bn_l_elbow01/ABT_Rig_Troll:bn_l_wrist01/ABT_Rig_Troll:bn_l_thmb_a01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_spB01/ABT_Rig_Troll:bn_spC01/ABT_Rig_Troll:bn_spD01/ABT_Rig_Troll:bn_l_shld01/ABT_Rig_Troll:be_l_shld01/ABT_Rig_Troll:bn_l_arm01/ABT_Rig_Troll:bn_l_elbow01/ABT_Rig_Troll:bn_l_wrist01/ABT_Rig_Troll:bn_l_thmb_a01/ABT_Rig_Troll:bn_l_thmb_b01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_spB01/ABT_Rig_Troll:bn_spC01/ABT_Rig_Troll:bn_spD01/ABT_Rig_Troll:bn_l_shld01/ABT_Rig_Troll:be_l_shld01/ABT_Rig_Troll:bn_l_arm01/ABT_Rig_Troll:bn_l_elbow01/ABT_Rig_Troll:bn_l_wrist01/ABT_Rig_Troll:bn_l_thmb_a01/ABT_Rig_Troll:bn_l_thmb_b01/ABT_Rig_Troll:bn_l_thmb_c01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_spB01/ABT_Rig_Troll:bn_spC01/ABT_Rig_Troll:bn_spD01/ABT_Rig_Troll:bn_l_shld01/ABT_Rig_Troll:be_l_shld01/ABT_Rig_Troll:bn_l_arm01/ABT_Rig_Troll:bn_l_elbow01/ABT_Rig_Troll:bn_l_wrist01/ABT_Rig_Troll:bn_l_thmb_a01/ABT_Rig_Troll:bn_l_thmb_b01/ABT_Rig_Troll:bn_l_thmb_c01/ABT_Rig_Troll:bn_l_thmb_d01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_spB01/ABT_Rig_Troll:bn_spC01/ABT_Rig_Troll:bn_spD01/ABT_Rig_Troll:bn_r_shld01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_spB01/ABT_Rig_Troll:bn_spC01/ABT_Rig_Troll:bn_spD01/ABT_Rig_Troll:bn_r_shld01/ABT_Rig_Troll:be_r_shld01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_spB01/ABT_Rig_Troll:bn_spC01/ABT_Rig_Troll:bn_spD01/ABT_Rig_Troll:bn_r_shld01/ABT_Rig_Troll:be_r_shld01/ABT_Rig_Troll:bn_r_arm01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_spB01/ABT_Rig_Troll:bn_spC01/ABT_Rig_Troll:bn_spD01/ABT_Rig_Troll:bn_r_shld01/ABT_Rig_Troll:be_r_shld01/ABT_Rig_Troll:bn_r_arm01/ABT_Rig_Troll:bn_r_elbow01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_spB01/ABT_Rig_Troll:bn_spC01/ABT_Rig_Troll:bn_spD01/ABT_Rig_Troll:bn_r_shld01/ABT_Rig_Troll:be_r_shld01/ABT_Rig_Troll:bn_r_arm01/ABT_Rig_Troll:bn_r_elbow01/ABT_Rig_Troll:bn_r_wrist01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_spB01/ABT_Rig_Troll:bn_spC01/ABT_Rig_Troll:bn_spD01/ABT_Rig_Troll:bn_r_shld01/ABT_Rig_Troll:be_r_shld01/ABT_Rig_Troll:bn_r_arm01/ABT_Rig_Troll:bn_r_elbow01/ABT_Rig_Troll:bn_r_wrist01/ABT_Rig_Troll:bn_r_ind_a01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_spB01/ABT_Rig_Troll:bn_spC01/ABT_Rig_Troll:bn_spD01/ABT_Rig_Troll:bn_r_shld01/ABT_Rig_Troll:be_r_shld01/ABT_Rig_Troll:bn_r_arm01/ABT_Rig_Troll:bn_r_elbow01/ABT_Rig_Troll:bn_r_wrist01/ABT_Rig_Troll:bn_r_ind_a01/ABT_Rig_Troll:bn_r_ind_b01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_spB01/ABT_Rig_Troll:bn_spC01/ABT_Rig_Troll:bn_spD01/ABT_Rig_Troll:bn_r_shld01/ABT_Rig_Troll:be_r_shld01/ABT_Rig_Troll:bn_r_arm01/ABT_Rig_Troll:bn_r_elbow01/ABT_Rig_Troll:bn_r_wrist01/ABT_Rig_Troll:bn_r_ind_a01/ABT_Rig_Troll:bn_r_ind_b01/ABT_Rig_Troll:bn_r_ind_c01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_spB01/ABT_Rig_Troll:bn_spC01/ABT_Rig_Troll:bn_spD01/ABT_Rig_Troll:bn_r_shld01/ABT_Rig_Troll:be_r_shld01/ABT_Rig_Troll:bn_r_arm01/ABT_Rig_Troll:bn_r_elbow01/ABT_Rig_Troll:bn_r_wrist01/ABT_Rig_Troll:bn_r_ind_a01/ABT_Rig_Troll:bn_r_ind_b01/ABT_Rig_Troll:bn_r_ind_c01/ABT_Rig_Troll:be_r_ind_d01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_spB01/ABT_Rig_Troll:bn_spC01/ABT_Rig_Troll:bn_spD01/ABT_Rig_Troll:bn_r_shld01/ABT_Rig_Troll:be_r_shld01/ABT_Rig_Troll:bn_r_arm01/ABT_Rig_Troll:bn_r_elbow01/ABT_Rig_Troll:bn_r_wrist01/ABT_Rig_Troll:bn_r_mid_a01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_spB01/ABT_Rig_Troll:bn_spC01/ABT_Rig_Troll:bn_spD01/ABT_Rig_Troll:bn_r_shld01/ABT_Rig_Troll:be_r_shld01/ABT_Rig_Troll:bn_r_arm01/ABT_Rig_Troll:bn_r_elbow01/ABT_Rig_Troll:bn_r_wrist01/ABT_Rig_Troll:bn_r_mid_a01/ABT_Rig_Troll:bn_r_mid_b01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_spB01/ABT_Rig_Troll:bn_spC01/ABT_Rig_Troll:bn_spD01/ABT_Rig_Troll:bn_r_shld01/ABT_Rig_Troll:be_r_shld01/ABT_Rig_Troll:bn_r_arm01/ABT_Rig_Troll:bn_r_elbow01/ABT_Rig_Troll:bn_r_wrist01/ABT_Rig_Troll:bn_r_mid_a01/ABT_Rig_Troll:bn_r_mid_b01/ABT_Rig_Troll:bn_r_mid_c01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_spB01/ABT_Rig_Troll:bn_spC01/ABT_Rig_Troll:bn_spD01/ABT_Rig_Troll:bn_r_shld01/ABT_Rig_Troll:be_r_shld01/ABT_Rig_Troll:bn_r_arm01/ABT_Rig_Troll:bn_r_elbow01/ABT_Rig_Troll:bn_r_wrist01/ABT_Rig_Troll:bn_r_mid_a01/ABT_Rig_Troll:bn_r_mid_b01/ABT_Rig_Troll:bn_r_mid_c01/ABT_Rig_Troll:be_r_mid_d01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_spB01/ABT_Rig_Troll:bn_spC01/ABT_Rig_Troll:bn_spD01/ABT_Rig_Troll:bn_r_shld01/ABT_Rig_Troll:be_r_shld01/ABT_Rig_Troll:bn_r_arm01/ABT_Rig_Troll:bn_r_elbow01/ABT_Rig_Troll:bn_r_wrist01/ABT_Rig_Troll:bn_r_thmb_a01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_spB01/ABT_Rig_Troll:bn_spC01/ABT_Rig_Troll:bn_spD01/ABT_Rig_Troll:bn_r_shld01/ABT_Rig_Troll:be_r_shld01/ABT_Rig_Troll:bn_r_arm01/ABT_Rig_Troll:bn_r_elbow01/ABT_Rig_Troll:bn_r_wrist01/ABT_Rig_Troll:bn_r_thmb_a01/ABT_Rig_Troll:bn_r_thmb_b01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_spB01/ABT_Rig_Troll:bn_spC01/ABT_Rig_Troll:bn_spD01/ABT_Rig_Troll:bn_r_shld01/ABT_Rig_Troll:be_r_shld01/ABT_Rig_Troll:bn_r_arm01/ABT_Rig_Troll:bn_r_elbow01/ABT_Rig_Troll:bn_r_wrist01/ABT_Rig_Troll:bn_r_thmb_a01/ABT_Rig_Troll:bn_r_thmb_b01/ABT_Rig_Troll:bn_r_thmb_c01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_spB01/ABT_Rig_Troll:bn_spC01/ABT_Rig_Troll:bn_spD01/ABT_Rig_Troll:bn_r_shld01/ABT_Rig_Troll:be_r_shld01/ABT_Rig_Troll:bn_r_arm01/ABT_Rig_Troll:bn_r_elbow01/ABT_Rig_Troll:bn_r_wrist01/ABT_Rig_Troll:bn_r_thmb_a01/ABT_Rig_Troll:bn_r_thmb_b01/ABT_Rig_Troll:bn_r_thmb_c01/ABT_Rig_Troll:bn_r_thmb_d01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_tail_a01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_tail_a01/ABT_Rig_Troll:bn_tail_b01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_tail_a01/ABT_Rig_Troll:bn_tail_b01/ABT_Rig_Troll:bn_tail_c01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_tail_a01/ABT_Rig_Troll:bn_tail_b01/ABT_Rig_Troll:bn_tail_c01/ABT_Rig_Troll:bn_tail_d01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_tail_a01/ABT_Rig_Troll:bn_tail_b01/ABT_Rig_Troll:bn_tail_c01/ABT_Rig_Troll:bn_tail_d01/ABT_Rig_Troll:bn_tail_e01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:bn_spA01/ABT_Rig_Troll:bn_tail_a01/ABT_Rig_Troll:bn_tail_b01/ABT_Rig_Troll:bn_tail_c01/ABT_Rig_Troll:bn_tail_d01/ABT_Rig_Troll:bn_tail_e01/ABT_Rig_Troll:be_tail_f01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:jntDrv_spA01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:jntDrv_spA01/ABT_Rig_Troll:grp_locAim_bn_spA01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:jntDrv_spA01/ABT_Rig_Troll:grp_locAim_bn_spA01/ABT_Rig_Troll:locAim_bn_spA01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:jntDrv_spA01/ABT_Rig_Troll:jntDrv_spB01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:jntDrv_spA01/ABT_Rig_Troll:jntDrv_spB01/ABT_Rig_Troll:grp_locAim_bn_spB01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:jntDrv_spA01/ABT_Rig_Troll:jntDrv_spB01/ABT_Rig_Troll:grp_locAim_bn_spB01/ABT_Rig_Troll:locAim_bn_spB01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:jntDrv_spA01/ABT_Rig_Troll:jntDrv_spB01/ABT_Rig_Troll:jntDrv_spC01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:jntDrv_spA01/ABT_Rig_Troll:jntDrv_spB01/ABT_Rig_Troll:jntDrv_spC01/ABT_Rig_Troll:grp_locAim_bn_spC01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:jntDrv_spA01/ABT_Rig_Troll:jntDrv_spB01/ABT_Rig_Troll:jntDrv_spC01/ABT_Rig_Troll:grp_locAim_bn_spC01/ABT_Rig_Troll:locAim_bn_spC01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:jntDrv_spA01/ABT_Rig_Troll:jntDrv_spB01/ABT_Rig_Troll:jntDrv_spC01/ABT_Rig_Troll:jntDrv_spD01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:jntDrv_spA01/ABT_Rig_Troll:jntDrv_spB01/ABT_Rig_Troll:jntDrv_spC01/ABT_Rig_Troll:jntDrv_spD01/ABT_Rig_Troll:grp_locAim_bn_spD01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:jntDrv_spA01/ABT_Rig_Troll:jntDrv_spB01/ABT_Rig_Troll:jntDrv_spC01/ABT_Rig_Troll:jntDrv_spD01/ABT_Rig_Troll:grp_locAim_bn_spD01/ABT_Rig_Troll:locAim_bn_spD01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:globalMove01/ABT_Rig_Troll:joints01/ABT_Rig_Troll:jntDrv_spA01/ABT_Rig_Troll:jntDrv_spB01/ABT_Rig_Troll:jntDrv_spC01/ABT_Rig_Troll:jntDrv_spD01/ABT_Rig_Troll:jntDrv_spE01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:model01
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:model01/ABT_Rig_Troll:Body
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:model01/ABT_Rig_Troll:eye1
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:model01/ABT_Rig_Troll:eye2
+        weight: 1
+      - path: ABT_Rig_Troll:troll/ABT_Rig_Troll:model01/ABT_Rig_Troll:hair
+        weight: 1
+      - path: pPlane1
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  additionalBone: 0
+  userData: 

@@ -453,7 +453,7 @@ public class TrapPlace : MonoBehaviour {
     public void checkSquares()
     {
         //gridSquares = new bool[gridSizeX, gridSizeZ];
-        print("I RAN THIS SHIT");
+        //print("I RAN THIS SHIT");
         Vector3 corner = new Vector3(gridCenter.position.x - (squareSizeX * gridSizeX / 2), gridCenter.position.y, gridCenter.position.z - (squareSizeZ * gridSizeZ / 2));
         RaycastHit hit;
         for (int i = 0; i < gridSizeX; i++)
@@ -466,7 +466,7 @@ public class TrapPlace : MonoBehaviour {
 
                 if (Physics.Raycast(origin + Vector3.up, Vector3.down, out hit, 1) && hit.collider.gameObject.name == "GridMask")
                 {
-                    print("I HIT THAT SHIT");
+                    //print("I HIT THAT SHIT");
                     gridSquares[i, j] = true;
 
                     if (i - 1 >= 0)

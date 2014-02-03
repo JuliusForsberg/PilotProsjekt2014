@@ -6,10 +6,11 @@ public class InputController : MonoBehaviour {
 	// This makes the character turn to face the current movement speed per default.
 	public bool autoRotate = true;
 	public float maxRotationSpeed = 360f;
+	public GameObject animPlayer;
 
 	private Vector3 directionVector;
 	private CharacterMotor motor;
-
+	
 	// Use this for initialization
 	void Awake () {
 		motor = GetComponent<CharacterMotor>();
@@ -35,6 +36,10 @@ public class InputController : MonoBehaviour {
 			
 			// Multiply the normalized direction vector by the modified length
 			directionVector = directionVector * directionLength;
+
+			animPlayer.animation.CrossFade("Peik_RunCycle");
+		}else if(!animPlayer.animation.IsPlaying("Peik_Idle_01")){
+			animPlayer.animation.CrossFade("Peik_Idle_01");
 		}
 		
 		// Rotate the input vector into camera space so up is camera's up and right is camera's right

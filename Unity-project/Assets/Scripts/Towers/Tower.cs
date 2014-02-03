@@ -11,9 +11,8 @@ public class Tower : MonoBehaviour {
 
     public int sizeX = 1;
     public int sizeZ = 1;
-    public int blueCost;
-    public int greenCost;
-    public int redCost;
+    public int rockCost;
+    public int metalCost;
 
     List<Vector2> occupiedSquares = new List<Vector2>();
 

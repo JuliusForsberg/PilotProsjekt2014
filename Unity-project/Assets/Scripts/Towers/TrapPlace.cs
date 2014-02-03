@@ -23,15 +23,14 @@ public class TrapPlace : MonoBehaviour {
     bool invalid;
     public Transform gridCenter;
 
+    bool OverGui;
+
     GameObject player;
 
     public GameObject[] towers;
     Tower selectedTower;
     int sizeX;
     int sizeZ;
-    int blueCost;
-    int greenCost;
-    int redCost;
 
     public int gridSizeX=8;
     public int gridSizeZ=8;
@@ -49,7 +48,7 @@ public class TrapPlace : MonoBehaviour {
 	//GameObject ball;
 
 	void Update () {
-        if (_enabled)
+        if (_enabled && !OverGui)
         {
             Ray ray = new Ray();
             ray = camTopDown.camera.ScreenPointToRay(Input.mousePosition);
@@ -334,14 +333,11 @@ public class TrapPlace : MonoBehaviour {
 
 		if(highLightObject != null && !invalid)
 		{
-            int amountBlues = mInventory.getAmount("Blue");
-            int amountGreens = mInventory.getAmount("Green");
-            int amountReds = mInventory.getAmount("Red");
+            int amountRocks = mInventory.getAmount(resourceEnum.Rock);
+            int amountWood = mInventory.getAmount(resourceEnum.Wood);
 
-
-            if (amountBlues >= selectedTower.blueCost &&
-                amountGreens >= selectedTower.greenCost &&
-                amountReds >= selectedTower.redCost)
+            if (amountRocks >= selectedTower.rockCost &&
+                amountWood >= selectedTower.metalCost)
             {
                 Vector3 pos = highLightObject.transform.position;
 
@@ -352,10 +348,9 @@ public class TrapPlace : MonoBehaviour {
                 GameObject thisTower = Instantiate(tower, pos, ghostObject.transform.rotation) as GameObject;
                 //thisTower.gameObject.tag = "Tower";
 
-                mInventory.removeObject("Blue", selectedTower.blueCost);
-                mInventory.removeObject("Red", selectedTower.greenCost);
-                mInventory.removeObject("Green", selectedTower.redCost);
-
+                mInventory.removeObject(resourceEnum.Rock, selectedTower.rockCost);
+                mInventory.removeObject(resourceEnum.Wood, selectedTower.metalCost);
+                
                 List<Vector2> mOccupiedSquares = new List<Vector2>();
 
                 for (int k = 0; k < highlightSizeX; k++) //Sets squares to occupied;
@@ -395,16 +390,20 @@ public class TrapPlace : MonoBehaviour {
                 //Tower tower2 = towers[1].GetComponent<Tower>();
                 //Tower tower3 = towers[2].GetComponent<Tower>();
 
-                string tower1Info = tower1.gameObject.name + "\nB" + tower1.blueCost.ToString() + " G" + tower1.greenCost.ToString() + " R" + tower1.redCost.ToString();
+                string tower1Info = tower1.gameObject.name + "\nRock" + tower1.rockCost.ToString() + " Metal" + tower1.metalCost.ToString();
                 //string tower2Info = tower2.gameObject.name + "\nB" + tower2.blueCost.ToString() + " G" + tower2.greenCost.ToString() + " R" + tower2.redCost.ToString();
                 //string tower3Info = tower3.gameObject.name + "\nB" + tower3.blueCost.ToString() + " G" + tower3.greenCost.ToString() + " R" + tower3.redCost.ToString();
 
-			if(GUI.Button(new Rect((Screen.width*0.8f), (Screen.height*0.9f), 100.0f, 50.0f), "Confirm"))
+            Rect button1 = new Rect((Screen.width*0.8f), (Screen.height*0.9f), 100.0f, 50.0f);
+            Rect button2 = new Rect((Screen.width*0.8f), (Screen.height*0.8f), 100.0f, 50.0f);
+            Rect button3 = new Rect((Screen.width*0.8f), (Screen.height*0.5f), 100.0f, 50.0f);
+
+			if(GUI.Button(button1, "Confirm"))
 			{
 				endConstruction();
 			}
-
-            if (GUI.Button(new Rect((Screen.width * 0.8f), (Screen.height * 0.8f), 100.0f, 50.0f), tower1Info))
+            
+            if (GUI.Button(button2, tower1Info))
             {
                 setSelectedTower(towers[0]);
             }
@@ -419,12 +418,19 @@ public class TrapPlace : MonoBehaviour {
             //    setSelectedTower(towers[2]);
             //}
 
-            if (GUI.Button(new Rect((Screen.width * 0.8f), (Screen.height * 0.5f), 100.0f, 50.0f), "Remove"))
+            if (GUI.Button(button3, "Remove"))
             {
                 selectedTower = null;
                 highlightSizeX = 1;
                 highlightSizeZ = 1;
             }
+
+            if (button1.Contains(Event.current.mousePosition) ||
+                button2.Contains(Event.current.mousePosition) ||
+                button3.Contains(Event.current.mousePosition))
+                OverGui = true;
+            else
+                OverGui = false;
 		}
 	}
 

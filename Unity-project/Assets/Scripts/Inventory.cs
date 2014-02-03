@@ -7,9 +7,8 @@ public class Inventory : MonoBehaviour {
 
     bool open = false;
 
-    int amountBlues;
-    int amountGreens;
-    int amountReds;
+    public int amountRocks;
+    public int amountMetal;
 
     public InventorySlot[,] inventory;
     [HideInInspector]
@@ -26,9 +25,8 @@ public class Inventory : MonoBehaviour {
 
 	void Start () {
 
-        amountBlues = 9999;
-        amountGreens = 9999;
-        amountReds = 9999;
+        //amountRocks = 9999;
+        //amountMetal = 9999;
 
 		inventoryPosX = Screen.width * inventoryPosX;
 		inventoryPosY = Screen.height * inventoryPosY;
@@ -68,30 +66,46 @@ public class Inventory : MonoBehaviour {
 
 	public void insertObject (GameObject gameObject)
 	{
+        Pickup _pickup = gameObject.GetComponent<Pickup>();
 		for(int j=0;j<AmountSlotsY;j++)
 		{
 			for(int i=0;i<AmountSlotsX;i++)
 			{
-				if(inventory[i,j].gameObject == null)
-				{
-					inventory[i,j].gameObject = gameObject;
-					inventory[i,j].icon = gameObject.GetComponent<Pickup>().icon;
-					emptySlots--;
 
-                    switch (inventory[i, j].gameObject.name)
+                if (inventory[i, j].gameObject == null)
+                {
+                    inventory[i, j].gameObject = gameObject;
+                    inventory[i, j].amount = 1;
+                    inventory[i, j].icon = gameObject.GetComponent<Pickup>().icon;
+                    emptySlots--;
+
+                    print(i + " " + j);
+
+                    switch (_pickup.resource)
                     {
-                        case "Blue": amountBlues++; break;
-                        case "Green": amountGreens++; break;
-                        case "Red": amountReds++; break;
+                        case resourceEnum.Rock: amountRocks++; break;
+                        case resourceEnum.Wood: amountMetal++; break;
                     }
 
-					return;
-				}
+                    return;
+                }
+                else if (inventory[i, j].gameObject.GetComponent<Pickup>().resource == gameObject.GetComponent<Pickup>().resource && inventory[i, j].amount <= 20)
+                {
+                    inventory[i, j].amount++;
+
+                    switch (_pickup.resource)
+                    {
+                        case resourceEnum.Rock: amountRocks++; break;
+                        case resourceEnum.Wood: amountMetal++; break;
+                    }
+
+                    return;
+                } 
 			}
 		}
 	}
 
-    public void removeObject(string type, int amount)
+    public void removeObject(resourceEnum type, int amount)
     {
         if (amount == 0)
             return;
@@ -105,18 +119,22 @@ public class Inventory : MonoBehaviour {
             {
                 if (inventory[i, j].gameObject != null)
                 {
-                    if (inventory[i, j].gameObject.name == type)
+                    if (inventory[i, j].gameObject.GetComponent<Pickup>().resource == type)
                     {
-                        inventory[i, j].gameObject = null;
-                        inventory[i, j].icon = null;
+
+                        if (inventory[i, j].amount <= 1)
+                        {
+                            inventory[i, j].gameObject = null;
+                            inventory[i, j].icon = null;
+                        }
+                        else
+                            inventory[i, j].amount -= amount;
                         removed++;
-                        print(removed);
 
                         switch (type)
                         {
-                            case "Blue": amountBlues--; break;
-                            case "Green": amountGreens--; break;
-                            case "Red": amountReds--; break;
+                            case resourceEnum.Rock: amountRocks--; break;
+                            case resourceEnum.Wood: amountMetal--; break;
                         }
 
                         if (removed >= amount)
@@ -127,16 +145,18 @@ public class Inventory : MonoBehaviour {
         }
     }
 
-    public int getAmount(string resource)
+    public int getAmount(resourceEnum resource)
     {
         switch (resource)
         {
-            case "Blue": return amountBlues;
-            case "Green": return amountGreens;
-            case "Red": return amountReds;
+            case resourceEnum.Rock: return amountRocks;
+            case resourceEnum.Wood: return amountMetal;
+
             default: return 0;
         }
     }
+
+    public GUIStyle stackLabelStyle;
 
 	void OnGUI () {
 
@@ -151,7 +171,19 @@ public class Inventory : MonoBehaviour {
 				for(int j=0;j<AmountSlotsY;j++)
 				{
 					if(inventory[i,j].icon != null)
-						GUI.DrawTexture(new Rect(inventory[i,j].position.x-(slotSizeX/2), inventory[i,j].position.y-(slotSizeY/2), slotSizeX, slotSizeY), inventory[i,j].icon);
+                    {
+                        Rect square = new Rect(inventory[i,j].position.x-(slotSizeX/2), inventory[i,j].position.y-(slotSizeY/2), slotSizeX, slotSizeY);
+
+                        
+						GUI.DrawTexture(square, inventory[i,j].icon);
+
+                        //if (inventory[i, j].amount > 1)
+                        //{
+                            GUI.BeginGroup(square);
+                            GUI.Label(new Rect(slotSizeX * 0.7f, slotSizeY * 0.7f, 20f, 20f), inventory[i, j].amount.ToString(), stackLabelStyle);
+                            GUI.EndGroup();
+                        //}
+                    }
 				}
 			}
 
@@ -166,4 +198,5 @@ public class InventorySlot
 	public Vector2 position;
 	public Texture2D icon;
 	public GameObject gameObject;
+    public int amount;
 }

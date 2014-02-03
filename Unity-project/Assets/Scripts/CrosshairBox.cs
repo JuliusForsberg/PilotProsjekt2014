@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MyGUI : MonoBehaviour {
+public class CrosshairBox : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {

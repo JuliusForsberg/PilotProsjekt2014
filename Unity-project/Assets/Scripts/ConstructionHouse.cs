@@ -12,6 +12,10 @@ public class ConstructionHouse : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
+        if(Input.GetKeyDown(KeyCode.B))
+            GameObject.Find("CameraTopDown").SendMessage("startConstruction");
+
+
 	}
 
 	void OnTriggerEnter (Collider collider) {

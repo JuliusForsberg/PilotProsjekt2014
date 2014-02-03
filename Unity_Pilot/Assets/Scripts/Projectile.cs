@@ -3,6 +3,9 @@ using System.Collections;
 
 public class Projectile : MonoBehaviour {
 		
+	public bool aoe;
+	public float aoeRadius;
+
 	//Curve points.
 	private float startPointX;
 	private float startPointY;
@@ -43,7 +46,7 @@ public class Projectile : MonoBehaviour {
 			}
 		}
 
-		bezierTime += speed/distanceModifier*Time.deltaTime;
+		bezierTime += (speed/distanceModifier)*Time.deltaTime;
 
 		if(bezierTime >= 1){
 
@@ -54,10 +57,15 @@ public class Projectile : MonoBehaviour {
 
 			if(!reachedEnd){
 				if(target){
-					target.TakeDamage(damage);
+					if(aoe){
+						DetonateAOE();
+						return;
+					}else{
+						target.gameObject.GetComponent<Enemy>().TakeDamage(damage);
 
-					Destroy(gameObject);
-					return;
+						Destroy(gameObject);
+						return;
+					}
 				}else{
 					reachedEnd = true;
 					gameObject.collider.enabled = true;
@@ -88,10 +96,33 @@ public class Projectile : MonoBehaviour {
 
 	void OnTriggerEnter(Collider col){
 		if(col.gameObject.tag=="Ground"){
-			isActive = false;
+			if(aoe){
+				DetonateAOE();
+			}else{
+				isActive = false;
 
-			Destroy(gameObject, 2.0f);
+				Destroy(gameObject, 2.0f);
+			}
 		}
+	}
+
+	private void DetonateAOE(){
+		Collider[] colliders = Physics.OverlapSphere(transform.position, aoeRadius);
+
+		foreach(Collider col in colliders){
+			if(col.gameObject.tag=="Enemy"){
+				col.gameObject.GetComponent<Enemy>().TakeDamage(damage);
+			}
+		}
+
+		//TESTING - REPLACE WITH IMPACT EFFECT
+		GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+		sphere.transform.position = transform.position;
+		sphere.transform.localScale = new Vector3(aoeRadius*2f, aoeRadius*2f, aoeRadius*2f);
+		Destroy(sphere, 2f);
+		//------
+
+		Destroy(gameObject);
 	}
 
 	public void Initialize(Enemy enemy, float dmg, float spd, float curveHeight){

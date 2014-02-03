@@ -5,6 +5,7 @@ public class Tower : MonoBehaviour {
 
 	public GameObject projectile;
 	public Transform muzzle;
+	public Transform tilt;
 
 	public float turnSpeed = 2f;
 	public float reloadTime = 1f;
@@ -14,21 +15,16 @@ public class Tower : MonoBehaviour {
 	public float projectileCurveHeight = 0.5f;
 	public float projectileSpeed = 1.0f;
 
-	private float nextFireTime;
-	private float nextMoveTime;
+	private float nextFireTime = 0f;
+	private float nextMoveTime = 0f;
 	
 	private ArrayList enemyList = new ArrayList();
 	private Enemy currentEnemy;
 
 	private Quaternion defaultRotation;
 	private Quaternion defaultTiltRotation;
-	private Transform tilt;
 	
 	void Start(){
-		nextFireTime = 0f;
-		nextMoveTime = 0f;
-
-		tilt = transform.FindChild("Tilt");
 		defaultRotation = transform.localRotation;
 		defaultTiltRotation = tilt.localRotation;
 		transform.GetComponent<SphereCollider>().radius = range;

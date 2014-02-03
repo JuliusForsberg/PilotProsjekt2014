@@ -2,7 +2,7 @@
 
 [ExecuteInEditMode()] 
 public class ClockHand : MonoBehaviour {
-
+	
 	public static float angle = 0;
 
 	public Texture2D texture = null;
@@ -15,11 +15,8 @@ public class ClockHand : MonoBehaviour {
 	Rect rect;
 	Vector2 pivot;
 
-	public bool isRunning = false;
-	
 	void Start() {
 		UpdateSettings();
-		isRunning = true;
 	}
 	
 	void UpdateSettings() {
@@ -28,9 +25,6 @@ public class ClockHand : MonoBehaviour {
 		pos = cornerPos + relativePos;
 		rect = new Rect(pos.x - size.x * 0.5f, pos.y - size.y * 0.5f, size.x, size.y);
 		pivot = new Vector2(rect.xMin + rect.width * 0.5f, rect.yMin + rect.height);
-
-		if(!isRunning)
-			angle = currentAngel;
 	}
 	
 	void OnGUI() {

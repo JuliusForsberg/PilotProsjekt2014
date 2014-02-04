@@ -7,13 +7,9 @@ public class Player : MonoBehaviour {
 
 	void Start () {
 
-        charMotor = gameObject.GetComponent<CharacterMotor>();
-
 		mInventory = GameObject.Find("GUI").GetComponent<Inventory>();
 
 	}
-
-    CharacterMotor charMotor;
 
 	RaycastHit[] forwardHits;
     public bool gathering=false;
@@ -30,7 +26,7 @@ public class Player : MonoBehaviour {
 
             forwardHits = Physics.RaycastAll(Camera.main.transform.position, Camera.main.transform.forward, 30.0f);
 
-            for (int i = 0; i < forwardHits.Length - 1; i++) //Using RaycastAll.
+            for (int i = 0; i < forwardHits.Length; i++) //Using RaycastAll.
             {
                 print(forwardHits[i].collider.gameObject);
                 if (forwardHits[i].transform.gameObject.tag == "Pickup")

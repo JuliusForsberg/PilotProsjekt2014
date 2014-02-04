@@ -19,9 +19,6 @@ public class TowerPorridge : MonoBehaviour {
 	private float nextFireTime = 0f;
 	private float nextMoveTime = 0f;
 
-	private Quaternion defaultRotation;
-	private Quaternion defaultTiltRotation;
-
 	private GameObject porridge;
 	//
 	//Curve points.
@@ -48,8 +45,6 @@ public class TowerPorridge : MonoBehaviour {
 
 	void Start(){
 		nextFireTime = Time.time + cooldownTime;
-		defaultRotation = transform.localRotation;
-		defaultTiltRotation = tilt.localRotation;
 		transform.GetComponent<SphereCollider>().radius = range;
 	}
 	
@@ -109,7 +104,7 @@ public class TowerPorridge : MonoBehaviour {
 		porridge = Instantiate(projectile, muzzle.position, Quaternion.identity) as GameObject;
 
 		//TEST
-		Destroy (porridge, 0.1f);
+		//Destroy (porridge, 4f);
 		//----
 
 		startPointX = transform.position.x;
@@ -126,9 +121,9 @@ public class TowerPorridge : MonoBehaviour {
 		endPointX = target.transform.position.x + vector.x;
 		endPointZ = target.transform.position.z + vector.z;
 
-		GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+		/*GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
 		sphere.transform.position = new Vector3(endPointX, endPointY, endPointZ);
-		sphere.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+		sphere.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);*/
 
 
 		//Temporarily holds just the distance, so we can use it in controlPointY, then apply the modifier after.

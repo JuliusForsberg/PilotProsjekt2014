@@ -10,15 +10,19 @@ public class Enemy : MonoBehaviour {
 	private PlayerStats player;
 	private Crystal crystal;
 	private Gate gate;
+	private Porridge porridge;
 
 	public float defaultAggroLevel = 20f;
 	public float aggroLevel;
 
-	private float nextAttack;
+	private float nextAttackTime;
 
 	private NavMeshAgent navAgent;
 	private Transform currentTarget;
 
+	private float nextUpdateTime;
+
+	public bool dead = false;
 	//Testing
 	public bool waveActive;
 	//--------
@@ -50,36 +54,73 @@ public class Enemy : MonoBehaviour {
 	}
 
 	void Update(){
-		if(gate != null){
-			if(currentTarget == gate.transform && gate.isDestroyed()){
+		if(dead)
+			return;
+
+		if(currentTarget == player.transform){
+
+			if(Time.time >= nextUpdateTime){
+				navAgent.SetDestination(player.transform.position);
+				nextUpdateTime = Time.time + 0.2f;
+			}
+
+			if(aggroLevel < defaultAggroLevel+1f){
+				if(!gate.isDestroyed()){
+					Debug.Log("SetTarget: Gate");
+					currentTarget = gate.transform;
+					navAgent.ResetPath();
+					navAgent.SetDestination(gate.transform.position);
+				}else{
+					Debug.Log("SetTarget: Crystal");
+					currentTarget = crystal.transform;
+					navAgent.ResetPath();
+					navAgent.SetDestination(crystal.transform.position);
+				}
+			}
+		}else if(currentTarget == gate.transform){
+			if(gate.isDestroyed()){
 				currentTarget = crystal.transform;
+				navAgent.ResetPath();
+				navAgent.SetDestination(crystal.transform.position);
+			}
+		}else if(currentTarget == crystal.transform){
+
+		}else if(porridge != null){
+			//Debug.Log ("Target Porridge: " + currentTarget);
+		}else{
+			if(!gate.isDestroyed()){
+				Debug.Log("SetTarget: Gate");
+				currentTarget = gate.transform;
+				navAgent.ResetPath();
+				navAgent.SetDestination(gate.transform.position);
+			}else{
+				Debug.Log("SetTarget: Crystal");
+				currentTarget = crystal.transform;
+				navAgent.ResetPath();
 				navAgent.SetDestination(crystal.transform.position);
 			}
 		}
 
-		if(currentTarget == player.transform){
-			navAgent.SetDestination(player.transform.position);
-		}
-
-		if(aggroLevel > defaultAggroLevel+5f && currentTarget != player.transform){
-			if((player.transform.position - transform.position).sqrMagnitude < 5f*5f){
-				Debug.Log("SetTarget: Player");
-				currentTarget = player.transform;
-				navAgent.SetDestination(player.transform.position);
+		if(currentTarget != player.transform && porridge == null){
+			if(aggroLevel > defaultAggroLevel+5f){
+				if((player.transform.position - transform.position).sqrMagnitude < 5f*5f){
+					Debug.Log("SetTarget: Player");
+					currentTarget = player.transform;
+					navAgent.SetDestination(player.transform.position);
+				}
 			}
-		}else if(aggroLevel < defaultAggroLevel+1f && currentTarget == player.transform){
-			Debug.Log("SetTarget: Crystal");
-			currentTarget = crystal.transform;
-			navAgent.SetDestination(crystal.transform.position);
 		}
 
+		//Lerp the aggression level towards default.
 		if(Mathf.Abs(aggroLevel - defaultAggroLevel) > 0.1f){
 			aggroLevel = Mathf.Lerp(aggroLevel, defaultAggroLevel, Time.deltaTime*0.2f);
 		}
 
-		if(Time.time >= nextAttack){
-			if((currentTarget.position - transform.position).sqrMagnitude < 3f*3f){
-				AttackTarget();
+		if(porridge == null){
+			if(Time.time >= nextAttackTime){
+				if((currentTarget.position - transform.position).sqrMagnitude < 3f*3f){
+					AttackTarget();
+				}
 			}
 		}
 	}
@@ -92,6 +133,7 @@ public class Enemy : MonoBehaviour {
 
 		if(health <= 0){
 			//Debug.Log("Enemy died");
+			dead = true;
 			StartCoroutine(WaitAndDie(0.2f));
 			//Destroy (gameObject);
 		}
@@ -99,16 +141,23 @@ public class Enemy : MonoBehaviour {
 
 	public void Petrify(){
 		health = -1;
+		dead = true;
 		StartCoroutine(WaitAndDie(2f));
 	}
 	
 	public bool isDead(){
-		return health <= 0 ? true : false;
+		return dead;
+	}
+
+	public void SetPorridge(Porridge por){
+		porridge = por;
+		currentTarget = por.transform;
+		navAgent.SetDestination(porridge.transform.position);
 	}
 
 	private void AttackTarget(){
-		//Debug.Log("Attack Target");
-		nextAttack = Time.time + attackSpeed;
+		Debug.Log("Attack Target");
+		nextAttackTime = Time.time + attackSpeed;
 
 		if(currentTarget == player.transform){
 			player.TakeDamage(damage);

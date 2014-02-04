@@ -11,7 +11,11 @@ public class Gate : MonoBehaviour {
 		
 		if(health <= 0){
 			Debug.Log("Gate destroyed");
-			Destroy(gameObject, 0.2f);
+			gameObject.collider.enabled = false;
+
+			for(int i=0; i<transform.childCount; i++){
+				transform.GetChild(i).gameObject.SetActive(false);
+			}
 		}
 	}
 

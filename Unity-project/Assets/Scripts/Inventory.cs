@@ -66,7 +66,7 @@ public class Inventory : MonoBehaviour {
 
 	public void insertObject (GameObject gameObject)
 	{
-        Pickup _pickup = gameObject.GetComponent<Pickup>();
+        Resource _pickup = gameObject.GetComponent<Resource>();
 		for(int j=0;j<AmountSlotsY;j++)
 		{
 			for(int i=0;i<AmountSlotsX;i++)
@@ -76,7 +76,7 @@ public class Inventory : MonoBehaviour {
                 {
                     inventory[i, j].gameObject = gameObject;
                     inventory[i, j].amount = 1;
-                    inventory[i, j].icon = gameObject.GetComponent<Pickup>().icon;
+                    inventory[i, j].icon = gameObject.GetComponent<Resource>().icon;
                     emptySlots--;
 
                     print(i + " " + j);
@@ -89,7 +89,7 @@ public class Inventory : MonoBehaviour {
 
                     return;
                 }
-                else if (inventory[i, j].gameObject.GetComponent<Pickup>().resource == gameObject.GetComponent<Pickup>().resource && inventory[i, j].amount <= 20)
+                else if (inventory[i, j].gameObject.GetComponent<Resource>().resource == gameObject.GetComponent<Resource>().resource && inventory[i, j].amount <= 20)
                 {
                     inventory[i, j].amount++;
 
@@ -119,7 +119,7 @@ public class Inventory : MonoBehaviour {
             {
                 if (inventory[i, j].gameObject != null)
                 {
-                    if (inventory[i, j].gameObject.GetComponent<Pickup>().resource == type)
+                    if (inventory[i, j].gameObject.GetComponent<Resource>().resource == type)
                     {
 
                         if (inventory[i, j].amount <= 1)

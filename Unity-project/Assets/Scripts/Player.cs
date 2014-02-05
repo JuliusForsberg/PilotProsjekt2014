@@ -28,16 +28,11 @@ public class Player : MonoBehaviour {
 
             for (int i = 0; i < forwardHits.Length; i++) //Using RaycastAll.
             {
-                print(forwardHits[i].collider.gameObject);
-                if (forwardHits[i].transform.gameObject.tag == "Pickup")
+                if (forwardHits[i].transform.gameObject.tag == "Resource")
                 {
                     currentObject = forwardHits[i].collider.gameObject;
                     gathering = true;
                     break;
-                }
-                if (i == forwardHits.Length - 1 && forwardHits[i].transform.gameObject.tag != "Pickup")
-                {
-                    print(forwardHits[0].collider.gameObject.name);
                 }
             }
 
@@ -55,7 +50,7 @@ public class Player : MonoBehaviour {
 
             if (gatheringTimer >= gatherDelay)
             {
-                pickUpObject(currentObject);
+                currentObject.SendMessage("Destroy");
                 stopGathering();
             }
 

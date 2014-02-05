@@ -3,7 +3,7 @@ using System.Collections;
 
 public class SmallTrapThrowable : MonoBehaviour {
 
-    float bezierTime;
+    public float bezierTime;
     float curveX;
     float curveY;
     float curveZ;
@@ -19,7 +19,7 @@ public class SmallTrapThrowable : MonoBehaviour {
 
     float speed;
 
-    bool isActive;
+    public bool isActive;
 
 	void Start () {
 
@@ -53,7 +53,7 @@ public class SmallTrapThrowable : MonoBehaviour {
             curveY = (((1 - bezierTime) * (1 - bezierTime)) * startPointY) + (2 * bezierTime * (1 - bezierTime) * controlPointY) + ((bezierTime * bezierTime) * endPointY);
             curveZ = (((1 - bezierTime) * (1 - bezierTime)) * startPointZ) + (2 * bezierTime * (1 - bezierTime) * controlPointZ) + ((bezierTime * bezierTime) * endPointZ);
 
-            transform.position = new Vector3(curveX, curveY, curveZ); 
+            transform.position = new Vector3(curveX, curveY, curveZ);
         }
 
         if (bezierTime >= 1)

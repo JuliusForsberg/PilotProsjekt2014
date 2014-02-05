@@ -2,9 +2,9 @@
 using System.Collections;
 
 public class MouseOrbit : MonoBehaviour{
+
 	public Transform target;
 	public float distance = 5.0f;
-	public bool smoothFollow;
 
 	public float xSpeed = 250.0f;
 	public float ySpeed = 120.0f;
@@ -16,17 +16,15 @@ public class MouseOrbit : MonoBehaviour{
 	private float y = 0.0f;
 	private float defaultDistance;
 
-	private float desiredX;
-	private float desiredY;
+	private Transform tr;
 
 	void Start(){
+		tr = transform;
+
 		defaultDistance = distance;
 		Vector3 angles = transform.eulerAngles;
 		x = angles.y;
 		y = angles.x;
-
-		desiredX = x;
-		desiredY = y;
 		
 		// Make the rigid body not change rotation
 		if (rigidbody)
@@ -48,33 +46,56 @@ public class MouseOrbit : MonoBehaviour{
 	void LateUpdate(){
 		if (target) {
 			RaycastHit hit;
+			Vector3 rayVector = tr.position - target.position;
 
-			if(Physics.Raycast(target.position, transform.position - target.position, out hit, defaultDistance)){
-				distance = Mathf.Lerp (distance, hit.distance-0.5f, 2f * Time.deltaTime);
-			}else if(Mathf.Abs(distance - defaultDistance) > 0.01f){
+			//Player to Camera
+			/*if(Physics.Raycast(target.position, rayVector, out hit, rayVector.magnitude)){
+				distance = Mathf.Lerp (distance, hit.distance, 2f * Time.deltaTime);
+			}*/
+
+			//Down
+			rayVector = (tr.position - tr.up) - target.position;
+			if(Physics.Raycast(target.position, rayVector, out hit, rayVector.magnitude)){
+				Debug.DrawRay(target.position, hit.point - target.position, Color.green);
+				if(hit.distance < distance)
+					distance = Mathf.Lerp (distance, hit.distance, 2f * Time.deltaTime);
+			}
+			//Left
+			rayVector = (tr.position - tr.right) - target.position;
+			if(Physics.Raycast(target.position, rayVector, out hit, rayVector.magnitude)){
+				Debug.DrawRay(target.position, hit.point - target.position, Color.yellow);
+				if(hit.distance < distance)
+					distance = Mathf.Lerp (distance, hit.distance, 2f * Time.deltaTime);
+			}
+			//Right
+			rayVector = (tr.position + tr.right) - target.position;
+			if(Physics.Raycast(target.position, rayVector, out hit, rayVector.magnitude)){
+				Debug.DrawRay(target.position, hit.point - target.position, Color.red);
+				if(hit.distance < distance)
+					distance = Mathf.Lerp (distance, hit.distance, 2f * Time.deltaTime);
+			}
+			//Up
+			rayVector = (tr.position + tr.up) - target.position;
+			if(Physics.Raycast(target.position, rayVector, out hit, rayVector.magnitude)){
+				Debug.DrawRay(target.position, hit.point - target.position, Color.blue);
+				if(hit.distance < distance)
+					distance = Mathf.Lerp (distance, hit.distance, 2f * Time.deltaTime);
+			}
+
+			if(hit.distance == 0 && Mathf.Abs(distance - defaultDistance) > 0.01f){
 				distance = Mathf.Lerp (distance, defaultDistance, 2f * Time.deltaTime);
 			}
 
-			if(smoothFollow){
-				desiredX += Input.GetAxis("Mouse X") * xSpeed * 0.02f;
-				desiredY -= Input.GetAxis("Mouse Y") * ySpeed * 0.02f;
-				
-				desiredY = ClampAngle(desiredY, yMinLimit, yMaxLimit);
-
-				x = Mathf.Lerp(x, desiredX, 2f * Time.deltaTime);
-				y = Mathf.Lerp(y, desiredY, 2f * Time.deltaTime);
-			}else{
-				x += Input.GetAxis("Mouse X") * xSpeed * 0.02f;
-				y -= Input.GetAxis("Mouse Y") * ySpeed * 0.02f;
-				
-				y = ClampAngle(y, yMinLimit, yMaxLimit);
-			}
+			x += Input.GetAxis("Mouse X") * xSpeed * 0.02f;
+			y -= Input.GetAxis("Mouse Y") * ySpeed * 0.02f;
+			
+			y = ClampAngle(y, yMinLimit, yMaxLimit);
 
 			Quaternion rotation = Quaternion.Euler(y, x, 0);
 			Vector3 position = rotation * new Vector3(0.0f, 0.0f, -distance) + target.position;
 
-			transform.rotation = rotation;
-			transform.position = position;
+			tr.rotation = rotation;
+			tr.position = position;
 		}
 	}
 

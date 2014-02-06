@@ -23,6 +23,9 @@ public class TrapPlace : MonoBehaviour {
     bool invalid;
     public Transform gridCenter;
 
+    int amountRocks;
+    int amountWood;
+
     bool OverGui;
 
     GameObject player;
@@ -333,8 +336,8 @@ public class TrapPlace : MonoBehaviour {
 
 		if(highLightObject != null && !invalid)
 		{
-            int amountRocks = mInventory.getAmount(resourceEnum.Rock);
-            int amountWood = mInventory.getAmount(resourceEnum.Wood);
+
+            getAmounts();
 
             if (amountRocks >= selectedTower.rockCost &&
                 amountWood >= selectedTower.metalCost)
@@ -439,12 +442,20 @@ public class TrapPlace : MonoBehaviour {
 		camTopDown.enabled = true;
 		_enabled = true;
 
+        getAmounts();
+
         if (player == null)
             player = GameObject.FindWithTag("Player");
 
         player.GetComponent<CharacterMotor>().canControl = false;
         player.GetComponent<InputController>().enabled = false;
 	}
+
+    private void getAmounts()
+    {
+        amountRocks = mInventory.getAmount(resourceEnum.Rock);
+        amountWood = mInventory.getAmount(resourceEnum.Wood);
+    }
 
 	void endConstruction () {
 		camMain.enabled = true;

@@ -10,14 +10,15 @@ public class Resource : MonoBehaviour {
 	
 		gameObject.tag = "Resource";
 
-        if (pickupObject.GetComponent<Pickup>() == null)
+        Pickup pickupComp = pickupObject.GetComponent<Pickup>();
+
+        if (pickupComp == null)
             pickupObject.AddComponent<Pickup>();
 
 	}
 
-	public Texture2D icon;
-
     public resourceEnum resource;
+    public Texture2D icon;
 
     public int amountOfDrops=1;
     public GameObject pickupObject;
@@ -28,6 +29,7 @@ public class Resource : MonoBehaviour {
 
     void Destroy()
     {
+        gameObject.SetActive(false); //Disable so that the rays i cast don't hit the resource itself.
         breakApart();
         Destroy(gameObject);
     }
@@ -39,7 +41,14 @@ public class Resource : MonoBehaviour {
         for (int i = 0; i < amountOfDrops; i++)
         {
             pickup = Instantiate(pickupObject, transform.position, pickupObject.transform.rotation) as GameObject;
-            dropPoint = transform.position + new Vector3(Random.Range(-2.0f, 2.0f), 0, Random.Range(-2.0f, 2.0f));
+            Pickup pickupComp = pickup.GetComponent<Pickup>();
+            pickupComp.resource = resource;
+            pickupComp.icon = icon;
+
+            RaycastHit rayHit;
+            Vector3 pos = transform.position + new Vector3(Random.Range(-2.0f, 2.0f), +2, Random.Range(-2.0f, 2.0f));
+            Physics.Raycast(pos, Vector3.down, out rayHit, 5f);
+            dropPoint = rayHit.point;
             pickup.SendMessage("setEndPoints", dropPoint);
         }
     }

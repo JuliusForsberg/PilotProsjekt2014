@@ -22,8 +22,15 @@ public class Pickup : MonoBehaviour
 
     bool isActive;
 
+    //[HideInInspector]
+    public Texture2D icon;
+
+    //[HideInInspector]
+    public resourceEnum resource;
+
     void Start()
     {
+        gameObject.tag = "Pickup";
 
         startPointX = transform.position.x;
         startPointY = transform.position.y;

@@ -38,7 +38,8 @@ public class TrapThrow : MonoBehaviour {
         {
             if (rayHits[i].collider.gameObject.tag == "Ground")
             {
-                GameObject thrown = Instantiate(trap, transform.position, Quaternion.Euler(270, 0, 0)) as GameObject;
+                Quaternion rotation = Quaternion.LookRotation(rayHits[i].normal, Vector3.up);
+                GameObject thrown = Instantiate(trap, transform.position, rotation) as GameObject;
                 Vector3 target = rayHits[i].point;
                 thrown.SendMessage("setEndPoints", target);
                 thrown.SendMessage("setSpeed", speed);

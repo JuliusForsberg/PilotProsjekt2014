@@ -78,6 +78,14 @@ public class Player : MonoBehaviour {
 		}
 	}
 
+    void OnTriggerEnter(Collider collider)
+    {
+        if(collider.gameObject.tag == "Pickup")
+        {
+            pickUpObject(collider.gameObject);
+        }
+    }
+
     void OnGUI()
     {
         if (gathering)

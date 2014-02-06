@@ -5,6 +5,9 @@ public class MouseOrbit : MonoBehaviour{
 
 	public Transform target;
 	public float distance = 5.0f;
+	public float minDistance = 2f;
+	public float maxDistance = 10f;
+
 
 	public float xSpeed = 250.0f;
 	public float ySpeed = 120.0f;
@@ -17,6 +20,8 @@ public class MouseOrbit : MonoBehaviour{
 	private float defaultDistance;
 
 	private Transform tr;
+
+	public bool allowZoom = true;
 
 	void Start(){
 		tr = transform;
@@ -33,11 +38,11 @@ public class MouseOrbit : MonoBehaviour{
 
 	void Update() {
 		if(Input.GetAxis("Mouse ScrollWheel") > 0){
-			if(defaultDistance > 2f){
+			if(defaultDistance > minDistance && allowZoom){
 				defaultDistance -= 0.2f;
 			}
 		}else if(Input.GetAxis("Mouse ScrollWheel") < 0){
-			if(defaultDistance < 10f){
+			if(defaultDistance < maxDistance && allowZoom){
 				defaultDistance += 0.2f;
 			}
 		}
@@ -47,43 +52,77 @@ public class MouseOrbit : MonoBehaviour{
 		if (target) {
 			RaycastHit hit;
 			Vector3 rayVector = tr.position - target.position;
+			float desiredDistance = defaultDistance;
 
 			//Player to Camera
-			/*if(Physics.Raycast(target.position, rayVector, out hit, rayVector.magnitude)){
-				distance = Mathf.Lerp (distance, hit.distance, 2f * Time.deltaTime);
-			}*/
+			if(Physics.Raycast(target.position, rayVector, out hit, rayVector.magnitude+1f)){
+				Debug.DrawRay(target.position, hit.point - target.position, Color.black);
+				//distance = Mathf.Lerp (distance, hit.distance, 2f * Time.deltaTime);
+				if(desiredDistance > hit.distance){
+					desiredDistance = hit.distance;
+				}
+				if(allowZoom){
+					allowZoom = false;
+				}
+			}
 
 			//Down
 			rayVector = (tr.position - tr.up) - target.position;
 			if(Physics.Raycast(target.position, rayVector, out hit, rayVector.magnitude)){
 				Debug.DrawRay(target.position, hit.point - target.position, Color.green);
-				if(hit.distance < distance)
-					distance = Mathf.Lerp (distance, hit.distance, 2f * Time.deltaTime);
+				//distance = Mathf.Lerp (distance, hit.distance, 2f * Time.deltaTime);
+				if(desiredDistance > hit.distance){
+					desiredDistance = hit.distance;
+				}
+				if(allowZoom){
+					allowZoom = false;
+				}
 			}
 			//Left
 			rayVector = (tr.position - tr.right) - target.position;
 			if(Physics.Raycast(target.position, rayVector, out hit, rayVector.magnitude)){
 				Debug.DrawRay(target.position, hit.point - target.position, Color.yellow);
-				if(hit.distance < distance)
-					distance = Mathf.Lerp (distance, hit.distance, 2f * Time.deltaTime);
+				//distance = Mathf.Lerp (distance, hit.distance, 2f * Time.deltaTime);
+				if(desiredDistance > hit.distance){
+					desiredDistance = hit.distance;
+				}
+				if(allowZoom){
+					allowZoom = false;
+				}
 			}
 			//Right
 			rayVector = (tr.position + tr.right) - target.position;
 			if(Physics.Raycast(target.position, rayVector, out hit, rayVector.magnitude)){
 				Debug.DrawRay(target.position, hit.point - target.position, Color.red);
-				if(hit.distance < distance)
-					distance = Mathf.Lerp (distance, hit.distance, 2f * Time.deltaTime);
+				//distance = Mathf.Lerp (distance, hit.distance, 2f * Time.deltaTime);
+				if(desiredDistance > hit.distance){
+					desiredDistance = hit.distance;
+				}
+				if(allowZoom){
+					allowZoom = false;
+				}
 			}
 			//Up
 			rayVector = (tr.position + tr.up) - target.position;
 			if(Physics.Raycast(target.position, rayVector, out hit, rayVector.magnitude)){
 				Debug.DrawRay(target.position, hit.point - target.position, Color.blue);
-				if(hit.distance < distance)
-					distance = Mathf.Lerp (distance, hit.distance, 2f * Time.deltaTime);
+				//distance = Mathf.Lerp (distance, hit.distance, 2f * Time.deltaTime);
+				if(desiredDistance > hit.distance){
+					desiredDistance = hit.distance;
+				}
+				if(allowZoom){
+					allowZoom = false;
+				}
 			}
 
-			if(hit.distance == 0 && Mathf.Abs(distance - defaultDistance) > 0.01f){
+			if(desiredDistance != defaultDistance && Mathf.Abs(distance - desiredDistance) > 0.01f){
+				distance = Mathf.Lerp (distance, desiredDistance, 2f * Time.deltaTime);
+			}
+
+			if(desiredDistance == defaultDistance && Mathf.Abs(distance - defaultDistance) > 0.01f){
 				distance = Mathf.Lerp (distance, defaultDistance, 2f * Time.deltaTime);
+			}else if(desiredDistance == defaultDistance && !allowZoom){
+				allowZoom = true;
 			}
 
 			x += Input.GetAxis("Mouse X") * xSpeed * 0.02f;
